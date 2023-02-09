@@ -1,16 +1,16 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ComponentsModule } from "@components/components.module";
 import { TranslateLoader, TranslateModule, TranslateService } from "@ngx-translate/core";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 
-import { httpTranslateLoader } from "./factories/http-translate-loader.factory";
 
 import { AppComponent } from './app.component';
 import { defaultLanguage } from "./constants/languages";
 import { languageInitializerFactory } from "./factories/language-initializer.factory";
+import { translateBrowserLoaderFactory } from "./factories/http-translate-loader.factory";
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { languageInitializerFactory } from "./factories/language-initializer.fac
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
+        useFactory: translateBrowserLoaderFactory,
+        deps: [HttpClient, TransferState]
       },
       useDefaultLang: true,
       defaultLanguage: localStorage.getItem("lang") || defaultLanguage

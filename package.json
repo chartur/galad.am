@@ -14,6 +14,7 @@
     "dev:ssr": "ng run jewelry-store:serve-ssr",
     "serve:ssr": "node dist/jewelry-store/server/main.js",
     "build:ssr": "ng build && ng run jewelry-store:server",
+    "serve:prod": "npm run build:ssr && npm run serve:ssr",
     "prerender": "ng run jewelry-store:prerender"
   },
   "private": true,
