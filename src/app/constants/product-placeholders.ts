@@ -3,7 +3,7 @@ import { Category } from "@enums/category";
 
 export const productPlaceholders: ProductPlaceholder[] = [
   {
-    imageUrl: "http://corano.mallthemes.com/wp-content/uploads/2018/11/7.jpg",
+    imageUrl: "/assets/images/placeholders/products/2.jpg",
     name: "Diamond Band Ring",
     price: "80.0",
     hasSale: false,
@@ -11,7 +11,7 @@ export const productPlaceholders: ProductPlaceholder[] = [
     category: Category.Bracelets
   },
   {
-    imageUrl: "http://corano.mallthemes.com/wp-content/uploads/2018/11/15.jpg",
+    imageUrl: "/assets/images/placeholders/products/7.jpg",
     name: "Diamond Band Ring",
     price: "80.0",
     hasSale: false,
@@ -19,7 +19,7 @@ export const productPlaceholders: ProductPlaceholder[] = [
     category: Category.Necklaces
   },
   {
-    imageUrl: "http://corano.mallthemes.com/wp-content/uploads/2018/11/2.jpg",
+    imageUrl: "/assets/images/placeholders/products/13.jpg",
     name: "Diamond Band Ring",
     price: "80.0",
     hasSale: false,
@@ -27,7 +27,7 @@ export const productPlaceholders: ProductPlaceholder[] = [
     category: Category.Necklaces
   },
   {
-    imageUrl: "http://corano.mallthemes.com/wp-content/uploads/2018/11/13.jpg",
+    imageUrl: "/assets/images/placeholders/products/15.jpg",
     name: "Diamond Band Ring",
     price: "80.0",
     hasSale: true,
