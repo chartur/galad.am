@@ -7,15 +7,16 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:ssr && npm run serve:ssr",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run jewelry-store:serve-ssr",
     "serve:ssr": "node dist/jewelry-store/server/main.js",
     "build:ssr": "ng build && ng run jewelry-store:server",
-    "serve:prod": "npm run build:ssr && npm run serve:ssr",
-    "prerender": "ng run jewelry-store:prerender"
+    "prerender": "ng run jewelry-store:prerender",
+    "start:heroku": "node dist/jewelry-store/server",
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
