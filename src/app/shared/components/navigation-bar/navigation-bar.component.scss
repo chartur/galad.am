@@ -1,0 +1,23 @@
+@import "variables";
+.navigation-bar {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    & .nav-bar-item {
+      margin:0 10px;
+
+      & .nav-bar-link {
+        color: $primary-text-3;
+        text-decoration: none;
+        padding: 10px;
+        transition: all ease .3s;
+
+        &.active, &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

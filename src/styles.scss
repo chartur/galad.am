@@ -1,0 +1,33 @@
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Montserrat, Nunito;
+  overflow-x: hidden;
+  background: $main-bg;
+
+  &.modal-open {
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+    padding-right: 0!important;
+    max-height: 100vh;
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.wrapper {
+  height: 60px;
+
+  &.lg {
+    height: 100px;
+  }
+
+  &.sm {
+    height: 40px;
+  }
+}

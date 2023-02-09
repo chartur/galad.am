@@ -1,0 +1,10 @@
+@import "variables";
+
+.action-buttons {
+  & i {
+    cursor: pointer;
+    font-size: 26px;
+    margin: 0 10px;
+    color: $primary-text-3;
+  }
+}

@@ -1,0 +1,32 @@
+@import "variables";
+@import "bootstrap/scss/mixins/breakpoints";
+
+.feature-icon {
+  & i{
+    font-size: 33px!important;
+  }
+}
+
+.feature-title {
+  font-size: 16px;
+}
+
+.feature-desc {
+  font-size: 13px;
+}
+
+@include media-breakpoint-down(md) {
+  .feature-title {
+    font-size: 14px;
+  }
+
+  .feature-desc {
+    font-size: 10px;
+  }
+
+  .feature-icon {
+    & i{
+      font-size: 28px!important;
+    }
+  }
+}

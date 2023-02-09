@@ -1,0 +1,8 @@
+@import "variables";
+@import "text";
+
+.category-tab {
+  &.active {
+    color: $primary!important;
+  }
+}

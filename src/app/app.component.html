@@ -1,0 +1,13 @@
+<app-side-nav-bar></app-side-nav-bar>
+<div
+  [class.modal-open]="visibility$ | async"
+  class="app-container position-relative"
+  (click)="hideSideBar()"
+>
+  <div
+    [class.side-bar-visible]="visibility$ | async"
+    class="app-content position-relative"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>

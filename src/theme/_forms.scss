@@ -1,0 +1,12 @@
+@import "variables";
+
+.btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px;
+
+  &.btn-primary {
+    background: $primary;
+    border-color: $primary;
+  }
+}

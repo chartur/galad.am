@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let feature of features" class="col-6 col-lg-3 mb-3">
+      <div class="d-flex justify-content-center align-items-start">
+        <div [innerHTML]="feature.icon" class="feature-icon me-3"></div>
+        <div class="feature-icon">
+          <h6 class="feature-title fw-bold">{{ feature.title | translate }}</h6>
+          <div class="feature-desc text-muted">{{ feature.content | translate }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

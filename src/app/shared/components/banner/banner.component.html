@@ -1,0 +1,29 @@
+<div class="banner-container">
+  <div
+    *ngFor="let banner of banners; let index = index"
+    [class.active]="index === activeBannerIndex"
+    class="banner-item">
+    <div
+      [class.active]="index === activeBannerIndex"
+      [style.background-image]="'url(' + banner.imageUrl + ')'"
+      [class.banner-position-left]="banner.textPosition === bannerTextPosition.left"
+      [class.banner-position-right]="banner.textPosition === bannerTextPosition.right"
+      class="banner-item-image">
+      <div class="container">
+        <div class="row">
+          <div [class.offset-7]="banner.textPosition === bannerTextPosition.right" class="col-5 mt-lg-5 mt-4">
+            <h1 class="banner-title">{{ banner.title }}</h1>
+            <h4 class="banner-subtitle">{{ banner.subtitle }}</h4>
+            <button class="banner-action-button btn btn-primary">{{ banner.buttonText }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div (click)="bannerToLeft()" class="banner-arrow left">
+    <i class="bi bi-chevron-left"></i>
+  </div>
+  <div (click)="bannerToRight()" class="banner-arrow right">
+    <i class="bi bi-chevron-right"></i>
+  </div>
+</div>

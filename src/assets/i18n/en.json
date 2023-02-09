@@ -1,0 +1,23 @@
+{
+  "our-features": {
+    "shipping": {
+      "title": "Delivery throughout Armenia",
+      "content": "We deliver in Yerevan through our couriers. Delivery to the regions is carried out by HayPost"
+    },
+    "support": {
+      "title": "Support 24/7",
+      "content": "Contact us 24 hours a day, 7 days a week and our experts will help you choose the best"
+    },
+    "package": {
+      "title": "Beautiful packaging",
+      "content": "Beautiful packaging and individual approach to each customer"
+    },
+    "quality": {
+      "title": "Guaranteed quality",
+      "content": "Our products are completely made of 925 sterling silver and are fully consistent with their description."
+    }
+  },
+  "home_page": {
+    "New Arrivals": "New Arrivals"
+  }
+}

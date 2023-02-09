@@ -1,0 +1,25 @@
+@import "variables";
+
+.search-input-container {
+  position: relative;
+
+  input.search-input {
+    background: $light-gray;
+    border-radius: 30px;
+    padding: 5px;
+    padding-left: 35px;
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+  &::after {
+    position: absolute;
+    left: 12px;
+    top: 7px;
+    content: "\F52A";
+    font-family: bootstrap-icons;
+    font-size: 15px;
+    color: black;
+  }
+}
+

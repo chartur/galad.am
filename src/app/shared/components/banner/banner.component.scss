@@ -1,0 +1,136 @@
+@import "variables";
+@import "forms";
+@import "bootstrap/scss/mixins/breakpoints";
+.banner-container {
+  height: 70vh;
+  width: 100%;
+  position: relative;
+
+
+  & .banner-item {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    &.active {
+      z-index: 1;
+    }
+    & .banner-item-image {
+      z-index: 0;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 0;
+
+      & .banner-title {
+        opacity: 0;
+        font-size: 50px;
+      }
+      &.banner-position-right .banner-title {
+        transform: rotate(50deg);
+      }
+      &.banner-position-left .banner-title {
+        transform: rotate(-50deg);
+      }
+
+      & .banner-subtitle {
+        color: $primary-text-3;
+        font-size: 18px;
+        transform: rotateX(90deg);
+      }
+
+      & .banner-action-button {
+        opacity: 0;
+        transform: scale(0.2);
+      }
+
+      &.active {
+        z-index: 1;
+        opacity: 1;
+        transition: all 1.5s ease;
+
+        & .banner-title {
+          opacity: 1;
+          transform: rotate(0deg);
+          transition: all 0.8s 0.5s ease;
+        }
+
+        & .banner-subtitle {
+          transform: rotateX(0deg);
+          transition: all 0.8s 1s ease;
+        }
+
+        & .banner-action-button {
+          transition: all 0.8s 1s ease;
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  & .banner-arrow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: $primary-text-3;
+    top: calc(50% - 20px);
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 5;
+    opacity: .6;
+    &.left {
+      left: 40px;
+    }
+    &.right {
+      right: 40px;
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .banner-container {
+    height: 30vh!important;
+
+    & .banner-title {
+      font-size: 16px!important;
+    }
+
+    & .banner-subtitle {
+      font-size: 10px!important;;
+    }
+
+    & .banner-arrow {
+      width: 20px;
+      height: 20px;
+      top: calc(50% - 10px);
+      text-align: center;
+      line-height: 20px;
+      font-size: 15px;
+      &.left {
+        left: 10px;
+      }
+      &.right {
+        right: 10px;
+      }
+    }
+
+    & .banner-action-button {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  }
+}
+@include media-breakpoint-down(lg) {
+  .banner-container {
+    height: 40vh;
+  }
+}
+
+

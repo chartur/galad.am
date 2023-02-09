@@ -1,0 +1,122 @@
+@import "variables";
+@import "forms";
+@import "bootstrap/scss/mixins/breakpoints";
+.vertical-product-card {
+  cursor: pointer;
+  & .image {
+    border-radius: 5px;
+    overflow: hidden;
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .sale-label {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background: $primary;
+    color: $main-bg;
+    font-size: 14px;
+    padding: 0 10px;
+    border-radius: 40px;
+    display: inline-block;
+  }
+
+  & .type {
+    color: $primary-text-3;
+    transition: all .3s ease;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: $primary;
+    }
+  }
+  & .product-name {
+    font-size: 20px;
+    color: $primary-text-1;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: $primary;
+    }
+  }
+  & .product-price {
+    color: $primary-text-3;
+
+    &.has-sale {
+      color: $primary;
+    }
+  }
+
+  & .action-button {
+    position: absolute;
+    background: $main-bg;
+    box-shadow: $card-box-shadow;
+    color: $primary;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+    &:hover {
+      background: $primary;
+      color: $main-bg;
+    }
+
+    &.float-button {
+      width: 50%;
+      font-size: 14px;
+    }
+
+    &.icon {
+      right: 20px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      line-height: 42px;
+      text-align: center;
+      border-radius: 100%;
+      cursor: pointer;
+      transition: all .3s ease;
+      font-size: 20px;
+      &:nth-child(3) {
+        top: 70px;
+      }
+    }
+  }
+
+  & .action-button-container {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover .action-button{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .vertical-product-card {
+    & .action-button.icon {
+      right: 10px;
+      top: 10px;
+      width: 30px;
+      height: 30px;
+      line-height: 32px;
+      font-size: 18px;
+      &:nth-child(3) {
+        top: 50px;
+      }
+    }
+
+    & .float-button {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
+}

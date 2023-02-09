@@ -1,0 +1,42 @@
+.categories-container {
+  position: relative;
+  width: 100%;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 2.5/3;
+  transition: all .3s ease;
+  cursor: pointer;
+
+  & .text-container {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  & .text-count {
+    font-size: 15px;
+    opacity: 0;
+  }
+
+  & .text-container, & .text-count {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    text-indent: 40px;
+    left: 0;
+    bottom: 10%;
+    transition: all .3s ease;
+  }
+
+  &:hover {
+    background-size: 105%;
+    transition: all .3s ease;
+
+    & .text-container {
+      bottom: 20%;
+    }
+
+    & .text-count {
+      opacity: 1;
+    }
+  }
+}
