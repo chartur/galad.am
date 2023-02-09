@@ -15,7 +15,7 @@
     "serve:ssr": "node dist/jewelry-store/server/main.js",
     "build:ssr": "ng build && ng run jewelry-store:server",
     "prerender": "ng run jewelry-store:prerender",
-    "start:heroku": "node dist/jewelry-store/server",
+    "start:heroku": "node dist/jewelry-store/server/main.js",
     "postinstall": "npm run build:ssr"
   },
   "private": true,
