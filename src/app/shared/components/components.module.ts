@@ -10,6 +10,7 @@ import { SideNavBarComponent } from './side-nav-bar/side-nav-bar.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { DirectivesModule } from "../directives/directives.module";
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -23,12 +24,14 @@ import { DirectivesModule } from "../directives/directives.module";
     SideNavBarComponent,
     SearchInputComponent,
     LanguageSelectorComponent,
+    FooterComponent,
   ],
   exports: [
     HeaderComponent,
     BannerComponent,
     VerticalProductItemComponent,
-    SideNavBarComponent
+    SideNavBarComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

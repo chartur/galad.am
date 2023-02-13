@@ -1,0 +1,59 @@
+@import "variables";
+
+footer {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background: $footer-bg;
+
+  & .footer-description-section {
+
+    & h4 {
+      font-size: 16px;
+      font-weight: bold;
+      color: $primary;
+    }
+
+    & .footer-section-text {
+      font-size: 14px;
+      color: $primary-text-3;
+    }
+
+    & .contact-us-list, & .information-links-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    & .information-links-list {
+      & a {
+        color: $primary-text-3;
+        text-decoration: none;
+        padding: 10px;
+        transition: all ease .3s;
+        font-size: 14px;
+
+        &.active, &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+   & .social-icons {
+     background: #ffffff;
+     width: 40px;
+     height: 40px;
+     line-height: 40px;
+     font-size: 18px;
+     border-radius: 100%;
+     text-align: center;
+     color: #888;
+     transition: all .3s ease;
+     cursor: pointer;
+
+     &:hover {
+       background: $primary;
+       color: #fff;
+     }
+   }
+  }
+}
+

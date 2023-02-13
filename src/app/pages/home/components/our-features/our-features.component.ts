@@ -17,7 +17,7 @@ export class OurFeaturesComponent {
   public features: OurFeatureItem[] = [
     { title: "our-features.shipping.title", content: "our-features.shipping.content", icon: `<i class="bi bi-truck"></i>` },
     { title: "our-features.support.title", content: "our-features.support.content", icon: `<i class="bi bi-headset"></i>` },
-    { title: "our-features.package.title", content: "our-features.support.content", icon: `<i class="bi bi-box2-heart"></i>` },
+    { title: "our-features.package.title", content: "our-features.package.content", icon: `<i class="bi bi-box2-heart"></i>` },
     { title: "our-features.quality.title", content: "our-features.quality.content", icon: `<i class="bi bi-patch-check"></i>` },
   ]
 }
