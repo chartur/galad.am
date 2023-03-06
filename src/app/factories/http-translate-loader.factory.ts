@@ -1,4 +1,3 @@
-// shared/loaders/translate-browser.loader.ts
 import { Observable } from 'rxjs';
 import { TranslateLoader } from '@ngx-translate/core';
 
@@ -19,8 +18,6 @@ export class TranslateBrowserLoader implements TranslateLoader {
     );
     const data = this.transferState.get(key, null);
 
-    // First we are looking for the translations in transfer-state,
-    // if none found, http load as fallback
     if (data) {
       return new Observable((observer) => {
         observer.next(data);

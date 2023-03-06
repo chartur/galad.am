@@ -20,7 +20,7 @@ export class TranslateServerLoader implements TranslateLoader {
       const assets_folder = join(
         process.cwd(),
         'dist',
-        'jewelry-store', // Your project name here
+        'jewelry-store',
         'browser',
         'assets',
         this.prefix
@@ -30,7 +30,6 @@ export class TranslateServerLoader implements TranslateLoader {
         fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8')
       );
 
-      // Here we save the translations in the transfer-state
       const key: StateKey<number> = makeStateKey<number>(
         'transfer-translate-' + lang
       );

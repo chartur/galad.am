@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { defaultLanguage } from "./constants/languages";
 import { languageInitializerFactory } from "./factories/language-initializer.factory";
 import { translateBrowserLoaderFactory } from "./factories/http-translate-loader.factory";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { translateBrowserLoaderFactory } from "./factories/http-translate-loader
       useDefaultLang: true,
       defaultLanguage: localStorage.getItem("lang") || defaultLanguage
     }),
+    ToastrModule.forRoot(),
   ],
   providers: [
     {

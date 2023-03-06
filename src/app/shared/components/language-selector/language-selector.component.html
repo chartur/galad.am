@@ -3,7 +3,7 @@
     <img [src]="'/assets/language-icons/' + currentLanguage + '.png'">
   </div>
   <div [class.shown]="listVisible" class="language-switch-list">
-    <div appOutsideClick (click)="switchLanguage(language)" (outsideClick)="closeList()" *ngFor="let language of availableLanguages">
+    <div class="cursor-pointer" appOutsideClick (click)="switchLanguage(language)" (outsideClick)="closeList()" *ngFor="let language of availableLanguages">
       <img [src]="'/assets/language-icons/' + language + '.png'">
     </div>
   </div>

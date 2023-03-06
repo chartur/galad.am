@@ -8,6 +8,7 @@ import { CategoriesSectionComponent } from './components/categories-section/cate
 import { ComponentsModule } from "@components/components.module";
 import { OurFeaturesComponent } from "./components/our-features/our-features.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { SpecialProductsSectionComponent } from './components/special-products-section/special-products-section.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TranslateModule } from "@ngx-translate/core";
     HomeComponent,
     NewArrivalsComponent,
     CategoriesSectionComponent,
-    OurFeaturesComponent
+    OurFeaturesComponent,
+    SpecialProductsSectionComponent
   ],
   imports: [
     CommonModule,

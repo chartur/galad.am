@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FavoritesStore} from "@sores/favorites.store";
 
 @Component({
   selector: 'app-header-actions-button',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-actions-button.component.scss']
 })
 export class HeaderActionsButtonComponent {
+  public favoritesCount$ = this.favoritesStore.count$;
 
+  constructor(
+    private favoritesStore: FavoritesStore
+  ) {
+  }
 }

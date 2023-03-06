@@ -1,0 +1,30 @@
+@import "variables";
+
+.small-item-container {
+  gap: 10px;
+
+  & .product-image {
+    width: 100px;
+    max-width: 100%;
+  }
+
+  & .product-name {
+    font-size: 14px;
+    color: $primary-text-1;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: $primary;
+    }
+  }
+  & .product-price {
+    font-size: 14px;
+    color: $primary-text-3;
+
+    &.has-sale {
+      color: $primary;
+    }
+  }
+}
+
+

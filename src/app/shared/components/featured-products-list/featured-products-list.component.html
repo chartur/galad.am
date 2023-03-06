@@ -1,0 +1,10 @@
+<div>
+  <div>
+    <h4>{{ title }}</h4>
+  </div>
+  <app-small-item-card
+    *ngFor="let product of products; trackBy: productsTrackByFn"
+    [product]="product"
+    class="mb-3 d-block"
+  ></app-small-item-card>
+</div>

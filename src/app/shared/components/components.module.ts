@@ -11,6 +11,9 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { DirectivesModule } from "../directives/directives.module";
 import { FooterComponent } from './footer/footer.component';
+import { SmallItemCardComponent } from './small-item-card/small-item-card.component';
+import { FeaturedProductsListComponent } from './featured-products-list/featured-products-list.component';
+import { BadgeComponent } from './badge/badge.component';
 
 
 
@@ -25,13 +28,17 @@ import { FooterComponent } from './footer/footer.component';
     SearchInputComponent,
     LanguageSelectorComponent,
     FooterComponent,
+    SmallItemCardComponent,
+    FeaturedProductsListComponent,
+    BadgeComponent,
   ],
   exports: [
     HeaderComponent,
     BannerComponent,
     VerticalProductItemComponent,
     SideNavBarComponent,
-    FooterComponent
+    FooterComponent,
+    FeaturedProductsListComponent
   ],
   imports: [
     CommonModule,

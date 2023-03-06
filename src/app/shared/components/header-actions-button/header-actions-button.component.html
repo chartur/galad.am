@@ -6,10 +6,16 @@
     <i class="bi bi-person-circle"></i>
   </div>
   <div>
-    <i class="bi bi-heart"></i>
+    <i class="bi bi-heart position-relative">
+      <app-badge position="absolute" top="-15%" left="70%">
+        {{ favoritesCount$ | async }}
+      </app-badge>
+    </i>
   </div>
   <div>
-    <i class="bi bi-bag"></i>
+    <i class="bi bi-bag position-relative">
+      <app-badge position="absolute" top="-15%" left="60%">50</app-badge>
+    </i>
   </div>
   <div>
     <app-language-selector></app-language-selector>

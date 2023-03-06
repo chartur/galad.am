@@ -1,0 +1,17 @@
+<div class="small-item-container d-flex justify-content-start align-items-start">
+  <img class="product-image" [src]="product.imageUrl">
+  <div>
+    <div class="product-name text-center">
+      <p class="p-0 m-0">{{ product.name }}</p>
+    </div>
+    <div class="product-price d-flex justify-content-start align-items-center">
+      <div
+        [class.text-muted]="product.hasSale"
+        [class.text-decoration-line-through]="product.hasSale"
+        class="product-price has-sale m-1">
+        ${{ product.price }}
+      </div>
+      <div *ngIf="product.hasSale" class="product-price has-sale m-1">${{ product.newPrice }}</div>
+    </div>
+  </div>
+</div>

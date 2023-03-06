@@ -1,11 +1,12 @@
 <div class="vertical-product-card">
   <div class="image position-relative">
     <img [src]="product.imageUrl">
-    <div *ngTemplateOutlet="productActions">
-    </div>
+    <div *ngTemplateOutlet="productActions"></div>
   </div>
   <div class="product-types d-flex justify-content-center align-items-center">
-    <span *ngFor="let type of product.types" class="d-inline-block m-1 type">{{ type }}</span>
+    <span *ngFor="let type of product.types; let last = last" class="d-inline-block m-1 type">
+      {{ type + (!last ? "," : "") }}
+    </span>
   </div>
   <div class="product-name text-center">
     <p class="p-0 m-0">{{ product.name }}</p>
@@ -22,8 +23,8 @@
 </div>
 
 <ng-template #productActions>
-  <div class="action-button icon">
-    <i class="bi bi-heart"></i>
+  <div (click)="toggleFavorite()" class="action-button icon">
+    <i class="bi" [ngClass]="isFavorite ? 'bi-heart-fill' : 'bi-heart' "></i>
   </div>
   <div class="action-button icon">
     <i class="bi bi-eye"></i>
