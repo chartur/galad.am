@@ -13,7 +13,8 @@
     "test": "ng test",
     "dev:ssr": "ng run jewelry-store:serve-ssr",
     "serve:ssr": "node dist/jewelry-store/server/main.js",
-    "build:ssr": "ng build && ng run jewelry-store:server",
+    "build:ssr": "ng build --configuration=production && ng run jewelry-store:server",
+    "build:prod:ssr": "ng build --configuration=production && ng run jewelry-store:server",
     "prerender": "ng run jewelry-store:prerender",
     "postinstall": "npm run build:ssr"
   },

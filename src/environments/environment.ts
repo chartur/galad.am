@@ -1,4 +1,4 @@
-export const baseUrl = "http://data.galad.am/";
+export const baseUrl = "http://data.galad.am";
 
 export const publicPath = (path: string): string => {
   return path[0] === "/"
