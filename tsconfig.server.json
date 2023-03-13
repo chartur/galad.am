@@ -6,12 +6,6 @@
     "types": [
       "node"
     ],
-    "paths": {
-      "@sores/*": ["src/app/shared/stores/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@enums/*": ["src/app/shared/models/enums/*"],
-      "@interfaces/*": ["src/app/shared/models/interfaces/*"],
-    }
   },
   "files": [
     "src/main.server.ts",

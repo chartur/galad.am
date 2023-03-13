@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { defaultLanguage } from "./constants/languages";
-import { LanguageGuard } from "./shared/guards/language.guard";
+import { LanguageGuard } from "@guards/language.guard";
+import { defaultLanguage } from "@constants/languages";
 
 const routes: Routes = [
   {

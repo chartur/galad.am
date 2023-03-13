@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SmallItemCardComponent } from './small-item-card/small-item-card.component';
 import { FeaturedProductsListComponent } from './featured-products-list/featured-products-list.component';
 import { BadgeComponent } from './badge/badge.component';
+import { PipesModule } from "../pipes/pipes.module";
+import { TranslateModule } from "@ngx-translate/core";
 
 
 
@@ -44,6 +46,8 @@ import { BadgeComponent } from './badge/badge.component';
     CommonModule,
     RouterModule,
     DirectivesModule,
+    PipesModule,
+    TranslateModule,
   ]
 })
 export class ComponentsModule { }

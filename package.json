@@ -7,8 +7,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run start:heroku",
-    "start:dev": "ng serve",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -16,7 +15,6 @@
     "serve:ssr": "node dist/jewelry-store/server/main.js",
     "build:ssr": "ng build && ng run jewelry-store:server",
     "prerender": "ng run jewelry-store:prerender",
-    "start:heroku": "node dist/jewelry-store/server/main.js",
     "postinstall": "npm run build:ssr"
   },
   "private": true,

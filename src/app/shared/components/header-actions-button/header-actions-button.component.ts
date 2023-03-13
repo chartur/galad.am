@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FavoritesStore} from "@sores/favorites.store";
+import { FavoritesStore } from "@stores/favorites.store";
 
 @Component({
   selector: 'app-header-actions-button',

@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -25,10 +25,18 @@
       "dom"
     ],
     "paths": {
-      "@sores/*": ["src/app/shared/stores/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@enums/*": ["src/app/shared/models/enums/*"],
-      "@interfaces/*": ["src/app/shared/models/interfaces/*"],
+      "@environment/*": ["./environments/*"],
+      "@guards/*": ["./app/shared/guards/*"],
+      "@stores/*": ["./app/shared/stores/*"],
+      "@services/*": ["./app/shared/services/*"],
+      "@dto/*": ["./app/shared/models/dto/*"],
+      "@interfaces/*": ["./app/shared/models/interfaces/*"],
+      "@enums/*": ["./app/shared/models/enums/*"],
+      "@components/*": ["./app/shared/components/*"],
+      "@directives/*": ["./app/shared/directives/*"],
+      "@constants/*": ["./app/constants/*"],
+      "@interceptors/*": ["./app/shared/interceptors/*"],
+      "@factories/*": ["./app/shared/factories/*"]
     }
   },
   "angularCompilerOptions": {

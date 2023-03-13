@@ -1,7 +1,7 @@
 import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
 import { ProductPlaceholder } from "@interfaces/product-placeholder";
-import {FavoritesStore} from "@sores/favorites.store";
 import {Subscription} from "rxjs";
+import { FavoritesStore } from "@stores/favorites.store";
 
 @Component({
   selector: 'app-vertical-product-item',

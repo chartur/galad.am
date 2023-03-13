@@ -1,4 +1,7 @@
 {
+  "banners": {
+    "shop-now": "Купить сейчас"
+  },
   "our-features": {
     "shipping": {
       "title": "Доставка по всей территории Армении",

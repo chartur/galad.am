@@ -1,4 +1,4 @@
 export enum BannerTextPosition {
-  left,
-  right
+  Left = "left",
+  Right = "right",
 }

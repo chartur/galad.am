@@ -1,4 +1,7 @@
 {
+  "banners": {
+    "shop-now": "Shop Now"
+  },
   "our-features": {
     "shipping": {
       "title": "Delivery throughout Armenia",
