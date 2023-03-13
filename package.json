@@ -15,8 +15,7 @@
     "serve:ssr": "node dist/jewelry-store/server/main.js",
     "build:ssr": "ng build --configuration=production && ng run jewelry-store:server",
     "build:prod:ssr": "ng build --configuration=production && ng run jewelry-store:server",
-    "prerender": "ng run jewelry-store:prerender",
-    "postinstall": "npm run build:ssr"
+    "prerender": "ng run jewelry-store:prerender"
   },
   "private": true,
   "dependencies": {
