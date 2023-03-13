@@ -30,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
@@ -106,7 +105,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": [],
