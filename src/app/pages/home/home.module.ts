@@ -9,6 +9,7 @@ import { ComponentsModule } from "@components/components.module";
 import { OurFeaturesComponent } from "./components/our-features/our-features.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { SpecialProductsSectionComponent } from './components/special-products-section/special-products-section.component';
+import { PipesModule } from "../../shared/pipes/pipes.module";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SpecialProductsSectionComponent } from './components/special-products-s
     HomeRoutingModule,
     ComponentsModule,
     TranslateModule,
+    PipesModule,
   ]
 })
 export class HomeModule { }

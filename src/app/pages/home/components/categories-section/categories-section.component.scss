@@ -1,3 +1,6 @@
+@import "variables";
+@import "bootstrap/scss/mixins/breakpoints";
+
 .categories-container {
   position: relative;
   width: 100%;
@@ -37,6 +40,22 @@
 
     & .text-count {
       opacity: 1;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .categories-container {
+    & .text-container {
+      font-size: 16px;
+    }
+
+    & .text-count {
+      font-size: 12px;
+    }
+
+    & .text-container, & .text-count {
+      text-indent: 20px;
     }
   }
 }

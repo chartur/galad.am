@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from "@angular/common";
+import { appVersion } from "@constants/app-version";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(appVersion)
     this.watchSideBarVisibilityState();
   }
 
