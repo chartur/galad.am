@@ -21,6 +21,9 @@
     }
   },
   "home_page": {
-    "New Arrivals": "Նոր տեսականի"
+    "New Arrivals": {
+      "title": "Նոր տեսականի",
+      "subtitle": "Նոր ժամանումներ ամսական կազմին"
+    }
   }
 }

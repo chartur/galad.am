@@ -4,5 +4,8 @@ export const makeEndpoints = (baseUrl: string) => ({
   },
   categories: {
     loadAll: `${baseUrl}/category/actives`
+  },
+  products: {
+    newArrivals: `${baseUrl}/product/new-arrivals`
   }
 })

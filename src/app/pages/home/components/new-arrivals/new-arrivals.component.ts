@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from "@enums/category";
 import { ProductPlaceholder } from "@interfaces/product-placeholder";
-import { productPlaceholders } from "../../../../constants/product-placeholders";
+import { productPlaceholders } from "@constants/product-placeholders";
 import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
+import { ProductsStore } from "@stores/products.store";
+import { filter, map, Observable, skip, Subscription, take, tap } from "rxjs";
+import { Category } from "@interfaces/category";
+import { Product } from "@interfaces/product";
 
 const listAnimation = trigger('listAnimation', [
   transition('* => *', [ // each time the binding value changes
@@ -27,17 +30,30 @@ const listAnimation = trigger('listAnimation', [
   animations: [listAnimation]
 })
 export class NewArrivalsComponent implements OnInit {
-  public tabs: Category[] = [];
-  public selectedTab: Category = Category.Bracelets;
-  public allProducts: Record<string, ProductPlaceholder[]> = {
-    [Category.Bracelets]: [...productPlaceholders, ...productPlaceholders],
-    [Category.Earrings]: [...productPlaceholders],
-    [Category.Necklaces]: [...productPlaceholders],
-  };
-  public products: ProductPlaceholder[] = [];
+  public categories: Category[] = [];
+  public selectedTab: Category;
+  public products: Product[] = [];
+  private subscriptions: Subscription = new Subscription()
+
+  constructor(
+    private productsStore: ProductsStore
+  ) {
+  }
 
   public ngOnInit() {
-    this.setTabs();
+    this.subscriptions.add(
+      this.productsStore.newArrivalsData$.subscribe((categories) => {
+        this.categories = categories;
+        if(categories.length) {
+          if(!this.selectedTab) {
+            const category = categories.at(0);
+            this.selectedTab = category;
+            this.products = category.products;
+          }
+        }
+      })
+    )
+    this.productsStore.loadNewArrivals();
   }
 
   public selectTab(tab: Category): void {
@@ -45,12 +61,7 @@ export class NewArrivalsComponent implements OnInit {
     const productsCount = this.products.length;
     this.products = [];
     setTimeout(() => {
-      this.products = this.allProducts[tab];
+      this.products = tab.products;
     }, (productsCount * 100) + 100)
-  }
-
-  private setTabs(): void {
-    this.tabs = (Object.keys(this.allProducts) as Category[]);
-    this.selectTab(this.tabs[0]);
   }
 }

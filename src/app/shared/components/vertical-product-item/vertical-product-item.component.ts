@@ -1,7 +1,7 @@
-import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
-import { ProductPlaceholder } from "@interfaces/product-placeholder";
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import { FavoritesStore } from "@stores/favorites.store";
+import { Product } from "@interfaces/product";
 
 @Component({
   selector: 'app-vertical-product-item',
@@ -9,7 +9,7 @@ import { FavoritesStore } from "@stores/favorites.store";
   styleUrls: ['./vertical-product-item.component.scss']
 })
 export class VerticalProductItemComponent implements OnInit, OnDestroy {
-  @Input() public product: ProductPlaceholder;
+  @Input() public product: Product;
   public isFavorite: boolean = false;
   public isInCat: boolean = false;
 

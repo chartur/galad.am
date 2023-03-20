@@ -20,7 +20,8 @@
       "content": "Our products are completely made of 925 sterling silver and are fully consistent with their description."
     }
   },
-  "home_page": {
-    "New Arrivals": "New Arrivals"
+  "New Arrivals": {
+    "title": "New Arrivals",
+    "subtitle": "New arrivals to monthly lineup"
   }
 }

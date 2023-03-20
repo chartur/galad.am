@@ -1,24 +1,24 @@
 <div class="vertical-product-card">
   <div class="image position-relative">
-    <img [src]="product.imageUrl">
+    <img [publicSrc]="product.assets[0].link">
     <div *ngTemplateOutlet="productActions"></div>
   </div>
   <div class="product-types d-flex justify-content-center align-items-center">
-    <span *ngFor="let type of product.types; let last = last" class="d-inline-block m-1 type">
-      {{ type + (!last ? "," : "") }}
-    </span>
+<!--    <span *ngFor="let type of product.types; let last = last" class="d-inline-block m-1 type">-->
+<!--      {{ type + (!last ? "," : "") }}-->
+<!--    </span>-->
   </div>
   <div class="product-name text-center">
-    <p class="p-0 m-0">{{ product.name }}</p>
+    <p class="p-0 m-0">{{ product | propertyTranslator: "name" }}</p>
   </div>
   <div class="product-price d-flex justify-content-center align-items-center">
     <div
-      [class.text-muted]="product.hasSale"
-      [class.text-decoration-line-through]="product.hasSale"
+      [class.text-muted]="product.new_price"
+      [class.text-decoration-line-through]="product.new_price"
       class="product-price has-sale m-1">
       ${{ product.price }}
     </div>
-    <div *ngIf="product.hasSale" class="product-price has-sale m-1">${{ product.newPrice }}</div>
+    <div *ngIf="product.new_price" class="product-price has-sale m-1">${{ product.new_price }}</div>
   </div>
 </div>
 
@@ -32,7 +32,7 @@
   <div class="action-button-container">
     <button class="btn action-button float-button">Add to Cart</button>
   </div>
-  <div *ngIf="product.hasSale" class="sale-label">
+  <div *ngIf="product.new_price" class="sale-label">
     Sale!
   </div>
 </ng-template>
