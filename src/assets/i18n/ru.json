@@ -21,10 +21,9 @@
     }
   },
   "home_page": {
-    "New Arrivals": "Новинки"
-  },
-  "New Arrivals": {
-    "title": "Новинки",
-    "subtitle": "Новинки в ежемесячной линейке"
+    "New Arrivals": {
+      "title": "Новинки",
+      "subtitle": "Новинки в ежемесячной линейке"
+    }
   }
 }

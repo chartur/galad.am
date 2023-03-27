@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, switchMap, tap } from "rxjs";
 import { ComponentStore, tapResponse } from "@ngrx/component-store";
 import { CategoriesService } from "@services/categories.service";
-import { ToastrService } from "ngx-toastr";
 import { CategoryWithProductCount } from "@interfaces/category-with-product-count";
 
 interface CategoriesState {
@@ -62,7 +61,6 @@ export class CategoriesStore extends ComponentStore<CategoriesState>{
 
   constructor(
     private categoriesService: CategoriesService,
-    private toastrService: ToastrService
   ) {
     super(initialState);
   }

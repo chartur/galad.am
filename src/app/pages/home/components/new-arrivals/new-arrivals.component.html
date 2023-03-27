@@ -7,7 +7,7 @@
         (click)="selectTab(tab)"
         [class.active]="tab === selectedTab"
         class="category-tab text-muted text-capitalize cursor-pointer">
-        {{ tab | propertyTranslator: "name" }}
+        {{ tab | propertyTranslator: "name" | async }}
       </span>
     </div>
   </div>

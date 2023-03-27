@@ -1,17 +1,17 @@
 <div class="small-item-container d-flex justify-content-start align-items-start">
-  <img class="product-image" [src]="product.imageUrl">
+  <img class="product-image" [src]="productImagePath">
   <div>
-    <div class="product-name text-center">
-      <p class="p-0 m-0">{{ product.name }}</p>
+    <div class="product-name">
+      <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
     </div>
     <div class="product-price d-flex justify-content-start align-items-center">
       <div
-        [class.text-muted]="product.hasSale"
-        [class.text-decoration-line-through]="product.hasSale"
+        [class.text-muted]="product.new_price"
+        [class.text-decoration-line-through]="product.new_price"
         class="product-price has-sale m-1">
         ${{ product.price }}
       </div>
-      <div *ngIf="product.hasSale" class="product-price has-sale m-1">${{ product.newPrice }}</div>
+      <div *ngIf="product.new_price" class="product-price has-sale m-1">${{ product.new_price }}</div>
     </div>
   </div>
 </div>

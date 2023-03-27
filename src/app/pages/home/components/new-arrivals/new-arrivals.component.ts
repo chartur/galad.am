@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductPlaceholder } from "@interfaces/product-placeholder";
-import { productPlaceholders } from "@constants/product-placeholders";
 import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 import { ProductsStore } from "@stores/products.store";
-import { filter, map, Observable, skip, Subscription, take, tap } from "rxjs";
+import { Subscription } from "rxjs";
 import { Category } from "@interfaces/category";
 import { Product } from "@interfaces/product";
 

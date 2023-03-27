@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from "@ngrx/component-store";
 import {ProductPlaceholder} from "@interfaces/product-placeholder";
-import {productPlaceholders} from "../../constants/product-placeholders";
 import { Category } from "@interfaces/category";
 import { Observable, switchMap, tap } from "rxjs";
 import { ProductsService } from "@services/products.service";
-import * as http from "http";
 
 interface ProductsState {
   products: ProductPlaceholder[],
@@ -17,7 +15,7 @@ interface ProductsState {
 }
 
 const initialState: ProductsState = {
-  products: productPlaceholders,
+  products: [],
   newArrivals: {
     data: [],
     error: null,

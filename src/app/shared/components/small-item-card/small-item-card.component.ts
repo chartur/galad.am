@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ProductPlaceholder} from "@interfaces/product-placeholder";
+import { Product } from "@interfaces/product";
+import { publicPath } from "@environment/environment";
 
 @Component({
   selector: 'app-small-item-card',
@@ -8,5 +9,9 @@ import {ProductPlaceholder} from "@interfaces/product-placeholder";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SmallItemCardComponent {
-  @Input() product: ProductPlaceholder;
+  @Input() product: Product;
+
+  public get productImagePath(): string {
+    return publicPath(this.product.assets[0].link);
+  }
 }

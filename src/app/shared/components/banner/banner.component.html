@@ -12,8 +12,8 @@
       <div class="container">
         <div class="row">
           <div [class.offset-7]="banner.text_position === bannerTextPosition.Right" class="col-5 mt-lg-5 mt-4">
-            <h1 class="banner-title">{{ banner | propertyTranslator: "title" }}</h1>
-            <h4 class="banner-subtitle">{{ banner | propertyTranslator:  "description" }}</h4>
+            <h1 class="banner-title">{{ banner | propertyTranslator: "title" | async }}</h1>
+            <h4 class="banner-subtitle">{{ banner | propertyTranslator:  "description" | async }}</h4>
             <button class="banner-action-button btn btn-primary">{{ "banners.shop-now" | translate }}</button>
           </div>
         </div>

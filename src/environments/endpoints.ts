@@ -7,5 +7,8 @@ export const makeEndpoints = (baseUrl: string) => ({
   },
   products: {
     newArrivals: `${baseUrl}/product/new-arrivals`
+  },
+  specialSections: {
+    getAll: `${baseUrl}/special-section/actives`,
   }
 })

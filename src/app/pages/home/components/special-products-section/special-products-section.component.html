@@ -1,9 +1,9 @@
 <div class="container">
   <div class="d-flex justify-content-around align-items-center flex-wrap">
-    <div *ngFor="let productList of productLists" class="mb-3">
+    <div *ngFor="let section of (sections$ | async)" class="mb-3">
       <app-featured-products-list
-        [title]="productList.title"
-        [products]="productList.products"
+        [title]="section | propertyTranslator: 'title' | async"
+        [products]="section.products"
       ></app-featured-products-list>
     </div>
   </div>

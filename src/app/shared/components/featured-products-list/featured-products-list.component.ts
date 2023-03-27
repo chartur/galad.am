@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ProductPlaceholder} from "@interfaces/product-placeholder";
+import { Product } from "@interfaces/product";
 
 @Component({
   selector: 'app-featured-products-list',
@@ -9,9 +9,9 @@ import {ProductPlaceholder} from "@interfaces/product-placeholder";
 })
 export class FeaturedProductsListComponent {
   @Input() title: string;
-  @Input() products: ProductPlaceholder[] = [];
+  @Input() products: Product[] = [];
 
-  public productsTrackByFn(index: number, product: ProductPlaceholder): number {
+  public productsTrackByFn(index: number, product: Product): number {
     return product.id
   }
 }

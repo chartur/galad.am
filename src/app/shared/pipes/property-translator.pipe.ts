@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
-import { Observable } from "rxjs";
+import { map, merge, Observable, of } from "rxjs";
 
 @Pipe({
   name: 'propertyTranslator',
-  pure: false,
 })
 export class PropertyTranslatorPipe implements PipeTransform {
 
@@ -14,6 +13,13 @@ export class PropertyTranslatorPipe implements PipeTransform {
   }
 
   transform(value: any, property: string): Observable<string> {
-    return value[this.translateService.currentLang + "_" + property]
+    return merge(
+      of(this.translateService.currentLang).pipe(
+        map((lang) => value[lang + "_" + property])
+      ),
+      this.translateService.onLangChange.pipe(
+        map((event) => value[event.lang + "_" + property])
+      )
+    )
   }
 }

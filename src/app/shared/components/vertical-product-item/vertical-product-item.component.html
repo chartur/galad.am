@@ -9,7 +9,7 @@
 <!--    </span>-->
   </div>
   <div class="product-name text-center">
-    <p class="p-0 m-0">{{ product | propertyTranslator: "name" }}</p>
+    <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
   </div>
   <div class="product-price d-flex justify-content-center align-items-center">
     <div
