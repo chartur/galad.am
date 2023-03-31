@@ -1,11 +1,13 @@
 import { Category } from "@interfaces/category";
 import { ProductAsset } from "@interfaces/product-asset";
 import { ProductStatus } from "@interfaces/product-status";
+import { Tag } from "@interfaces/tag";
 
 export interface Product {
   id: number;
   category: Category;
   assets: ProductAsset[];
+  tags: Tag[];
   am_name: string;
   en_name: string;
   ru_name: string;
