@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { Product } from "@interfaces/product";
 import { publicPath } from "@environment/environment";
+import {ProductAsset} from "@interfaces/product-asset";
+import {ProductAssetType} from "@interfaces/product-asset-type";
 
 @Component({
   selector: 'app-small-item-card',
@@ -11,7 +13,7 @@ import { publicPath } from "@environment/environment";
 export class SmallItemCardComponent {
   @Input() product: Product;
 
-  public get productImagePath(): string {
-    return publicPath(this.product.assets[0].link);
+  public get mainPhoto(): ProductAsset {
+    return this.product.assets.find((asset) => asset.type === ProductAssetType.Photo && asset.is_main)
   }
 }

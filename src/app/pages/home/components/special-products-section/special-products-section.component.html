@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex justify-content-around align-items-center flex-wrap">
+  <div class="special-sections-container justify-content-center">
     <div *ngFor="let section of (sections$ | async)" class="mb-3">
       <app-featured-products-list
         [title]="section | propertyTranslator: 'title' | async"

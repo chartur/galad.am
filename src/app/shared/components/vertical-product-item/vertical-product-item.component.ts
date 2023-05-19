@@ -1,7 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
-import { FavoritesStore } from "@stores/favorites.store";
-import { Product } from "@interfaces/product";
+import {FavoritesStore} from "@stores/favorites.store";
+import {Product} from "@interfaces/product";
+import {ProductAsset} from "@interfaces/product-asset";
+import {ProductAssetType} from "@interfaces/product-asset-type";
 
 @Component({
   selector: 'app-vertical-product-item',
@@ -14,6 +16,10 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
   public isInCat: boolean = false;
 
   public subscription: Subscription = new Subscription();
+
+  public get mainPhoto(): ProductAsset {
+    return this.product.assets.find((asset) => asset.type === ProductAssetType.Photo && asset.is_main)
+  }
 
   constructor(
     private favoritesStore: FavoritesStore

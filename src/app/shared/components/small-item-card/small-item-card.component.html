@@ -1,5 +1,5 @@
 <div class="small-item-container d-flex justify-content-start align-items-start">
-  <img class="product-image" [src]="productImagePath">
+  <img class="product-image" [publicSrc]="mainPhoto.link">
   <div>
     <div class="product-name">
       <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
