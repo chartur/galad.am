@@ -7,6 +7,11 @@ import { Product } from "@interfaces/product";
 
 interface ProductsState {
   products: Product[],
+  relatedProducts: {
+    data: Product[],
+    loading: boolean,
+    error: unknown
+  },
   product: {
     data: Product,
     loading: boolean,
@@ -21,6 +26,11 @@ interface ProductsState {
 
 const initialState: ProductsState = {
   products: [],
+  relatedProducts: {
+    data: [],
+    loading: false,
+    error: null,
+  },
   product: {
     data: null,
     loading: false,
@@ -45,6 +55,10 @@ export class ProductsStore extends ComponentStore<ProductsState>{
   public readonly productError$: Observable<unknown> = this.select(state => state.product.error);
   public readonly productLoading$: Observable<boolean> = this.select(state => state.product.loading);
 
+  public readonly relatedProducts$: Observable<Product[]> = this.select(state => state.relatedProducts.data);
+  public readonly relatedProductsError$: Observable<unknown> = this.select(state => state.relatedProducts.error);
+  public readonly relatedProductsLoading$: Observable<boolean> = this.select(state => state.relatedProducts.loading);
+
   public readonly loadNewArrivals = this.effect((body$: Observable<void>) => {
     return body$.pipe(
       tap(() => this.setNewArrivalsLoadingReducer(true)),
@@ -59,7 +73,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
         )
       ))
     )
-  })
+  });
   public readonly loadProduct = this.effect((body$: Observable<number>) => {
     return body$.pipe(
       tap(() => this.setProductLoadingReducer(true)),
@@ -74,7 +88,22 @@ export class ProductsStore extends ComponentStore<ProductsState>{
         )
       ))
     )
-  })
+  });
+  public readonly loadRelatedProducts = this.effect((body$: Observable<number>) => {
+    return body$.pipe(
+      tap(() => this.setRelatedProductsLoadingReducer(true)),
+      switchMap((id) => this.productsService.getRelatedProducts(id).pipe(
+        tapResponse(
+          (response) => {
+            this.setRelatedProductsSuccessReducer(response)
+          },
+          (error) => {
+            this.setRelatedProductsFailureReducer(error);
+          }
+        )
+      ))
+    )
+  });
 
   private setNewArrivalsSuccessReducer = this.updater((state, payload: Category[]) => ({
     ...state,
@@ -84,7 +113,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
       loading: false,
       data: [...payload]
     }
-  }))
+  }));
   private setNewArrivalsFailureReducer = this.updater((state, error: unknown) => ({
     ...state,
     newArrivals: {
@@ -92,14 +121,14 @@ export class ProductsStore extends ComponentStore<ProductsState>{
       error,
       loading: false,
     }
-  }))
+  }));
   private setNewArrivalsLoadingReducer = this.updater((state, payload: boolean) => ({
     ...state,
     newArrivals: {
       ...state.newArrivals,
       loading: payload
     }
-  }))
+  }));
 
   private setProductSuccessReducer = this.updater((state, payload: Product) => ({
     ...state,
@@ -108,7 +137,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
       loading: false,
       error: null,
     }
-  }))
+  }));
   private setProductFailureReducer = this.updater((state, error: unknown) => ({
     ...state,
     product: {
@@ -116,14 +145,38 @@ export class ProductsStore extends ComponentStore<ProductsState>{
       loading: false,
       error,
     }
-  }))
+  }));
   private setProductLoadingReducer = this.updater((state, payload: boolean) => ({
     ...state,
     product: {
       ...state.product,
       loading: payload
     }
-  }))
+  }));
+
+  private setRelatedProductsSuccessReducer = this.updater((state, payload: Product[]) => ({
+    ...state,
+    relatedProducts: {
+      data: payload,
+      loading: false,
+      error: null,
+    }
+  }));
+  private setRelatedProductsFailureReducer = this.updater((state, error: unknown) => ({
+    ...state,
+    relatedProducts: {
+      data: [],
+      loading: false,
+      error,
+    }
+  }));
+  private setRelatedProductsLoadingReducer = this.updater((state, payload: boolean) => ({
+    ...state,
+    relatedProducts: {
+      ...state.relatedProducts,
+      loading: payload
+    }
+  }));
 
   constructor(
     private productsService: ProductsService

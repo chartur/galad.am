@@ -8,7 +8,7 @@
 <!--      {{ type + (!last ? "," : "") }}-->
 <!--    </span>-->
   </div>
-  <div class="product-name text-center">
+  <div (click)="goToProductPage()" class="product-name text-center">
     <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
   </div>
   <div class="product-price d-flex justify-content-center align-items-center">
@@ -26,7 +26,7 @@
   <div (click)="toggleFavorite()" class="action-button icon">
     <i class="bi" [ngClass]="isFavorite ? 'bi-heart-fill' : 'bi-heart' "></i>
   </div>
-  <div class="action-button icon">
+  <div (click)="goToProductPage()" class="action-button icon">
     <i class="bi bi-eye"></i>
   </div>
   <div class="action-button-container">

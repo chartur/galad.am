@@ -4,6 +4,8 @@ import {FavoritesStore} from "@stores/favorites.store";
 import {Product} from "@interfaces/product";
 import {ProductAsset} from "@interfaces/product-asset";
 import {ProductAssetType} from "@interfaces/product-asset-type";
+import {TranslateService} from "@ngx-translate/core";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-vertical-product-item',
@@ -22,7 +24,9 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private favoritesStore: FavoritesStore
+    private favoritesStore: FavoritesStore,
+    private router: Router,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit() {
@@ -39,5 +43,9 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
 
   public toggleFavorite(): void {
     this.favoritesStore.toggleFavorite(this.product.id);
+  }
+
+  public goToProductPage(): void {
+    this.router.navigate([this.translateService.currentLang, 'product', this.product.id])
   }
 }

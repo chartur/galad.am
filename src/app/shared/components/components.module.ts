@@ -9,13 +9,16 @@ import { VerticalProductItemComponent } from './vertical-product-item/vertical-p
 import { SideNavBarComponent } from './side-nav-bar/side-nav-bar.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
-import { DirectivesModule } from "../directives/directives.module";
+import { DirectivesModule } from "@directives/directives.module";
 import { FooterComponent } from './footer/footer.component';
 import { SmallItemCardComponent } from './small-item-card/small-item-card.component';
 import { FeaturedProductsListComponent } from './featured-products-list/featured-products-list.component';
 import { BadgeComponent } from './badge/badge.component';
 import { PipesModule } from "../pipes/pipes.module";
 import { TranslateModule } from "@ngx-translate/core";
+import { ProductPlaceholderComponent } from './product-placeholder/product-placeholder.component';
+import { ProductAssetSliderComponent } from './product-asset-slider/product-asset-slider.component';
+import {YouTubePlayerModule} from "@angular/youtube-player";
 
 
 
@@ -33,6 +36,8 @@ import { TranslateModule } from "@ngx-translate/core";
     SmallItemCardComponent,
     FeaturedProductsListComponent,
     BadgeComponent,
+    ProductPlaceholderComponent,
+    ProductAssetSliderComponent,
   ],
   exports: [
     HeaderComponent,
@@ -40,7 +45,9 @@ import { TranslateModule } from "@ngx-translate/core";
     VerticalProductItemComponent,
     SideNavBarComponent,
     FooterComponent,
-    FeaturedProductsListComponent
+    FeaturedProductsListComponent,
+    ProductPlaceholderComponent,
+    ProductAssetSliderComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +55,7 @@ import { TranslateModule } from "@ngx-translate/core";
     DirectivesModule,
     PipesModule,
     TranslateModule,
+    YouTubePlayerModule
   ]
 })
 export class ComponentsModule { }

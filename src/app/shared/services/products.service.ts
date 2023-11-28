@@ -23,4 +23,10 @@ export class ProductsService {
       endpoints.products.getById.replace(":id", id.toString())
     )
   }
+
+  public getRelatedProducts(id: number): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(
+      endpoints.products.relatedProducts.replace(":id", id.toString())
+    )
+  }
 }

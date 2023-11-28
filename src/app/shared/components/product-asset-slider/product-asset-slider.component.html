@@ -1,0 +1,31 @@
+<div class="main-asset">
+  <ng-container *ngTemplateOutlet="assetPreview; context: { asset: selectedAsset, fromList: false }"></ng-container>
+</div>
+<div class="assets-list-container">
+  <div *ngIf="showScrollArrows" (click)="scrollToLeft()" class="arrow to-left">
+    <i class="bi bi-chevron-left"></i>
+  </div>
+  <div #slider class="assets-list-slider">
+    <div class="assets-list">
+      <div *ngFor="let asset of assetList" class="asset-list-item">
+        <ng-container *ngTemplateOutlet="assetPreview; context: { asset, fromList: true }"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showScrollArrows" (click)="scrollToRight()" class="arrow to-right">
+    <i class="bi bi-chevron-right"></i>
+  </div>
+</div>
+
+
+
+<ng-template #assetPreview let-asset="asset" let-fromList="fromList">
+  <div (click)="selectAsset(asset, fromList)" [ngSwitch]="asset.type">
+    <div *ngSwitchCase="assetsType.Photo" class="slider-image">
+      <img [publicSrc]="asset.link"/>
+    </div>
+    <div *ngSwitchCase="assetsType.Video" [class.youtube-overlay]="fromList" class="slider-video">
+      <youtube-player [width]="500" [videoId]="asset.link"></youtube-player>
+    </div>
+  </div>
+</ng-template>

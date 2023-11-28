@@ -1,8 +1,106 @@
-<div class="header-section">
-  <h1 class="text-center">Product Details</h1>
-  <ul class="link-nav-bar d-flex justify-content-center align-items-center">
-    <li>Home</li>
-    <li>Necklaces</li>
-    <li>Diamond Band Ring</li>
-  </ul>
+<div *ngIf="loading$ | async; else loaded">
+  <app-product-placeholder></app-product-placeholder>
 </div>
+<ng-template #loaded>
+  <div class="header-section">
+    <h1 class="text-center">Product Details</h1>
+    <ul class="link-nav-bar d-flex justify-content-center align-items-center">
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li>
+        <a>Necklaces</a>
+      </li>
+      <li>Diamond Band Ring</li>
+    </ul>
+  </div>
+  <div *ngIf="product$ | async as product" class="mt-4">
+    <div class="container">
+      <section class="mt-5 mb-5 row">
+        <div class="row">
+          <div class="col-12 col-md-5">
+            <div class="product-assets">
+              <app-product-asset-slider [assets]="product.assets"></app-product-asset-slider>
+            </div>
+          </div>
+          <div class="col-12 col-md-7 mt-3 mt-md-0">
+            <div>
+              <h1 class="product-title">{{ product | propertyTranslator: 'name' | async }}</h1>
+            </div>
+            <div class="rating">
+              <star-rating
+                [starType]="'svg'"
+                [showHalfStars]="true"
+                [rating]="2.5"
+                staticColor="ok"
+              ></star-rating>
+              <span class="rating-label">2.5 (4 customer reviews)</span>
+            </div>
+            <div class="product-price">
+              {{ product.price | currency }}
+            </div>
+            <hr>
+            <div class="product-description">
+              <p>{{ product | propertyTranslator: 'description' | async }}</p>
+            </div>
+            <hr>
+            <div class="add-to-cart">
+              <input value="1" class="form-control add-to-cart-count" type="number">
+              <button class="btn btn-primary auction-button">Add to Cart</button>
+            </div>
+            <div class="add-to-list d-inline-block mt-5">
+              <i class="bi bi-heart me-2"></i>
+              <span>Add to Wishlist</span>
+            </div>
+            <hr>
+            <div class="product-metadata">
+              <div>
+                <b class="me-1">Categories:</b>
+                <span class="me-1">{{ product.category | propertyTranslator: 'name' | async }}</span>
+              </div>
+              <div>
+                <b class="me-1">Tags:</b>
+                <span class="me-1" *ngFor="let tag of product.tags"> {{ tag | propertyTranslator: 'name' | async }}</span>
+              </div>
+            </div>
+            <div class="social-media-share mt-4">
+              <i class="bi bi-facebook me-3"></i>
+              <i class="bi bi-instagram"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="reviews-section">
+      <div class="container">
+        <div class="row reviews-container">
+          <div class="col-12">
+            <div class="reviews-header-container">
+              <h2>Reviews</h2>
+            </div>
+            <div class="reviews-content p-4">
+              <p>There are no reviews yet.</p>
+              <p>Be the first to review “{{ product | propertyTranslator: 'name' | async }}”</p>
+              <p>You must be logged in to post a review.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="related-products-section mt-5 mb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-5 text-center">
+            <h2>Related Products</h2>
+          </div>
+          <div *ngIf="relatedProductsLoading$ | async; else relatedLoaded"></div>
+          <ng-template #relatedLoaded>
+            <div *ngFor="let product of relatedProducts$ | async" class="col-lg-3 col-md-4 col-6 mb-2">
+              <app-vertical-product-item [product]="product"></app-vertical-product-item>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-template>

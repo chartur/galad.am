@@ -1,3 +1,6 @@
+@import "variables";
+@import "forms";
+
 .header-section {
   background: #f4f4f4;
   padding: 35px 0;
@@ -5,4 +8,118 @@
 .link-nav-bar {
   column-gap: 15px;
   list-style: none;
+  & li:not(:last-child)::after {
+    content: '\F285';
+    font-family: 'bootstrap-icons';
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+  & li a {
+    color: $primary-text-3;
+    text-decoration: none;
+    padding: 10px;
+    transition: all ease .3s;
+    cursor: pointer;
+
+    &.active, &:hover {
+      color: $primary;
+    }
+  }
+}
+.product-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.rating {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 8px;
+}
+.rating-label {
+  font-size: 14px;
+  text-decoration: underline;
+}
+.product-price {
+  margin-top: 20px;
+  font-size: 34px;
+}
+.add-to-cart {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 10px;
+  & .add-to-cart-count {
+    width: 80px;
+  }
+}
+.add-to-list {
+  color: $primary-text-3;
+  transition: all ease .3s;
+  cursor: pointer;
+  & i {
+    display: inline-block;
+    transition: all ease .6s;
+  }
+  &:hover {
+    color: $primary;
+    & i {
+      transform: rotateY(180deg);
+    }
+  }
+}
+.product-metadata {
+  b {
+    color: $primary;
+  }
+  span {
+    color: $muted-text;
+  }
+}
+.social-media-share {
+  & i {
+    display: inline-block;
+    color: $primary;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all ease .6s;
+    &:hover {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.reviews-section {
+  width: 100vw;
+  background: #f4f4f4;
+  padding: 60px 0;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  & .reviews-container {
+    background: white;
+    padding: 16px;
+    & .reviews-header-container {
+      border-bottom: 1px solid rgba(33, 37, 41, 0.24);
+      text-align: center;
+      & .reviews-content {
+        text-align: left;
+        max-height: 500px;
+        overflow: scroll;
+      }
+    }
+  }
+}
+h2 {
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: $primary;
+    width: 100%;
+    top: calc(100% + 7px);
+    left: 0;
+  }
 }
