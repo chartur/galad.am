@@ -29,7 +29,7 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/platform-server": "^16.2.12",
     "@angular/router": "^16.2.12",
-    "@angular/youtube-player": "^15.2.5",
+    "@angular/youtube-player": "^16.2.12",
     "@ionic/angular": "^7.6.0",
     "@ionic/cordova-builders": "^10.0.0",
     "@ngrx/component-store": "^15.0.0",
