@@ -1,13 +1,10 @@
 import { Observable } from 'rxjs';
 import { TranslateLoader } from '@ngx-translate/core';
 
-import {
-  makeStateKey,
-  StateKey,
-  TransferState
-} from '@angular/platform-browser';
+
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { makeStateKey, StateKey, TransferState } from '@angular/core';
 
 export class TranslateBrowserLoader implements TranslateLoader {
   constructor(private http: HttpClient, private transferState: TransferState) {}
