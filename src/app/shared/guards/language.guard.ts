@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { defaultLanguage } from "../../constants/languages";
 import { TranslateService } from "@ngx-translate/core";
@@ -7,7 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
 @Injectable({
   providedIn: 'root'
 })
-export class LanguageGuard implements CanActivate {
+export class LanguageGuard  {
 
   constructor(private router: Router, private translateService: TranslateService) {
   }
