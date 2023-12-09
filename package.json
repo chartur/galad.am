@@ -20,6 +20,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^17.0.6",
     "@angular/animations": "^17.0.6",
     "@angular/common": "^17.0.6",
     "@angular/compiler": "^17.0.6",
@@ -33,7 +34,7 @@
     "@angular/youtube-player": "^17.0.3",
     "@ionic/angular": "^7.6.0",
     "@ionic/cordova-builders": "^10.0.0",
-    "@ngrx/component-store": "^16.3.0",
+    "@ngrx/component-store": "^17.0.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "angular-star-rating": "^6.0.0",

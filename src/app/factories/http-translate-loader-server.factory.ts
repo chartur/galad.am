@@ -26,6 +26,7 @@ export class TranslateServerLoader implements TranslateLoader {
         this.prefix
       );
 
+      console.log(`${assets_folder}/${lang}${this.suffix}`);
       const jsonData = JSON.parse(
         fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8')
       );
