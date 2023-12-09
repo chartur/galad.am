@@ -1,0 +1,7 @@
+{
+  "name": "galad.am",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
