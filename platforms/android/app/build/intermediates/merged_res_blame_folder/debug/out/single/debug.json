@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/drawable_ic_cdv_splashscreen.xml.flat",
+        "source": "io.ionic.starter.app-main-26:/drawable/ic_cdv_splashscreen.xml"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/xml_config.xml.flat",
+        "source": "io.ionic.starter.app-main-26:/xml/config.xml"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/xml_network_security_config.xml.flat",
+        "source": "io.ionic.starter.app-main-26:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "io.ionic.starter.app-merged_res-24:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "io.ionic.starter.app-main-26:/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]

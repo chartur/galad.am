@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { defaultLanguage } from "./constants/languages";
 import { TransferState } from "@angular/platform-browser";
 import { httpTranslateLoaderServer } from "./factories/http-translate-loader-server.factory";
+import {provideHttpClient, withFetch} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -21,6 +22,9 @@ import { httpTranslateLoaderServer } from "./factories/http-translate-loader-ser
       useDefaultLang: true,
       defaultLanguage: localStorage.getItem("lang") || defaultLanguage
     })
+  ],
+  providers: [
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent],
 })

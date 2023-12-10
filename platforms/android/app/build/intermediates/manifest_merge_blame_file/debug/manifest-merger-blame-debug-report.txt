@@ -1,0 +1,112 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="io.ionic.starter"
+4    android:hardwareAccelerated="true"
+5    android:versionCode="1"
+6    android:versionName="0.0.1" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+9-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml
+10        android:targetSdkVersion="33" />
+10-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml
+11
+12    <supports-screens
+12-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:5-191
+13        android:anyDensity="true"
+13-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:23-48
+14        android:largeScreens="true"
+14-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:49-76
+15        android:normalScreens="true"
+15-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:77-105
+16        android:resizeable="true"
+16-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:106-131
+17        android:smallScreens="true"
+17-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:132-159
+18        android:xlargeScreens="true" />
+18-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:3:160-188
+19
+20    <uses-permission android:name="android.permission.INTERNET" />
+20-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:4:5-67
+20-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
+21
+22    <permission
+22-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+23        android:name="io.ionic.starter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+23-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+24        android:protectionLevel="signature" />
+24-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+25
+26    <uses-permission android:name="io.ionic.starter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+26-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+26-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+27
+28    <application
+28-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:5-12:19
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.9.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/00fa6d42e7a8abf6c20b774bd480ebc9/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+30        android:debuggable="true"
+31        android:extractNativeLibs="false"
+32        android:hardwareAccelerated="true"
+32-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
+33        android:icon="@mipmap/ic_launcher"
+33-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:53-87
+34        android:label="@string/app_name"
+34-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:88-120
+35        android:networkSecurityConfig="@xml/network_security_config"
+35-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:121-181
+36        android:supportsRtl="true" >
+36-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:5:182-208
+37        <activity
+37-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:9-11:20
+38            android:name="io.ionic.starter.MainActivity"
+38-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:229-256
+39            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+39-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:19-135
+40            android:exported="true"
+40-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:136-159
+41            android:label="@string/activity_name"
+41-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:160-197
+42            android:launchMode="singleTop"
+42-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:198-228
+43            android:theme="@style/Theme.App.SplashScreen"
+43-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:257-302
+44            android:windowSoftInputMode="adjustResize" >
+44-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:6:303-345
+45            <intent-filter android:label="@string/launcher_name" >
+45-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:7:13-10:29
+45-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:7:28-65
+46                <action android:name="android.intent.action.MAIN" />
+46-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:8:17-69
+46-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:8:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:9:17-77
+48-->/Users/arturchilingaryan/Desktop/workspace/galad/galad.am/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
+49            </intent-filter>
+50        </activity>
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+54            android:authorities="io.ionic.starter.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.2.0] /Users/arturchilingaryan/.gradle/caches/transforms-3/6fdc55f959bbee2d273a043c0d1ba2a7/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/arturchilingaryan/.gradle/caches/transforms-3/6716cec235b31a478226e96836c42c67/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/arturchilingaryan/.gradle/caches/transforms-3/6716cec235b31a478226e96836c42c67/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/arturchilingaryan/.gradle/caches/transforms-3/6716cec235b31a478226e96836c42c67/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+62        </provider>
+63    </application>
+64
+65</manifest>
