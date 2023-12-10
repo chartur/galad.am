@@ -1,7 +1,12 @@
 {
-  "name": "galad.am",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
+  "defaultProject": "jewelry-store",
+  "projects": {
+    "jewelry-store": {
+      "name": "jewelry-store",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
+  }
 }

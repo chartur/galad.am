@@ -26,6 +26,16 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
@@ -102,6 +112,16 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
@@ -182,35 +202,19 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "ionic-cordova-serve": {
-          "builder": "@ionic/cordova-builders:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "jewelry-store:ionic-cordova-build",
-            "devServerTarget": "jewelry-store:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "jewelry-store:ionic-cordova-build:production",
-              "devServerTarget": "jewelry-store:serve:production"
-            }
-          }
-        },
-        "ionic-cordova-build": {
-          "builder": "@ionic/cordova-builders:cordova-build",
-          "options": {
-            "browserTarget": "jewelry-store:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "jewelry-store:build:production"
-            }
-          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "defaultCollection": "@ionic/angular-toolkit"
+  },
+  "schematics": {
+    "@ionic/angular-toolkit:component": {
+      "styleext": "scss"
+    },
+    "@ionic/angular-toolkit:page": {
+      "styleext": "scss"
+    }
   }
 }

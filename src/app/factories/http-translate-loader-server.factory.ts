@@ -19,9 +19,7 @@ export class TranslateServerLoader implements TranslateLoader {
     return new Observable((observer) => {
       const assets_folder = join(
         process.cwd(),
-        'dist',
-        'jewelry-store',
-        'browser',
+        'www',
         'assets',
         this.prefix
       );
