@@ -19,6 +19,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ProductPlaceholderComponent } from './product-placeholder/product-placeholder.component';
 import { ProductAssetSliderComponent } from './product-asset-slider/product-asset-slider.component';
 import {YouTubePlayerModule} from "@angular/youtube-player";
+import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
 
 
 
@@ -38,6 +39,7 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
     BadgeComponent,
     ProductPlaceholderComponent,
     ProductAssetSliderComponent,
+    GiftBoxComponent
   ],
   exports: [
     HeaderComponent,
@@ -47,7 +49,8 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
     FooterComponent,
     FeaturedProductsListComponent,
     ProductPlaceholderComponent,
-    ProductAssetSliderComponent
+    ProductAssetSliderComponent,
+    GiftBoxComponent
   ],
   imports: [
     CommonModule,

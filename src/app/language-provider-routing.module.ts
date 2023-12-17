@@ -10,7 +10,15 @@ const routes: Routes = [
   {
     path: "product",
     loadChildren: () => import("./pages/product/product.module").then(m => m.ProductModule)
-  }
+  },
+  {
+    path: "gift",
+    loadChildren: () => import("./pages/gift/gift.module").then(m => m.GiftModule)
+  },
+  {
+    path: "auth",
+    loadChildren: () => import("./pages/auth/auth.module").then(m => m.AuthModule)
+  },
 ];
 
 @NgModule({

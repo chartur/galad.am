@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FavoritesStore } from "@stores/favorites.store";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-header-actions-button',
@@ -10,7 +11,8 @@ export class HeaderActionsButtonComponent {
   public favoritesCount$ = this.favoritesStore.count$;
 
   constructor(
-    private favoritesStore: FavoritesStore
+    private favoritesStore: FavoritesStore,
+    public translateService: TranslateService
   ) {
   }
 }

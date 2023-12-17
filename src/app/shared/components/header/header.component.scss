@@ -2,12 +2,21 @@
 .header-wrapper {
   height: 90px;
 }
+.safe-area {
+  position: fixed;
+  width: 100%;
+  height: env(safe-area-inset-top);
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: $main-bg;
+}
 header {
   position: fixed;
   width: 100%;
   z-index: 10;
   height: 90px;
-  top: 0;
+  top: env(safe-area-inset-top);
   left: 0;
   box-shadow: $card-box-shadow;
   background: $main-bg;

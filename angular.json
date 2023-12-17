@@ -44,7 +44,9 @@
               "node_modules/css-star-rating/scss/star-rating.scss",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/confetti.js"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/theme"
@@ -129,7 +131,9 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/confetti.js"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/theme"

@@ -29,6 +29,7 @@
 }
 
 body {
+  padding-top: env(safe-area-inset-top); // for previous ios versions
   font-family: Montserrat, Nunito;
   overflow-x: hidden;
   background: $main-bg;

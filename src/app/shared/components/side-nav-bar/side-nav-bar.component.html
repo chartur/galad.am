@@ -19,7 +19,7 @@
           </a>
         </li>
         <li class="nav-bar-item">
-          <a routerLink="/blog" routerLinkActive="active" class="nav-bar-link">
+          <a [routerLink]="['/', translateService.currentLang, 'gift', 1]" routerLinkActive="active" class="nav-bar-link">
             Blog
           </a>
         </li>

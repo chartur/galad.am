@@ -2,8 +2,6 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { SideBarProvider } from "./shared/providers/side-bar.provider";
 import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PLATFORM_ID } from "@angular/core";
-import { isPlatformBrowser } from "@angular/common";
 import { appVersion } from "@constants/app-version";
 
 @Component({
@@ -21,7 +19,7 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     console.log(appVersion)
     this.watchSideBarVisibilityState();
   }
@@ -31,14 +29,12 @@ export class AppComponent implements OnInit {
   }
 
   private watchSideBarVisibilityState(): void {
-    if(isPlatformBrowser(PLATFORM_ID)) {
-      this.visibility$.subscribe(state => {
-        if(state) {
-          this.renderer.addClass(document.body, 'modal-open');
-        } else {
-          this.renderer.removeClass(document.body, 'modal-open');
-        }
-      })
-    }
+    this.visibility$.subscribe(state => {
+      if(state) {
+        this.renderer.addClass(document.body, 'modal-open');
+      } else {
+        this.renderer.removeClass(document.body, 'modal-open');
+      }
+    })
   }
 }

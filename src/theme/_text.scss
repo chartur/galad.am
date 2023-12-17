@@ -6,3 +6,14 @@ h2 {
   font-size: 34px;
 }
 
+a {
+  color: $primary-text-3;
+  text-decoration: none;
+  padding: 10px;
+  transition: all ease .3s;
+  cursor: pointer;
+
+  &.active, &:hover {
+    color: $primary;
+  }
+}

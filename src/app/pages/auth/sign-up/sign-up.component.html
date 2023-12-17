@@ -1,0 +1,40 @@
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-12 offset-0 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="signUpForm" (submit)="submit($event)">
+            <div>
+              <h1 class="text-center">{{ "auth.sign-up.header" | translate }}</h1>
+            </div>
+            <hr>
+            <div class="mt-4">
+              <label for="fullName">{{ "auth.sign-up.fields.fullName.name" | translate }}</label>
+              <input formControlName="fullName" id="fullName" type="text" class="form-control">
+            </div>
+            <div class="mt-4">
+              <label for="email">{{ "auth.sign-up.fields.email.name" | translate }}</label>
+              <input formControlName="email" id="email" type="email" class="form-control">
+            </div>
+            <div class="mt-4">
+              <label for="password">{{ "auth.sign-up.fields.password.name" | translate }}</label>
+              <input formControlName="password" id="password" type="password" class="form-control">
+            </div>
+            <div class="mt-4">
+              <label for="confirm-password">{{ "auth.sign-up.fields.confirm-password.name" | translate }}</label>
+              <input formControlName="confirmPassword" id="confirm-password" type="password" class="form-control">
+            </div>
+            <div class="text-center mt-4">
+              <button [disabled]="signUpForm.invalid
+
+" class="btn w-100 btn-primary">{{ "auth.sign-in.button" | translate }}</button>
+            </div>
+            <div class="text-center mt-4">
+              <a [routerLink]="['/', translateService.currentLang, 'auth', 'sign-in']">{{ "auth.sign-up.sign-in-link" | translate }}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

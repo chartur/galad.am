@@ -26,7 +26,7 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
   constructor(
     private favoritesStore: FavoritesStore,
     private router: Router,
-    private translateService: TranslateService
+    public translateService: TranslateService
   ) {}
 
   ngOnInit() {
@@ -43,9 +43,5 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
 
   public toggleFavorite(): void {
     this.favoritesStore.toggleFavorite(this.product.id);
-  }
-
-  public goToProductPage(): void {
-    this.router.navigate([this.translateService.currentLang, 'product', this.product.id])
   }
 }

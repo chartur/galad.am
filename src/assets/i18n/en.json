@@ -25,5 +25,63 @@
       "title": "New Arrivals",
       "subtitle": "New arrivals to monthly lineup"
     }
+  },
+  "auth": {
+    "sign-in": {
+      "header": "Sign In",
+      "fields": {
+        "email": {
+          "name": "Email",
+          "errors": {
+            "required": "Email field is required",
+            "email": "Email is invalid address"
+          }
+        },
+        "password": {
+          "name": "Password",
+          "errors": {
+            "required": "Password field is required",
+            "min": "Password should has at least 6 characters"
+          }
+        }
+      },
+      "button": "Sign In",
+      "sign-up-link": "Create an account"
+    },
+    "sign-up": {
+      "header": "Sign Up",
+      "fields": {
+        "fullName": {
+          "name": "Full Name",
+          "errors": {
+            "required": "Field is required"
+          }
+        },
+        "email": {
+          "name": "Email",
+          "errors": {
+            "required": "Email field is required",
+            "email": "Email is invalid address"
+          }
+        },
+        "password": {
+          "name": "Password",
+          "errors": {
+            "required": "Password field is required",
+            "min": "Password should has at least 6 characters"
+          }
+        },
+        "confirm-password": {
+          "name": "Confirm Password",
+          "errors": {
+            "required": "Conf. Password field is required",
+            "min": "Password should has at least 6 characters",
+            "confirm": "Password and Confirm Password don't match"
+          }
+        }
+      },
+      "button": "Sign Up",
+      "sign-in-link": "Already have an account?"
+    }
   }
 }
