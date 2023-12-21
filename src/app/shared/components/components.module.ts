@@ -20,6 +20,8 @@ import { ProductPlaceholderComponent } from './product-placeholder/product-place
 import { ProductAssetSliderComponent } from './product-asset-slider/product-asset-slider.component';
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
+import {ProfileActionsListComponent} from "@components/profile-actions-list/profile-actions-list.component";
+import {ImagePickerComponent} from "@components/image-picker/image-picker.component";
 
 
 
@@ -39,7 +41,9 @@ import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
     BadgeComponent,
     ProductPlaceholderComponent,
     ProductAssetSliderComponent,
-    GiftBoxComponent
+    GiftBoxComponent,
+    ProfileActionsListComponent,
+    ImagePickerComponent
   ],
   exports: [
     HeaderComponent,
@@ -50,7 +54,8 @@ import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
     FeaturedProductsListComponent,
     ProductPlaceholderComponent,
     ProductAssetSliderComponent,
-    GiftBoxComponent
+    GiftBoxComponent,
+    ImagePickerComponent
   ],
   imports: [
     CommonModule,

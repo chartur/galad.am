@@ -3,6 +3,7 @@ import { SideBarProvider } from "./shared/providers/side-bar.provider";
 import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { appVersion } from "@constants/app-version";
+import {SplashScreen} from "@capacitor/splash-screen";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     console.log(appVersion)
     this.watchSideBarVisibilityState();
+    this.showSplashScreen();
   }
 
   public hideSideBar(): void {
@@ -36,5 +38,12 @@ export class AppComponent implements OnInit {
         this.renderer.removeClass(document.body, 'modal-open');
       }
     })
+  }
+
+  private async showSplashScreen(): Promise<void> {
+    await SplashScreen.show({
+      showDuration: 3000,
+      autoHide: true,
+    });
   }
 }

@@ -5,6 +5,7 @@ import { AuthResponseDto } from "@dto/response/auth-response.dto";
 import { endpoints } from "@environment/environment";
 import { Observable } from "rxjs";
 import {SignUpRequestDto} from "@dto/request/sign-up-request.dto";
+import {User} from "@interfaces/user";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class AuthService {
 
   public verifyUser(): Observable<AuthResponseDto> {
     return this.httpClient.get<AuthResponseDto>(endpoints.auth.getUser);
+  }
+
+  public updatePersonalSettings(body: FormData): Observable<AuthResponseDto> {
+    return this.httpClient.patch<AuthResponseDto>(endpoints.profile.updatePersonalSettings, body);
   }
 }

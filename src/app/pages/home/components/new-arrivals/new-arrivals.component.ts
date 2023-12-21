@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 import { ProductsStore } from "@stores/products.store";
-import { Subscription } from "rxjs";
+import {filter, Subscription} from "rxjs";
 import { Category } from "@interfaces/category";
 import { Product } from "@interfaces/product";
 
@@ -27,7 +27,7 @@ const listAnimation = trigger('listAnimation', [
   styleUrls: ['./new-arrivals.component.scss'],
   animations: [listAnimation]
 })
-export class NewArrivalsComponent implements OnInit {
+export class NewArrivalsComponent implements OnInit, OnDestroy {
   public categories: Category[] = [];
   public selectedTab: Category;
   public products: Product[] = [];
@@ -35,8 +35,7 @@ export class NewArrivalsComponent implements OnInit {
 
   constructor(
     private productsStore: ProductsStore
-  ) {
-  }
+  ) {}
 
   public ngOnInit() {
     this.subscriptions.add(
@@ -50,8 +49,18 @@ export class NewArrivalsComponent implements OnInit {
           }
         }
       })
-    )
-    this.productsStore.loadNewArrivals();
+    );
+    this.subscriptions.add(
+      this.productsStore.newArrivalsLoaded$.pipe(
+        filter(state => !state)
+      ).subscribe(() => {
+        this.productsStore.loadNewArrivals();
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   public selectTab(tab: Category): void {

@@ -10,17 +10,20 @@ interface ProductsState {
   relatedProducts: {
     data: Product[],
     loading: boolean,
-    error: unknown
+    error: unknown,
+    loaded: boolean
   },
   product: {
     data: Product,
     loading: boolean,
-    error: unknown
+    error: unknown,
+    loaded: boolean
   },
   newArrivals: {
     data: Category[],
     error: unknown,
-    loading: boolean
+    loading: boolean,
+    loaded: boolean
   },
 }
 
@@ -30,16 +33,19 @@ const initialState: ProductsState = {
     data: [],
     loading: false,
     error: null,
+    loaded: false,
   },
   product: {
     data: null,
     loading: false,
     error: null,
+    loaded: false,
   },
   newArrivals: {
     data: [],
     error: null,
-    loading: false
+    loading: false,
+    loaded: false,
   },
 }
 
@@ -50,14 +56,17 @@ export class ProductsStore extends ComponentStore<ProductsState>{
   public readonly newArrivalsData$: Observable<Category[]> = this.select(state => state.newArrivals.data);
   public readonly newArrivalsError$: Observable<unknown> = this.select(state => state.newArrivals.error);
   public readonly newArrivalsLoading$: Observable<boolean> = this.select(state => state.newArrivals.loading);
+  public readonly newArrivalsLoaded$: Observable<boolean> = this.select(state => state.newArrivals.loaded);
 
   public readonly product$: Observable<Product> = this.select(state => state.product.data);
   public readonly productError$: Observable<unknown> = this.select(state => state.product.error);
   public readonly productLoading$: Observable<boolean> = this.select(state => state.product.loading);
+  public readonly productLoaded$: Observable<boolean> = this.select(state => state.product.loaded);
 
   public readonly relatedProducts$: Observable<Product[]> = this.select(state => state.relatedProducts.data);
   public readonly relatedProductsError$: Observable<unknown> = this.select(state => state.relatedProducts.error);
   public readonly relatedProductsLoading$: Observable<boolean> = this.select(state => state.relatedProducts.loading);
+  public readonly relatedProductsLoaded$: Observable<boolean> = this.select(state => state.relatedProducts.loaded);
 
   public readonly loadNewArrivals = this.effect((body$: Observable<void>) => {
     return body$.pipe(
@@ -111,6 +120,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
       ...state.newArrivals,
       error: null,
       loading: false,
+      loaded: true,
       data: [...payload]
     }
   }));
@@ -119,6 +129,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     newArrivals: {
       ...state.newArrivals,
       error,
+      loaded: false,
       loading: false,
     }
   }));
@@ -135,6 +146,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     product: {
       data: payload,
       loading: false,
+      loaded: true,
       error: null,
     }
   }));
@@ -143,6 +155,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     product: {
       data: null,
       loading: false,
+      loaded: false,
       error,
     }
   }));
@@ -159,6 +172,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     relatedProducts: {
       data: payload,
       loading: false,
+      loaded: true,
       error: null,
     }
   }));
@@ -167,6 +181,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     relatedProducts: {
       data: [],
       loading: false,
+      loaded: false,
       error,
     }
   }));

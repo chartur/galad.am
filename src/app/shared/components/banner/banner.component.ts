@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { interval, Subscription } from "rxjs";
+import {filter, interval, Subscription} from "rxjs";
 import { Banner } from "@interfaces/banner";
 import { BannerTextPosition } from "@enums/banner-text-position";
 import { publicPath } from "@environment/environment";
@@ -70,11 +70,18 @@ export class BannerComponent implements OnInit, OnDestroy {
 
   private watchBanners(): void {
     this.subscriptions.add(
-      this.bannerStore.banners$.subscribe(banners => this.banners = banners)
+      this.bannerStore.banners$
+        .subscribe(banners => this.banners = banners)
     )
   }
 
   private loadBanners() {
-    this.bannerStore.loadBanners();
+    this.subscriptions.add(
+      this.bannerStore.loaded$.pipe(
+        filter(state => !state)
+      ).subscribe(() => {
+        this.bannerStore.loadBanners();
+      })
+    );
   }
 }

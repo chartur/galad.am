@@ -83,5 +83,43 @@
       "button": "Sign Up",
       "sign-in-link": "Already have an account?"
     }
+  },
+  "profile": {
+    "personal-section-title": "Profile Settings",
+    "passwords-section-title": "Password Settings",
+    "form": {
+      "fullName": {
+        "name": "Full Name",
+        "errors": {
+          "required": "Field is required"
+        }
+      },
+      "email": {
+        "name": "Email",
+        "errors": {
+          "required": "Email field is required",
+          "email": "Email is invalid address"
+        }
+      },
+      "image": {
+        "name": "Image"
+      },
+      "password": {
+        "name": "Password",
+        "errors": {
+          "required": "Password field is required",
+          "min": "Password should has at least 6 characters"
+        }
+      },
+      "confirm-password": {
+        "name": "Confirm Password",
+        "errors": {
+          "required": "Conf. Password field is required",
+          "min": "Password should has at least 6 characters",
+          "confirm": "Password and Confirm Password don't match"
+        }
+      },
+      "button": "Save"
+    }
   }
 }

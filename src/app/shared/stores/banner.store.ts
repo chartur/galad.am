@@ -9,13 +9,15 @@ import { SystemMessages } from "@constants/system-messages";
 interface BannersState {
   banners: Banner[],
   loading: boolean,
-  error: unknown
+  error: unknown,
+  loaded: boolean,
 }
 
 const initialState: BannersState = {
   banners: [],
   error: null,
-  loading: false
+  loading: false,
+  loaded: false,
 }
 
 @Injectable({
@@ -26,6 +28,7 @@ export class BannerStore extends ComponentStore<BannersState>{
   public readonly banners$: Observable<Banner[]> = this.select(state => state.banners);
   public readonly loading$: Observable<boolean> = this.select(state => state.loading);
   public readonly error: Observable<unknown> = this.select(state => state.error);
+  public readonly loaded$: Observable<boolean> = this.select(state => state.loaded);
 
   public readonly loadBanners = this.effect(trigger$ => {
     return trigger$.pipe(
@@ -50,11 +53,13 @@ export class BannerStore extends ComponentStore<BannersState>{
   private loadBannersSuccessReducer = this.updater((state, payload: Banner[]) => ({
     ...state,
     loading: false,
+    loaded: true,
     banners: [...payload]
   }))
   private loadBannersFailureReducer = this.updater((state, error: unknown) => ({
     ...state,
     loading: false,
+    loaded: false,
     error
   }))
 

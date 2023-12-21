@@ -2,6 +2,9 @@ export const SystemMessages = {
   genericErrorMessages: {
     WRONG: "Something was wrong"
   },
+  form: {
+    INVALID: "Form has an invalid field"
+  },
   genericSuccessMessages: {
     SAVED: "Data successfully saved",
     DELETED: "Data successfully deleted"

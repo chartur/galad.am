@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CategoriesStore } from "@stores/categories.store";
-import { Observable } from "rxjs";
+import {filter, Observable, Subscription} from "rxjs";
 import { CategoryWithProductCount } from "@interfaces/category-with-product-count";
 import { publicPath } from "@environment/environment";
 
@@ -9,8 +9,9 @@ import { publicPath } from "@environment/environment";
   templateUrl: './categories-section.component.html',
   styleUrls: ['./categories-section.component.scss']
 })
-export class CategoriesSectionComponent implements OnInit {
+export class CategoriesSectionComponent implements OnInit, OnDestroy {
   public categories$: Observable<CategoryWithProductCount[]> = this.categoriesStore.categories$;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private categoriesStore: CategoriesStore
@@ -18,7 +19,17 @@ export class CategoriesSectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoriesStore.loadCategories();
+    this.subscription.add(
+      this.categoriesStore.categoriesLoaded$.pipe(
+        filter(state => !state)
+      ).subscribe(() => {
+        this.categoriesStore.loadCategories();
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public assetPath(category: CategoryWithProductCount): string {

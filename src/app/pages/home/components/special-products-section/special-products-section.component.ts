@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { SpecialSectionsStore } from "@stores/special-sections.store";
-import { Observable } from "rxjs";
+import {filter, Observable, Subscription} from "rxjs";
 import { SpecialSection } from "@interfaces/special-section";
 
 @Component({
@@ -8,8 +8,9 @@ import { SpecialSection } from "@interfaces/special-section";
   templateUrl: './special-products-section.component.html',
   styleUrls: ['./special-products-section.component.scss']
 })
-export class SpecialProductsSectionComponent implements OnInit {
+export class SpecialProductsSectionComponent implements OnInit, OnDestroy {
   public readonly sections$: Observable<SpecialSection[]> = this.specialSectionsStore.sections$;
+  public subscription: Subscription = new Subscription();
 
   constructor(
     private specialSectionsStore: SpecialSectionsStore
@@ -17,6 +18,16 @@ export class SpecialProductsSectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.specialSectionsStore.loadCategories();
+    this.subscription.add(
+      this.specialSectionsStore.loaded$.pipe(
+        filter(state => !state)
+      ).subscribe(() => {
+        this.specialSectionsStore.loadCategories();
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

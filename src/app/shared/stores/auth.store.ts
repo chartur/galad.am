@@ -46,6 +46,11 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
     loading: payload
   }))
   private logoutReducer = this.updater(() => initialState)
+  private updatePersonalSettingsFailureReducer = this.updater((state, error: unknown) => ({
+    ...state,
+      loading: false,
+      error,
+  }));
 
   private authSuccessAction = this.effect<void>(trigger$ => {
     return trigger$.pipe(
@@ -116,7 +121,7 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
     )
   })
 
-  public logoutAction = this.effect((body$: Observable<void>) => {
+  public logout = this.effect((body$: Observable<void>) => {
     return body$.pipe(
       tapResponse(
         () => {
@@ -127,6 +132,22 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
           this.logoutFailureAction(e);
         }
       ),
+    )
+  })
+
+  public updatePersonalSettings = this.effect((body$: Observable<FormData>) => {
+    return body$.pipe(
+      tap(() => this.setLoadingStateReducer(true)),
+      switchMap((body) => this.authService.updatePersonalSettings(body).pipe(
+        tapResponse(
+          (response) => {
+            this.signInReducer(response)
+          },
+          (e: unknown) => {
+            this.authFailureAction(e);
+          },
+        )
+      ))
     )
   })
 
@@ -151,13 +172,11 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
         takeUntil(this.destroy$)
       )
       .subscribe(state => {
-        console.log("gago");
         this.localStorageService.set("auth", state);
       })
   }
 
   ngrxOnStoreInit() {
-    console.log("logerr");
     this.initFromLocalStorage();
     this.onUpdate();
   }

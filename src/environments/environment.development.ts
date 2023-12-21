@@ -9,3 +9,7 @@ export const publicPath = (path: string): string => {
 }
 
 export const endpoints = makeEndpoints(baseUrl);
+
+export const environment = {
+  production: false
+};

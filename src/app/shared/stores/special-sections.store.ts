@@ -8,12 +8,14 @@ export interface SpecialSectionsState {
   sections: SpecialSection[],
   loading: boolean,
   error: unknown,
+  loaded: boolean,
 }
 
 const initialState: SpecialSectionsState = {
   sections: [],
   loading: false,
-  error: null
+  error: null,
+  loaded: false,
 }
 
 @Injectable({
@@ -23,6 +25,7 @@ export class SpecialSectionsStore extends ComponentStore<SpecialSectionsState>{
   public readonly sections$: Observable<SpecialSection[]> = this.select(state => state.sections);
   public readonly loading$: Observable<boolean> = this.select(state => state.loading);
   public readonly error$: Observable<unknown> = this.select(state => state.error);
+  public readonly loaded$: Observable<boolean> = this.select(state => state.loaded);
 
   public loadCategories = this.effect((body$: Observable<void>) => {
     return body$.pipe(
@@ -44,11 +47,13 @@ export class SpecialSectionsStore extends ComponentStore<SpecialSectionsState>{
     ...state,
     sections: [...payload],
     loading: false,
+    loaded: true,
     error: null
   }))
   private loadSectionsFailureReducer = this.updater((state, error: unknown) => ({
     ...state,
     error,
+    loaded: false,
     loading: false,
   }))
   private setLoadingStateReducer = this.updater((state, payload: boolean) => ({

@@ -1,0 +1,28 @@
+<li *ngIf="user$ | async as user" [class.show]="showDropdown" class="nav-item dropdown">
+  <a (click)="toggleDropdown($event)" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ user.fullName }}
+  </a>
+  <div [class.show]="showDropdown" class="dropdown-menu show" aria-labelledby="navbarDropdownMenuLink">
+    <a [routerLink]="[translateService.currentLang, 'portal', 'profile']" class="dropdown-item">
+      <i class="bi bi-person-fill me-2"></i>
+      <span>Profile</span>
+    </a>
+    <a class="dropdown-item">
+      <i class="bi bi-receipt-cutoff me-2"></i>
+      <span>Orders</span>
+    </a>
+    <a class="dropdown-item">
+      <i class="bi bi-bag-heart-fill me-2"></i>
+      <span>Wishlist</span>
+    </a>
+    <a class="dropdown-item">
+      <i class="bi bi-geo-alt-fill me-2"></i>
+      <span>Addresses</span>
+    </a>
+    <hr>
+    <a (click)="logout()">
+      <i class="bi bi-box-arrow-right me-2"></i>
+      <span>LogOut</span>
+    </a>
+  </div>
+</li>

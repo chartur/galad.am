@@ -17,5 +17,8 @@ export const makeEndpoints = (baseUrl: string) => ({
     signIn: `${baseUrl}/auth/user/sign-in`,
     signUp: `${baseUrl}/auth/user/sign-up`,
     getUser: `${baseUrl}/auth/user/user`
+  },
+  profile: {
+    updatePersonalSettings: `${baseUrl}/profile/personal-settings`
   }
 })

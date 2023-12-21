@@ -1,0 +1,12 @@
+<div>
+  <label for="profile-image">
+    <img [src]="src">
+  </label>
+  <input
+    (change)="selectImage($event)"
+    id="profile-image"
+    class="d-none"
+    type="file"
+    accept="image/jpeg, image/jpg, image/png"
+  >
+</div>

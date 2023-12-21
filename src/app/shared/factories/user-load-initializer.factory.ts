@@ -8,7 +8,7 @@ export const userLoadInitializerFactory = (authService: AuthService, authStore: 
     filter(token => !!token),
     switchMap((token) => authService.verifyUser().pipe(
       catchError(e => {
-        authStore.logoutAction()
+        authStore.logout()
         return EMPTY
       })
     ))

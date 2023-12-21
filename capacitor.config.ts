@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'am.galad.www',
-  appName: 'jewelry-store',
+  appName: 'galad.am',
   webDir: 'www',
   server: {
     androidScheme: 'https'
