@@ -1,9 +1,10 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {Component, Inject, OnInit, Renderer2} from '@angular/core';
 import { SideBarProvider } from "./shared/providers/side-bar.provider";
 import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { appVersion } from "@constants/app-version";
 import {SplashScreen} from "@capacitor/splash-screen";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private renderer: Renderer2,
+    @Inject(DOCUMENT)
+    private document: Document
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -33,9 +36,9 @@ export class AppComponent implements OnInit {
   private watchSideBarVisibilityState(): void {
     this.visibility$.subscribe(state => {
       if(state) {
-        this.renderer.addClass(document.body, 'modal-open');
+        this.renderer.addClass(this.document.body, 'modal-open');
       } else {
-        this.renderer.removeClass(document.body, 'modal-open');
+        this.renderer.removeClass(this.document.body, 'modal-open');
       }
     })
   }

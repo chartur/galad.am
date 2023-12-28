@@ -1,6 +1,8 @@
 import { makeEndpoints } from "@environment/endpoints";
 
 export const baseUrl = "https://data.galad.am";
+export const appUrl: string = "https://dev.galad.am"
+
 
 export const publicPath = (path: string): string => {
   return path[0] === "/"

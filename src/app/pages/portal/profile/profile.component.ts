@@ -44,7 +44,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.personalSettingsFormValueChangesSubscription?.unsubscribe();
   }
 
-  async personalSettingsSubmit(): Promise<void> {
+  async personalSettingsSubmit(event: Event): Promise<void> {
+    event.preventDefault();
     if (this.personalSettingsForm.invalid || !this.personalSettingsChanged) {
       this.toastrService.error(SystemMessages.form.INVALID)
       return;
@@ -57,6 +58,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
       form.append('image', await fetch(values.image.data).then(res => res.blob()));
     }
     this.authStore.updatePersonalSettings(form);
+  }
+
+  async passwordSettingsSubmit(event: Event): Promise<void> {
+    event.preventDefault();
+    if (this.passwordsSettingsForm.invalid) {
+      this.toastrService.error(SystemMessages.form.INVALID)
+      return;
+    }
+    const values = this.passwordsSettingsForm.value;
+    this.authStore.updatePasswordSettings(values);
+    this.passwordsSettingsForm.reset();
   }
 
   private initPersonalSettingsForm(): void {

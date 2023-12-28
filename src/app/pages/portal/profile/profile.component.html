@@ -1,7 +1,7 @@
 <div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-12 col-lg-6">
-      <form [formGroup]="personalSettingsForm" (submit)="personalSettingsSubmit()">
+      <form [formGroup]="personalSettingsForm" (submit)="personalSettingsSubmit($event)">
         <div class="card">
           <div class="card-header">
             <h2>{{ 'profile.personal-section-title' | translate }}</h2>
@@ -30,7 +30,7 @@
       </form>
     </div>
     <div class="col-12 col-lg-6">
-      <form [formGroup]="passwordsSettingsForm">
+      <form [formGroup]="passwordsSettingsForm" (submit)="passwordSettingsSubmit($event)">
         <div class="card">
           <div class="card-header">
             <h2>{{ 'profile.passwords-section-title' | translate }}</h2>

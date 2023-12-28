@@ -10,6 +10,7 @@ import { SystemMessages } from "@constants/system-messages";
 import { Router } from "@angular/router";
 import {LocalStorageService} from "@services/local-storage.service";
 import {SignUpRequestDto} from "@dto/request/sign-up-request.dto";
+import {PasswordSettingsRequestDto} from "@dto/request/password-settings-request.dto";
 
 interface AuthState {
   user: User | null,
@@ -141,7 +142,8 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
       switchMap((body) => this.authService.updatePersonalSettings(body).pipe(
         tapResponse(
           (response) => {
-            this.signInReducer(response)
+            this.signInReducer(response);
+            this.toastrService.success(SystemMessages.genericSuccessMessages.SAVED);
           },
           (e: unknown) => {
             this.authFailureAction(e);
@@ -149,7 +151,25 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
         )
       ))
     )
-  })
+  });
+
+  public updatePasswordSettings = this.effect((body$: Observable<PasswordSettingsRequestDto>) => {
+    return body$.pipe(
+      tap(() => this.setLoadingStateReducer(true)),
+      switchMap((body) => this.authService.updatePasswordSettings(body).pipe(
+        tapResponse(
+          (response) => {
+            this.signInReducer(response);
+            console.log("TEST");
+            this.toastrService.success(SystemMessages.genericSuccessMessages.SAVED);
+          },
+          (e: unknown) => {
+            this.authFailureAction(e);
+          },
+        )
+      ))
+    )
+  });
 
   constructor(
     private authService: AuthService,

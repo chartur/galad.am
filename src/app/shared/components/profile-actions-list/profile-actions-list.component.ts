@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {AuthStore} from "@stores/auth.store";
 import {filter, fromEvent, Observable, Subscription} from "rxjs";
 import {User} from "@interfaces/user";
 import {TranslateService} from "@ngx-translate/core";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-profile-actions-list',
@@ -16,7 +17,9 @@ export class ProfileActionsListComponent implements OnInit, OnDestroy  {
 
   constructor(
     private authStore: AuthStore,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    @Inject(DOCUMENT)
+    private document: Document
   ) {
   }
 
@@ -39,7 +42,7 @@ export class ProfileActionsListComponent implements OnInit, OnDestroy  {
 
   private subscribeDocumentClick(): void {
     this.subscriptions.add(
-      fromEvent(document, 'click').pipe(
+      fromEvent(this.document, 'click').pipe(
         filter(() => !!this.showDropdown)
       )
         .subscribe(() => {

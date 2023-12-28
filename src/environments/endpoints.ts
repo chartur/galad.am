@@ -19,6 +19,7 @@ export const makeEndpoints = (baseUrl: string) => ({
     getUser: `${baseUrl}/auth/user/user`
   },
   profile: {
-    updatePersonalSettings: `${baseUrl}/profile/personal-settings`
+    updatePersonalSettings: `${baseUrl}/profile/personal-settings`,
+    updatePasswordSettings: `${baseUrl}/profile/password-settings`
   }
 })

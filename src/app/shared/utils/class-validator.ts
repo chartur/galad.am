@@ -23,7 +23,7 @@ export class ClassValidator {
 
   static compareFieldValuesOfForm = (source: string, target: string) => {
     return (form: AbstractControl): null | {[key: string]: boolean} => {
-      if (form.get(source).value.trim() === form.get(target).value.trim()){
+      if (form.get(source).value?.trim() === form.get(target).value?.trim()){
         return null;
       }
 
