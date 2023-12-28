@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Meta, Title} from "@angular/platform-browser";
 import {Router} from "@angular/router";
-import {appUrl} from "@environment/environment.development";
+import {appUrl} from "@environment/environment";
 
 @Injectable({
   providedIn: "root"
