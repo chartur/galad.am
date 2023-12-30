@@ -42,19 +42,20 @@
     padding: 0;
     background: #fff;
     position: fixed;
-    top: 90px;
+    top: 0;
     right: 0;
     width: 0;
-    max-width: 95vw;
+    max-width: 90vw;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 90px);
+    height: 100vh;
     box-shadow: 0 0 10px -5px #000;
     transition: width .3s ease;
     z-index: 300;
     &.active {
       width: 350px;
       padding: 16px 22px;
+      padding-top: calc(env(safe-area-inset-top) + 16px);
     }
   }
 }
