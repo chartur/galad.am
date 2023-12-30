@@ -18,6 +18,7 @@ import {AuthStore} from "@stores/auth.store";
 import {provideComponentStore} from "@ngrx/component-store";
 import {JwtTokenInterceptor} from "@interceptors/jwt-token.interceptor";
 import {LocalStorageService} from "@services/local-storage.service";
+
 @NgModule({
   declarations: [
     AppComponent

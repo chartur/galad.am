@@ -1,0 +1,61 @@
+@import "variables";
+@import "forms";
+@import "animations";
+@import "bootstrap/scss/mixins";
+
+.no-filter-result-container {
+  color: $muted-text;
+  img {
+    width: 260px;
+  }
+}
+.filter-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+.filter-loading {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+  border: 3px solid $muted-text;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: filter-search 2s linear infinite;
+}
+.filter-loading::after {
+  content: '';
+  box-sizing: border-box;
+  width: 6px;
+  height: 24px;
+  background: $muted-text;
+  transform: rotate(-45deg);
+  position: absolute;
+  bottom: -20px;
+  left: 46px;
+}
+@include media-breakpoint-down(lg) {
+  .filter-action-container {
+    padding: 0;
+    background: #fff;
+    position: fixed;
+    top: 90px;
+    right: 0;
+    width: 0;
+    max-width: 95vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 90px);
+    box-shadow: 0 0 10px -5px #000;
+    transition: width .3s ease;
+    z-index: 300;
+    &.active {
+      width: 350px;
+      padding: 16px 22px;
+    }
+  }
+}
+

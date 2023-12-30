@@ -1,4 +1,5 @@
-<div class="small-item-container d-flex justify-content-start align-items-start">
+<div [routerLink]="['/', translateService.currentLang, 'product', product.id]"
+     class="small-item-container d-flex justify-content-start align-items-start cursor-pointer">
   <img class="product-image" [publicSrc]="mainPhoto.link">
   <div>
     <div class="product-name">

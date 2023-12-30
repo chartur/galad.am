@@ -1,0 +1,45 @@
+<div *ngIf="(categoriesLoaded$ | async) && (tagsLoaded$ | async); else filterLoadingPlaceholder">
+  <button (click)="closeMobileFilter()" class="btn btn-primary mt-3 w-100 d-block d-lg-none mb-5">Close</button>
+  <div class="search-container mb-5">
+    <app-search-input [(search)]="filter.q"></app-search-input>
+    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">Apply</button>
+  </div>
+
+  <div class="categories-container mb-5">
+    <h4 class="mb-3">Categories</h4>
+    <ul class="categories-list">
+      <li
+        *ngFor="let category of categories$ | async"
+        (click)="toggleCategoryState(category)"
+        [class.active]="filter.category.has(category.id)"
+      >
+        {{ category | propertyTranslator: 'name' | async }}
+      </li>
+    </ul>
+  </div>
+  <div class="price-container mb-5">
+    <h4 class="mb-3">Filter by Price</h4>
+    <ngx-slider
+      [(value)]="filter.minPrice"
+      [(highValue)]="filter.maxPrice"
+      [options]="priceSliderOptions"
+    ></ngx-slider>
+    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">Apply</button>
+  </div>
+  <div class="tags-container">
+    <span
+      (click)="toggleTagSelection(tag)"
+      *ngFor="let tag of tags$ | async"
+      [class.active]="filter.tags.has(tag.id)"
+      class="tag m-1"
+    >
+      {{ tag | propertyTranslator: 'name' | async  }}
+    </span>
+  </div>
+</div>
+
+<ng-template #filterLoadingPlaceholder>
+  <div class="filter-placeholder-container"></div>
+  <div class="filter-placeholder-container"></div>
+  <div class="filter-placeholder-container"></div>
+</ng-template>

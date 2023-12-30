@@ -1,3 +1,9 @@
 <div class="search-input-container">
-  <input type="search" placeholder="Search product..." class="search-input">
+  <input
+    (change)="onChange($event)"
+    [value]="search"
+    type="search"
+    placeholder="Search product..."
+    class="search-input"
+  >
 </div>

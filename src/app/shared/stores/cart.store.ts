@@ -10,7 +10,7 @@ interface CartState {
 @Injectable({
   providedIn: 'root'
 })
-export class CartStoreService {
+export class CartStore {
 
   constructor() { }
 }

@@ -1,0 +1,80 @@
+@import "variables";
+@import "forms";
+@import "text";
+@import "animations";
+
+h4 {
+  border-bottom: 1px solid $muted-text;
+  padding-bottom: 8px;
+}
+.categories-container {
+  & ul {
+    max-height: 350px;
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+
+    & li {
+      padding: 8px;
+      transition: all ease .3s;
+      color: $primary-text-3;
+      cursor: pointer;
+      &:after {
+        content: '\F285';
+        font-family: 'bootstrap-icons';
+        float: right;
+      }
+      &:hover {
+        color: $primary;
+      }
+      &.active {
+        color: $primary;
+        &:after {
+          content: '\F633';
+        }
+      }
+    }
+  }
+}
+
+.tags-container {
+  max-width: 350px;
+  & .tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid $primary;
+    color: $primary;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease .3s;
+    &:hover, &.active {
+      color: #fff;
+      background: $primary;
+    }
+  }
+
+}
+
+::ng-deep {
+  .ngx-slider {
+    .ngx-slider-pointer-min, .ngx-slider-selection, .ngx-slider-pointer-max {
+      background: $primary !important;
+    }
+  }
+}
+
+
+.filter-placeholder-container {
+  border-radius: 12px;
+  animation: skeleton-loading 1s linear infinite alternate;
+  height: 300px;
+  margin-bottom: 12px;
+  &:first-child {
+    height: 200px;
+  }
+  &:last-child {
+    height: 150px;
+  }
+}
+
+

@@ -1,3 +1,4 @@
+@import "animations";
 .background-loader {
   animation: skeleton-loading 1s linear infinite alternate;
 }
@@ -53,14 +54,5 @@
       width: 150px;
       border-radius: 30px;
     }
-  }
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: hsl(21, 0%, 97%);
-  }
-  100% {
-    background-color: hsl(21, 0%, 87%);
   }
 }

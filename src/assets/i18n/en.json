@@ -121,5 +121,11 @@
       },
       "button": "Save"
     }
+  },
+  "filter": {
+    "empty-result": {
+      "title": "No Results Found",
+      "description": "Data was not found accordingly your filter criteria"
+    }
   }
 }

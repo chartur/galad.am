@@ -22,7 +22,9 @@ import {YouTubePlayerModule} from "@angular/youtube-player";
 import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
 import {ProfileActionsListComponent} from "@components/profile-actions-list/profile-actions-list.component";
 import {ImagePickerComponent} from "@components/image-picker/image-picker.component";
-
+import {FilterComponent} from "@components/filter/filter.component";
+import {NgxSliderModule} from "ngx-slider-v2";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import {ImagePickerComponent} from "@components/image-picker/image-picker.compon
     ProductAssetSliderComponent,
     GiftBoxComponent,
     ProfileActionsListComponent,
-    ImagePickerComponent
+    ImagePickerComponent,
+    FilterComponent
   ],
   exports: [
     HeaderComponent,
@@ -55,7 +58,8 @@ import {ImagePickerComponent} from "@components/image-picker/image-picker.compon
     ProductPlaceholderComponent,
     ProductAssetSliderComponent,
     GiftBoxComponent,
-    ImagePickerComponent
+    ImagePickerComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +67,8 @@ import {ImagePickerComponent} from "@components/image-picker/image-picker.compon
     DirectivesModule,
     PipesModule,
     TranslateModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    NgxSliderModule,
   ]
 })
 export class ComponentsModule { }

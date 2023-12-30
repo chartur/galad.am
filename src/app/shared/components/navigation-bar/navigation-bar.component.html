@@ -7,7 +7,7 @@
             <a routerLink="/" routerLinkActive="active" class="nav-bar-link">Home</a>
           </li>
           <li class="nav-bar-item">
-            <a routerLink="/shop" routerLinkActive="active" class="nav-bar-link">
+            <a [routerLink]="['/', translateService.currentLang, 'filter']" routerLinkActive="active" class="nav-bar-link">
               Shop
             </a>
           </li>

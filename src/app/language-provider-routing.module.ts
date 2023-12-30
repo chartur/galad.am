@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import("./pages/gift/gift.module").then(m => m.GiftModule)
   },
   {
+    path: "filter",
+    loadChildren: () => import("./pages/filter/filter.module").then(m => m.FilterModule)
+  },
+  {
     path: "auth",
     loadChildren: () => import("./pages/auth/auth.module").then(m => m.AuthModule)
   },

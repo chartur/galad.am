@@ -21,5 +21,11 @@ export const makeEndpoints = (baseUrl: string) => ({
   profile: {
     updatePersonalSettings: `${baseUrl}/profile/personal-settings`,
     updatePasswordSettings: `${baseUrl}/profile/password-settings`
+  },
+  tags: {
+    loadAll: `${baseUrl}/tag`
+  },
+  filter: {
+    index: `${baseUrl}/filter`
   }
 })
