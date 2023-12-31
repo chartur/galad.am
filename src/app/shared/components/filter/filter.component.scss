@@ -20,7 +20,7 @@ h4 {
       color: $primary-text-3;
       cursor: pointer;
       &:after {
-        content: '\F285';
+        content: '\F28A';
         font-family: 'bootstrap-icons';
         float: right;
       }
@@ -30,7 +30,7 @@ h4 {
       &.active {
         color: $primary;
         &:after {
-          content: '\F633';
+          content: '\F287';
         }
       }
     }

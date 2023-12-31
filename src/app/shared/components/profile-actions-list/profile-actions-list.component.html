@@ -1,5 +1,5 @@
 <li *ngIf="user$ | async as user" [class.show]="showDropdown" class="nav-item dropdown">
-  <a (click)="toggleDropdown($event)" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a (click)="toggleDropdown($event)" class="nav-link dropdown-toggle ps-0" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{ user.fullName }}
   </a>
   <div [class.show]="showDropdown" class="dropdown-menu show" aria-labelledby="navbarDropdownMenuLink">

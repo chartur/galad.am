@@ -6,6 +6,7 @@ import { ProductComponent } from './product.component';
 import {ComponentsModule} from "@components/components.module";
 import {PipesModule} from "../../shared/pipes/pipes.module";
 import {StarRatingModule} from "angular-star-rating";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {StarRatingModule} from "angular-star-rating";
     ComponentsModule,
     PipesModule,
     StarRatingModule.forRoot(),
+    TranslateModule,
   ]
 })
 export class ProductModule { }

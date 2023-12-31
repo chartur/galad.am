@@ -20,7 +20,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     maxPrice: filterPrices.max,
     category: new Set<number>(),
     tags: new Set<number>(),
-    q: ''
+    sale: false,
+    q: '',
   }
   @Output() onFilter: EventEmitter<Filter> = new EventEmitter<Filter>();
   @Output() onCloseMobileFilter: EventEmitter<void> = new EventEmitter<void>();
@@ -82,6 +83,11 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   public applyFilter(): void {
+    this.onFilter.emit(this.filter);
+  }
+
+  public filterSaleState(): void {
+    this.filter.sale = !this.filter.sale;
     this.onFilter.emit(this.filter);
   }
 

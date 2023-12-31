@@ -2,11 +2,11 @@
   <button (click)="closeMobileFilter()" class="btn btn-primary mt-3 w-100 d-block d-lg-none mb-5">Close</button>
   <div class="search-container mb-5">
     <app-search-input [(search)]="filter.q"></app-search-input>
-    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">Apply</button>
+    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">{{ 'filter.apply' | translate }}</button>
   </div>
 
   <div class="categories-container mb-5">
-    <h4 class="mb-3">Categories</h4>
+    <h4 class="mb-3">{{ 'filter.categories' | translate }}</h4>
     <ul class="categories-list">
       <li
         *ngFor="let category of categories$ | async"
@@ -18,15 +18,22 @@
     </ul>
   </div>
   <div class="price-container mb-5">
-    <h4 class="mb-3">Filter by Price</h4>
+    <h4 class="mb-3">{{ 'filter.price' | translate }}</h4>
     <ngx-slider
       [(value)]="filter.minPrice"
       [(highValue)]="filter.maxPrice"
       [options]="priceSliderOptions"
     ></ngx-slider>
-    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">Apply</button>
+    <button (click)="applyFilter()" class="btn btn-primary mt-3 w-100">{{ 'filter.apply' | translate }}</button>
+    <div class="form-check mt-3">
+      <input (change)="filterSaleState()" [checked]="" class="form-check-input" type="checkbox">
+      <label class="form-check-label">
+        {{ 'filter.sale' | translate }}
+      </label>
+    </div>
   </div>
   <div class="tags-container">
+    <h4 class="mb-3">{{ 'filter.tags' | translate }}</h4>
     <span
       (click)="toggleTagSelection(tag)"
       *ngFor="let tag of tags$ | async"

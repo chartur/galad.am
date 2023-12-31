@@ -22,6 +22,7 @@ const initialState: FilterState = {
     minPrice: 0,
     maxPrice: 50000,
     tags: new Set<number>(),
+    sale: false,
     q: ''
   },
   loading: false,

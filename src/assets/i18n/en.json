@@ -1,4 +1,5 @@
 {
+  "close": "Close",
   "banners": {
     "shop-now": "Shop Now"
   },
@@ -126,6 +127,29 @@
     "empty-result": {
       "title": "No Results Found",
       "description": "Data was not found accordingly your filter criteria"
-    }
+    },
+    "apply": "Apply",
+    "categories": "Categories",
+    "tags": "Tags",
+    "price": "Price",
+    "sale": "Sale"
+  },
+  "menu": {
+    "home": "Home",
+    "shop": "Shop",
+    "blog": "Blog",
+    "contact-us": "Contact Us"
+  },
+  "forms": {
+    "search-input-placeholder": "Search"
+  },
+  "reviews": {
+    "title": "Reviews",
+    "empty": "There are no reviews yet",
+    "be-first-reviewer": "Be the first to review",
+    "need-auth": "You must be logged in to post a review."
+  },
+  "related-products": {
+    "title": "Related Products"
   }
 }

@@ -11,21 +11,21 @@
     <nav>
       <ul>
         <li class="nav-bar-item">
-          <a routerLink="/" routerLinkActive="active" class="nav-bar-link">Home</a>
+          <a routerLink="/" routerLinkActive="active" class="nav-bar-link">{{ 'menu.home' | translate }}</a>
         </li>
         <li class="nav-bar-item">
           <a [routerLink]="['/', translateService.currentLang, 'filter']" routerLinkActive="active" class="nav-bar-link">
-            Shop
+            {{ 'menu.shop' | translate }}
           </a>
         </li>
         <li class="nav-bar-item">
           <a [routerLink]="['/', translateService.currentLang, 'gift', 1]" routerLinkActive="active" class="nav-bar-link">
-            Blog
+            {{ 'menu.blog' | translate }}
           </a>
         </li>
         <li class="nav-bar-item">
           <a routerLink="/contact" routerLinkActive="active" class="nav-bar-link">
-            Contact
+            {{ 'menu.contact-us' | translate }}
           </a>
         </li>
         <app-profile-actions-list></app-profile-actions-list>

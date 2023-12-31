@@ -3,5 +3,6 @@ export interface Filter {
   tags: Set<number>,
   minPrice: number,
   maxPrice: number
+  sale: boolean,
   q?: string
 }

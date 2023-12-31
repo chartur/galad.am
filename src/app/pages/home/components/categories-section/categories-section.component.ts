@@ -3,6 +3,7 @@ import { CategoriesStore } from "@stores/categories.store";
 import {filter, Observable, Subscription} from "rxjs";
 import { CategoryWithProductCount } from "@interfaces/category-with-product-count";
 import { publicPath } from "@environment/environment";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-categories-section',
@@ -14,7 +15,8 @@ export class CategoriesSectionComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   constructor(
-    private categoriesStore: CategoriesStore
+    private categoriesStore: CategoriesStore,
+    public translateService: TranslateService
   ) {
   }
 

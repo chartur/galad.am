@@ -17,6 +17,7 @@ export class FilterComponent implements OnInit {
     maxPrice: filterPrices.max,
     category: new Set<number>(),
     tags: new Set<number>(),
+    sale: false,
     q: ''
   }
   public products$: Observable<Product[]> = this.filterStore.products$;
@@ -46,7 +47,7 @@ export class FilterComponent implements OnInit {
       queryParams: {
         ...this.filter,
         tags: [...this.filter.tags].join(','),
-        category: [...this.filter.category].join(',')
+        category: [...this.filter.category].join(','),
       },
     })
   }
@@ -65,22 +66,19 @@ export class FilterComponent implements OnInit {
     const categoriesString = params?.category as string
     const tagsArray = tagsString?.split(',')?.map(Number)?.filter((id) => !!id);
     const categoriesArray = categoriesString?.split(',')?.map(Number)?.filter((id) => !!id);
+    const saleString = params.sale;
 
     this.filter = {
       minPrice: params.minPrice ? Number(params.minPrice) : this.filter.minPrice,
       maxPrice: params.maxPrice ? Number(params.maxPrice) : this.filter.maxPrice,
       tags: new Set(tagsArray),
       category: new Set(categoriesArray),
+      sale: saleString === 'true',
       q: params.q || ''
     };
   }
 
   private validateFilter(filter: Filter): Filter {
-    console.log({
-      ...filter,
-      tags: new Set([...this.filter.tags].filter(id => !!id)),
-      category: new Set([...this.filter.category].filter(id => !!id)),
-    })
     return {
       ...filter,
       tags: new Set([...this.filter.tags].filter(id => !!id)),
