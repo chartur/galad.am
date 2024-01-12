@@ -135,6 +135,7 @@
     "sale": "Sale"
   },
   "favorites": {
+    "title": "Your favorite products",
     "empty-result": {
       "title": "No Products",
       "description": "You have no favorite products"
