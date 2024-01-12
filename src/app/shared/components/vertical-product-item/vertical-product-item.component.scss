@@ -2,6 +2,7 @@
 @import "forms";
 @import "bootstrap/scss/mixins/breakpoints";
 .vertical-product-card {
+  position: relative;
   cursor: pointer;
   & .image {
     border-radius: 5px;
@@ -21,6 +22,9 @@
     padding: 0 10px;
     border-radius: 40px;
     display: inline-block;
+    &.unavailable {
+      background: $badge-bg;
+    }
   }
 
   & .type {
@@ -98,6 +102,25 @@
     visibility: visible;
     opacity: 1;
   }
+  .favorite-button {
+    z-index: 10;
+  }
+
+  &.unavailable {
+    opacity: .5;
+    &::before {
+      content: '';
+      text-align: center;
+      line-height: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+  }
+
 }
 
 @include media-breakpoint-down(lg) {

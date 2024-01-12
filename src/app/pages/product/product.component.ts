@@ -8,6 +8,7 @@ import {ClassTranslator} from "../../shared/utils/class-translator";
 import {TranslateService} from "@ngx-translate/core";
 import {SeoHelper} from "../../shared/helpers/seo.helper";
 import {publicPath} from "@environment/environment";
+import {FavoritesStore} from "@stores/favorites.store";
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   public readonly relatedProducts$: Observable<Product[]> = this.productsStore.relatedProducts$;
   public readonly relatedProductsLoading$: Observable<boolean> = this.productsStore.relatedProductsLoading$;
   public readonly loading$: Observable<boolean> = this.productsStore.productLoading$;
+  public includedInFavoriteList: boolean = false;
+  public productId: number;
   private subscriptions: Subscription = new Subscription();
   constructor(
     private productsStore: ProductsStore,
@@ -28,6 +31,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private meta: Meta,
     private title: Title,
     private seoHelper: SeoHelper,
+    private favoritesStore: FavoritesStore
   ) {}
 
   ngOnInit() {
@@ -38,9 +42,15 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.router.navigate(['/'])
         return;
       }
+      this.productId = Number(id);
 
-      this.productsStore.loadProduct(id);
-      this.productsStore.loadRelatedProducts(id);
+      this.subscriptions.add(
+        this.favoritesStore.favorites$.subscribe(productIds => {
+          this.includedInFavoriteList = productIds.has(this.productId);
+        })
+      );
+      this.productsStore.loadProduct(this.productId);
+      this.productsStore.loadRelatedProducts(this.productId);
     });
   }
 
@@ -48,6 +58,9 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
+  public toggleFavoriteState(): void {
+    this.favoritesStore.toggleFavorite(this.productId);
+  }
 
   private listenProductData(): void {
     this.subscriptions.add(

@@ -134,6 +134,12 @@
     "price": "Цена",
     "sale": "Скидка"
   },
+  "favorites": {
+    "empty-result": {
+      "title": "Нет данных",
+      "description": "У вас нет любимых продуктов"
+    }
+  },
   "menu": {
     "home": "Главный",
     "shop": "Магазин",

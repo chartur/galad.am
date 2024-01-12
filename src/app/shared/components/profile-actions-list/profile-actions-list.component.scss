@@ -1,2 +1,6 @@
 @import "variables";
 @import "text";
+
+.dropdown-item.active {
+  background-color: var(--bs-dropdown-link-hover-bg);
+}

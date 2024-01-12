@@ -134,6 +134,12 @@
     "price": "Price",
     "sale": "Sale"
   },
+  "favorites": {
+    "empty-result": {
+      "title": "No Products",
+      "description": "You have no favorite products"
+    }
+  },
   "menu": {
     "home": "Home",
     "shop": "Shop",

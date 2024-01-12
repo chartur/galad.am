@@ -1,6 +1,6 @@
 @import "variables";
 h1 {
-  font-size: 50px;
+  font-size: 42px;
 }
 h2 {
   font-size: 34px;
@@ -16,4 +16,9 @@ a {
   &.active, &:hover {
     color: $primary;
   }
+}
+
+.header-section {
+  background: #f4f4f4;
+  padding: 35px 0;
 }

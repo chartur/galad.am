@@ -3,7 +3,11 @@
     {{ user.fullName }}
   </a>
   <div [class.show]="showDropdown" class="dropdown-menu show" aria-labelledby="navbarDropdownMenuLink">
-    <a [routerLink]="[translateService.currentLang, 'portal', 'profile']" class="dropdown-item">
+    <a
+      [routerLink]="[translateService.currentLang, 'portal', 'profile']"
+      routerLinkActive="active"
+      class="dropdown-item"
+    >
       <i class="bi bi-person-fill me-2"></i>
       <span>Profile</span>
     </a>
@@ -11,7 +15,11 @@
       <i class="bi bi-receipt-cutoff me-2"></i>
       <span>Orders</span>
     </a>
-    <a class="dropdown-item">
+    <a
+      [routerLink]="[translateService.currentLang, 'favorites']"
+      routerLinkActive="active"
+      class="dropdown-item"
+    >
       <i class="bi bi-bag-heart-fill me-2"></i>
       <span>Wishlist</span>
     </a>

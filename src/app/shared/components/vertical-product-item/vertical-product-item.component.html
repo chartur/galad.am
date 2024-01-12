@@ -1,4 +1,4 @@
-<div class="vertical-product-card">
+<div [class.unavailable]="unavailable" class="vertical-product-card">
   <div class="image position-relative">
     <img [publicSrc]="mainPhoto.link">
     <div *ngTemplateOutlet="productActions"></div>
@@ -11,7 +11,7 @@
   <div [routerLink]="['/', translateService.currentLang, 'product', product.id]" class="product-name text-center">
     <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
   </div>
-  <div class="product-price d-flex justify-content-center align-items-center">
+  <div *ngIf="!unavailable" class="product-price d-flex justify-content-center align-items-center">
     <div
       [class.text-muted]="product.new_price"
       [class.text-decoration-line-through]="product.new_price"
@@ -23,16 +23,19 @@
 </div>
 
 <ng-template #productActions>
-  <div (click)="toggleFavorite()" class="action-button icon">
+  <div (click)="toggleFavorite()" class="action-button icon favorite-button">
     <i class="bi" [ngClass]="isFavorite ? 'bi-heart-fill' : 'bi-heart' "></i>
   </div>
   <div [routerLink]="['/', translateService.currentLang, 'product', product.id]" class="action-button icon">
     <i class="bi bi-eye"></i>
   </div>
   <div class="action-button-container">
-    <button class="btn action-button float-button">Add to Cart</button>
+    <button (click)="addToCart()" class="btn action-button float-button">Add to Cart</button>
   </div>
-  <div *ngIf="product.new_price" class="sale-label">
+  <div *ngIf="product.new_price && !unavailable" class="sale-label">
     Sale!
+  </div>
+  <div *ngIf="unavailable" class="sale-label unavailable">
+    Unavailable!
   </div>
 </ng-template>

@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import("./pages/auth/auth.module").then(m => m.AuthModule)
   },
   {
+    path: "favorites",
+    loadChildren: () => import("./pages/favorites/favorites.module").then(m => m.FavoritesModule)
+  },
+  {
     path: "portal",
     canActivate: [authGuard],
     loadChildren: () => import("./pages/portal/portal.module").then(m => m.PortalModule)

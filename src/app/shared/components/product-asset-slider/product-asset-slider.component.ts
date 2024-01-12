@@ -3,8 +3,8 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
-  Input,
+  ElementRef, EventEmitter,
+  Input, Output,
   ViewChild
 } from '@angular/core';
 import {ProductAsset} from "@interfaces/product-asset";
@@ -21,6 +21,7 @@ export class ProductAssetSliderComponent implements AfterViewInit {
     this.assetList = data;
     this.selectedAsset = this.assetList.find(asset => asset.is_main);
   }
+  @Output('onTap') onTap: EventEmitter<{asset: ProductAsset, index: number}> = new EventEmitter<{asset: ProductAsset, index: number}>()
   public selectedAsset: ProductAsset;
   public assetList: ProductAsset[];
   public assetsType = ProductAssetType;
@@ -33,6 +34,13 @@ export class ProductAssetSliderComponent implements AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.showScrollArrows = this.slider.nativeElement.scrollWidth > this.slider.nativeElement.clientWidth;
+    })
+  }
+
+  public tap(): void {
+    this.onTap.emit({
+      index: this.assetList.indexOf(this.selectedAsset),
+      asset: this.selectedAsset
     })
   }
 

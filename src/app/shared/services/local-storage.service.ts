@@ -7,7 +7,7 @@ import * as _ from "lodash";
 })
 export class LocalStorageService {
 
-  private storage_path = "galad_admin_storage_path";
+  private storage_path = "galad_storage_path";
 
   constructor(
     @Inject(LOCAL_STORAGE_TOKEN) private storage: Storage

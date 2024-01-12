@@ -9,6 +9,7 @@ export const makeEndpoints = (baseUrl: string) => ({
     newArrivals: `${baseUrl}/product/new-arrivals`,
     getById: `${baseUrl}/product/:id`,
     relatedProducts: `${baseUrl}/product/related/:id`,
+    getByIds: `${baseUrl}/product/by-ids`
   },
   specialSections: {
     getAll: `${baseUrl}/special-section/actives`,

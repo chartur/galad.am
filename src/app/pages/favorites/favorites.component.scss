@@ -1,0 +1,40 @@
+@import "variables";
+@import "forms";
+@import "animations";
+@import "text";
+@import "bootstrap/scss/mixins";
+
+.no-filter-result-container {
+  color: $muted-text;
+  img {
+    width: 260px;
+  }
+}
+.filter-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+.filter-loading {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+  border: 3px solid $muted-text;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: filter-search 2s linear infinite;
+}
+.filter-loading::after {
+  content: '';
+  box-sizing: border-box;
+  width: 6px;
+  height: 24px;
+  background: $muted-text;
+  transform: rotate(-45deg);
+  position: absolute;
+  bottom: -20px;
+  left: 46px;
+}

@@ -48,8 +48,11 @@
                 <input value="1" class="form-control add-to-cart-count" type="number">
                 <button class="btn btn-primary auction-button">Add to Cart</button>
               </div>
-              <div class="add-to-list d-inline-block mt-5">
-                <i class="bi bi-heart me-2"></i>
+              <div (click)="toggleFavoriteState()" class="add-to-list d-inline-block mt-5">
+                <i
+                  [class.bi-heart-fill]="includedInFavoriteList"
+                  [class.bi-heart]="!includedInFavoriteList"
+                  class="bi me-2"></i>
                 <span>Add to Wishlist</span>
               </div>
               <hr>

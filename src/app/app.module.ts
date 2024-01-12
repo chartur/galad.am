@@ -18,6 +18,8 @@ import {AuthStore} from "@stores/auth.store";
 import {provideComponentStore} from "@ngrx/component-store";
 import {JwtTokenInterceptor} from "@interceptors/jwt-token.interceptor";
 import {LocalStorageService} from "@services/local-storage.service";
+import {FavoritesStore} from "@stores/favorites.store";
+import {CartStore} from "@stores/cart.store";
 
 @NgModule({
   declarations: [
@@ -39,10 +41,11 @@ import {LocalStorageService} from "@services/local-storage.service";
       defaultLanguage: localStorage.getItem("lang") || defaultLanguage
     }),
     ToastrModule.forRoot(),
-
   ],
   providers: [
     provideComponentStore(AuthStore),
+    provideComponentStore(FavoritesStore),
+    provideComponentStore(CartStore),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtTokenInterceptor,

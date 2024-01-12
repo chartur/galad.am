@@ -6,7 +6,7 @@
     <i class="bi bi-person-circle"></i>
   </div>
   <div>
-    <i class="bi bi-heart position-relative">
+    <i [routerLink]="[translateService.currentLang, 'favorites']" class="bi bi-heart position-relative">
       <app-badge position="absolute" top="-15%" left="70%">
         {{ favoritesCount$ | async }}
       </app-badge>
@@ -14,7 +14,9 @@
   </div>
   <div>
     <i class="bi bi-bag position-relative">
-      <app-badge position="absolute" top="-15%" left="60%">50</app-badge>
+      <app-badge position="absolute" top="-15%" left="60%">
+        {{ productsCount$ | async }}
+      </app-badge>
     </i>
   </div>
   <div>

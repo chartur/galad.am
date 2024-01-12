@@ -1,4 +1,4 @@
-<div class="main-asset">
+<div (click)="tap()" class="main-asset">
   <ng-container *ngTemplateOutlet="assetPreview; context: { asset: selectedAsset, fromList: false }"></ng-container>
 </div>
 <div class="assets-list-container">

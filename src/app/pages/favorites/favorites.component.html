@@ -1,0 +1,30 @@
+<div class="header-section text-center">
+  <h1>Your Favorite Products</h1>
+</div>
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-12">
+      <div *ngIf="loading$ | async; else loaded" class="filter-loading-container">
+        <span class="filter-loading"></span>
+      </div>
+      <ng-template #loaded>
+        <div *ngIf="isEmpty$ | async; else filterResult">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="no-filter-result-container text-center">
+              <img src="/assets/images/placeholders/no-result.jpeg">
+              <h4>{{ 'favorites.empty-result.title' | translate }}</h4>
+              <p>{{ 'favorites.empty-result.description' | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <ng-template #filterResult>
+          <div class="row">
+            <div *ngFor="let product of products$ | async" class="col-6 col-md-4 col-lg-3">
+              <app-vertical-product-item [product]="product"></app-vertical-product-item>
+            </div>
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</div>
