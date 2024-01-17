@@ -1,0 +1,21 @@
+<form (submit)="submit($event)" [formGroup]="form">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirm Your Info</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label for="email">{{ "profile.form.email.name" | translate }}</label>
+      <input formControlName="email" id="email" type="email" class="form-control">
+    </div>
+    <div class="mt-4">
+      <label for="email">{{ "profile.form.phone.name" | translate }}</label>
+      <input formControlName="phone" id="phone" type="tel" class="form-control">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+  </div>
+</form>

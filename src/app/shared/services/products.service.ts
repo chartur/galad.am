@@ -29,4 +29,8 @@ export class ProductsService {
       endpoints.products.relatedProducts.replace(":id", id.toString())
     )
   }
+
+  public getProductsByIds(productIds: number[]): Observable<Product[]> {
+    return this.httpClient.post<Product[]>(endpoints.products.getByIds, { products: productIds });
+  }
 }

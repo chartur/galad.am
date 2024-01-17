@@ -13,7 +13,7 @@
     </i>
   </div>
   <div>
-    <i class="bi bi-bag position-relative">
+    <i [routerLink]="[translateService.currentLang, 'checkout']" class="bi bi-bag position-relative">
       <app-badge position="absolute" top="-15%" left="60%">
         {{ productsCount$ | async }}
       </app-badge>

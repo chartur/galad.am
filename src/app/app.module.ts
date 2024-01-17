@@ -40,7 +40,7 @@ import {CartStore} from "@stores/cart.store";
       useDefaultLang: true,
       defaultLanguage: localStorage.getItem("lang") || defaultLanguage
     }),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [
     provideComponentStore(AuthStore),

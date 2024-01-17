@@ -28,5 +28,8 @@ export const makeEndpoints = (baseUrl: string) => ({
   },
   filter: {
     index: `${baseUrl}/filter`
+  },
+  orders: {
+    create: `${baseUrl}/order`
   }
 })

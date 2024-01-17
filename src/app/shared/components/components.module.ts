@@ -25,6 +25,9 @@ import {ImagePickerComponent} from "@components/image-picker/image-picker.compon
 import {FilterComponent} from "@components/filter/filter.component";
 import {NgxSliderModule} from "ngx-slider-v2";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CounterInputComponent} from "@components/counter-input/counter-input.component";
+import {CheckoutUserInfoComponent} from "@components/checkout-user-info/checkout-user-info.component";
+import {ModalModule} from "ngx-bootstrap/modal";
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     GiftBoxComponent,
     ProfileActionsListComponent,
     ImagePickerComponent,
-    FilterComponent
+    FilterComponent,
+    CounterInputComponent,
+    CheckoutUserInfoComponent
   ],
   exports: [
     HeaderComponent,
@@ -59,7 +64,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ProductAssetSliderComponent,
     GiftBoxComponent,
     ImagePickerComponent,
-    FilterComponent
+    FilterComponent,
+    SmallItemCardComponent,
+    CounterInputComponent,
+    CheckoutUserInfoComponent
   ],
   imports: [
     CommonModule,
@@ -69,6 +77,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     TranslateModule,
     YouTubePlayerModule,
     NgxSliderModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forChild()
   ]
 })
 export class ComponentsModule { }

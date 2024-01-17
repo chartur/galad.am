@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import("./pages/favorites/favorites.module").then(m => m.FavoritesModule)
   },
   {
+    path: "checkout",
+    loadChildren: () => import("./pages/checkout/checkout.module").then(m => m.CheckoutModule)
+  },
+  {
     path: "portal",
     canActivate: [authGuard],
     loadChildren: () => import("./pages/portal/portal.module").then(m => m.PortalModule)

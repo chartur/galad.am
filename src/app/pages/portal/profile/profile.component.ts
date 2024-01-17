@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ClassValidator} from "../../../shared/utils/class-validator";
 import {AuthStore} from "@stores/auth.store";
 import {User} from "@interfaces/user";
-import {Subscription, take, takeUntil} from "rxjs";
+import {Subscription} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {SystemMessages} from "@constants/system-messages";
 
@@ -54,6 +54,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const form = new FormData();
     form.append('email', values.email);
     form.append('fullName', values.fullName);
+    form.append('phone', values.phone);
     if (values.image.newSelected) {
       form.append('image', await fetch(values.image.data).then(res => res.blob()));
     }
@@ -79,6 +80,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       email: this.formBuilder.control({ value: this.user.email, disabled: false }, [
         Validators.required,
         Validators.email
+      ]),
+      phone: this.formBuilder.control({ value: this.user.phone, disabled: false }, [
+        Validators.required,
+        Validators.pattern('[- +()0-9]+')
       ]),
       image: this.formBuilder.control({
         value: { newSelected: !this.user.image, data: this.user.image },
@@ -110,9 +115,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   private checkIfPersonalSettingsChanged(): void {
-    const { fullName, email, image } = this.personalSettingsForm.value;
+    const { fullName, email, phone, image } = this.personalSettingsForm.value;
     this.personalSettingsChanged = fullName.trim() !== this.user.fullName.trim()
       || email.toLowerCase().trim() !== this.user.email.toLowerCase().trim()
+      || phone?.toLowerCase()?.trim() !== this.user?.phone?.toLowerCase()?.trim()
       || image.data !== this.user.image;
   }
 }

@@ -86,41 +86,47 @@
     }
   },
   "profile": {
-    "personal-section-title": "Profile Settings",
-    "passwords-section-title": "Password Settings",
+    "personal-section-title": "Настройки профиля",
+    "passwords-section-title": "Настройки пароля",
     "form": {
       "fullName": {
-        "name": "Full Name",
+        "name": "Полное имя",
         "errors": {
-          "required": "Field is required"
+          "required": "Поле, обязательное для заполнения"
         }
       },
       "email": {
-        "name": "Email",
+        "name": "Электронная почта",
         "errors": {
-          "required": "Email field is required",
-          "email": "Email is invalid address"
+          "required": "Поле электронной почты обязательно",
+          "email": "Электронная почта недействительный адрес"
+        }
+      },
+      "phone": {
+        "name": "Номер телефона",
+        "errors": {
+          "required": "Номер телефона"
         }
       },
       "image": {
-        "name": "Image"
+        "name": "Изображение"
       },
       "password": {
-        "name": "Password",
+        "name": "Пароль",
         "errors": {
-          "required": "Password field is required",
-          "min": "Password should has at least 6 characters"
+          "required": "Поле пароля обязательно",
+          "min": "Пароль должен содержать не менее 6 символов"
         }
       },
       "confirm-password": {
-        "name": "Confirm Password",
+        "name": "Подтвердите пароль",
         "errors": {
-          "required": "Conf. Password field is required",
-          "min": "Password should has at least 6 characters",
-          "confirm": "Password and Confirm Password don't match"
+          "required": "Подт. Поле пароля обязательно",
+          "min": "Пароль должен содержать не менее 6 символов",
+          "confirm": "Пароль и подтверждение пароля не совпадают"
         }
       },
-      "button": "Save"
+      "button": "Сохранять"
     }
   },
   "filter": {
@@ -158,5 +164,18 @@
   },
   "related-products": {
     "title": "Похожие продукты"
+  },
+  "checkout": {
+    "title": "Заказ",
+    "information-alert": "Платежная система на сайте пока не работает. Наши специалисты получат ваши заказы и сразу же свяжутся с вами для организации доставки. С уважением команда ГАЛАД.",
+    "price": "Цена",
+    "qty": "Количество",
+    "view-details": "Посмотреть больше",
+    "promo-code": "Промо-код",
+    "discount": "Скидка",
+    "total-price": "Итоговая цена",
+    "products": "Продукты",
+    "make-an-order": "Сделать заказ",
+    "delete": "Удалить"
   }
 }

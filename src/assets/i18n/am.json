@@ -86,41 +86,47 @@
     }
   },
   "profile": {
-    "personal-section-title": "Profile Settings",
-    "passwords-section-title": "Password Settings",
+    "personal-section-title": "Պրոֆիլ",
+    "passwords-section-title": "Գաղտնաբառ",
     "form": {
       "fullName": {
-        "name": "Full Name",
+        "name": "Ամբողջական անուն",
         "errors": {
-          "required": "Field is required"
+          "required": "Դաշտը պարտադիր է"
         }
       },
       "email": {
-        "name": "Email",
+        "name": "Էլեկտրոնային հասցե",
         "errors": {
-          "required": "Email field is required",
-          "email": "Email is invalid address"
+          "required": "Էլփոստի դաշտը պարտադիր է",
+          "email": "Էլփոստն անվավեր հասցե է"
+        }
+      },
+      "phone": {
+        "name": "Հեռախոսահամար",
+        "errors": {
+          "required": "Հեռ. դաշտը պարտադիր է"
         }
       },
       "image": {
-        "name": "Image"
+        "name": "Պատկեր"
       },
       "password": {
-        "name": "Password",
+        "name": "Գաղտնաբառ",
         "errors": {
-          "required": "Password field is required",
-          "min": "Password should has at least 6 characters"
+          "required": "Գաղտնաբառի դաշտը պարտադիր է",
+          "min": "Գաղտնաբառը պետք է պարունակի առնվազն 6 նիշ"
         }
       },
       "confirm-password": {
-        "name": "Confirm Password",
+        "name": "Հաստատել գաղտնաբառը",
         "errors": {
-          "required": "Conf. Password field is required",
-          "min": "Password should has at least 6 characters",
-          "confirm": "Password and Confirm Password don't match"
+          "required": "Հստ. Գաղտնաբառի դաշտը պարտադիր է",
+          "min": "Գաղտնաբառը պետք է պարունակի առնվազն 6 նիշ",
+          "confirm": "Գաղտնաբառը և հաստատման գաղտնաբառը չեն համընկնում"
         }
       },
-      "button": "Save"
+      "button": "Պահպանել"
     }
   },
   "filter": {
@@ -158,5 +164,18 @@
   },
   "related-products": {
     "title": "Նման ապրանքներ"
+  },
+  "checkout": {
+    "title": "Պատվիրել",
+    "information-alert": "Վճարային համակարգը դեռևս չի գործում կայքում։ Մեր մասնագետները կստանան Ձեր պատվերները և անմիջապես կապ կհաստատեն Ձեզ հետ առաքումը կազմակերպելու համար։ Սիրով GALAD թիմ",
+    "price": "Գին",
+    "qty": "Քանակ",
+    "view-details": "Տեսնել ավելին",
+    "promo-code": "Promo կոդ",
+    "discount": "Զեղչ",
+    "total-price": "Վերջնական գին",
+    "products": "Ապրանքներ",
+    "make-an-order": "Պատվիրել",
+    "delete": "Ջնջել"
   }
 }

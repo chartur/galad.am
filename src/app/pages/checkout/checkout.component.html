@@ -1,0 +1,126 @@
+<div class="header-section text-center">
+  <h1>{{ 'checkout.title' | translate }}</h1>
+</div>
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <i class="me-3 bi bi-info-circle"></i>
+        <div>
+          {{ 'checkout.information-alert' | translate }}
+        </div>
+      </div>
+    </div>
+<!--    <div class="col-12 col-md-4">-->
+
+<!--    </div>-->
+    <div class="col-12">
+      <div *ngFor="let product of products$ | async | keyvalue" class="mb-3">
+        <div class="d-inline-block">
+          <app-small-item-card [product]="product.value.product" [showPrice]="false" [allowPreview]="false">
+            <div *ngIf="product.value.availableCount > 0; else productUnavailable" class="text-muted">
+              <div class="small d-flex justify-content-start align-items-center">
+                <b class="me-3">{{ 'checkout.qty' | translate }}: </b>
+                <app-counter-input
+                  [value]="product.value.count"
+                  [min]="1"
+                  [max]="product.value.product.available_count"
+                  (valueChange)="changeProductCount($event, product.value)"
+                ></app-counter-input>
+              </div>
+              <div class="small">
+                <span class="me-3">{{ 'checkout.price' | translate }}:</span>
+                <span>
+                <small class="has-sale">{{ ((product.value.product.new_price || product.value.product.price) * product.value.count) }}</small>
+                <small
+                  class="ms-1 has-sale text-muted text-decoration-line-through"
+                  *ngIf="product.value.product.new_price"
+                >
+                  {{ (product.value.product.price * product.value.count) }}
+                </small>
+              </span>
+              </div>
+              <div class="d-flex justify-content-start align-items-center">
+                <div
+                  [routerLink]="['/', translateService.currentLang, 'product', product.value.product.id]"
+                  class="small me-3"
+                >
+                  <i class="bi bi-eye me-2"></i>
+                  <u>{{ 'checkout.view-details' | translate }}</u>
+                </div>
+                <div class="remove">
+                  <div (click)="removeItem(product.value)" class="small">
+                    <i class="bi bi-trash3 me-2"></i>
+                    <u>{{ 'checkout.delete' | translate }}</u>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #productUnavailable>
+              <div class="unavailable-product">
+                <div class="sale-label unavailable">
+                  Unavailable!
+                </div>
+              </div>
+              <div class="remove-unavailable mt-1">
+                <div (click)="removeItem(product.value)" class="small">
+                  <i class="bi bi-trash3 me-2"></i>
+                  <u>{{ 'checkout.delete' | translate }}</u>
+                </div>
+              </div>
+            </ng-template>
+          </app-small-item-card>
+        </div>
+      </div>
+      <hr>
+      <div class="card-details float-end">
+        <div class="cart-details-flex d-flex justify-content-start align-items-start mb-2">
+          <b>{{ 'checkout.promo-code' | translate }}:</b>
+          <div class="promo-input-group input-group">
+            <input class="promo-input form-control form-control-sm">
+            <span class="input-group-text">
+              <i class="bi bi-plus"></i>
+            </span>
+          </div>
+        </div>
+        <div class="cart-details-flex d-flex justify-content-start align-items-start mb-3">
+          <b class="me-4">{{ 'checkout.discount' | translate }}:</b>
+          <div>
+            <div class="cart-details-sub-flex d-flex justify-content-start align-items-center">
+              <small>{{ 'checkout.products' | translate }}:</small>
+              <small>{{ discount$ | async }}</small>
+            </div>
+            <div class="cart-details-sub-flex d-flex justify-content-start align-items-center">
+              <small>{{ 'checkout.promo-code' | translate }}:</small>
+              <small>{{ (promo$ | async).discount }}</small>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="{ totalPrice: totalPrice$ | async, originalPrice: originalPrice$ | async } as prices">
+          <div class="cart-details-flex d-flex justify-content-start align-items-start">
+            <b class="me-4">{{ 'checkout.total-price' | translate }}:</b>
+            <span>
+                <small class="has-sale">{{ prices.totalPrice }}</small>
+                <small
+                  class="ms-1 has-sale text-muted text-decoration-line-through"
+                  *ngIf="prices.originalPrice !== prices.totalPrice"
+                >
+                  {{ prices.originalPrice }}
+                </small>
+              </span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <button
+            (click)="openInfoModal()"
+            [disabled]="(loading$ | async) || (hasUnavailableProduct$ | async)"
+            class="btn btn-primary w-100"
+          >
+            <div *ngIf="loading$ | async" class="place-order-spinner me-3 spinner-border text-light" role="status"></div>
+            {{ 'checkout.make-an-order' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

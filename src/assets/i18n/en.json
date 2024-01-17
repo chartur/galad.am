@@ -102,6 +102,12 @@
           "email": "Email is invalid address"
         }
       },
+      "phone": {
+        "name": "Phone Number",
+        "errors": {
+          "required": "Телефон необходим"
+        }
+      },
       "image": {
         "name": "Image"
       },
@@ -158,5 +164,18 @@
   },
   "related-products": {
     "title": "Related Products"
+  },
+  "checkout": {
+    "title": "Order",
+    "information-alert": "The payment system is not working on the website yet. Our specialists will receive your orders and will immediately contact you to arrange delivery. Sincerely GALAD team",
+    "price": "Price",
+    "qty": "Quantity",
+    "view-details": "View more",
+    "promo-code": "Promo code",
+    "discount": "Discount",
+    "total-price": "Total Price",
+    "products": "Products",
+    "make-an-order": "Make an order",
+    "delete": "Delete"
   }
 }

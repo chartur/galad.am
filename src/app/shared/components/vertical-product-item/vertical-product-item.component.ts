@@ -46,7 +46,8 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
   public addToCart(): void {
     this.cartStore.addToCart({
       count: 1,
-      product: this.product
+      product: this.product,
+      availableCount: this.product.available_count
     })
   }
 

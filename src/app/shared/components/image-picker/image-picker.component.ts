@@ -75,7 +75,6 @@ export class ImagePickerComponent implements ControlValueAccessor {
     const target = event.target as any;
     if (target.files && target.files[0]) {
       const file = target.files[0];
-      console.log(file);
       const reader = new FileReader();
       reader.onload = e => {
         this.image = {

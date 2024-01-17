@@ -12,7 +12,9 @@ import {TranslateService} from "@ngx-translate/core";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SmallItemCardComponent {
+  @Input() allowPreview: boolean = true;
   @Input() product: Product;
+  @Input() showPrice: boolean = true;
 
   constructor(
     public translateService: TranslateService
