@@ -8,11 +8,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:prod": "ng serve --configuration production",
+    "start:prod": "ng serve --configuration=production",
     "start:ios": "ionic capacitor run ios -l --external --configuration development",
-    "start:android": "ionic capacitor run android -l --external --configuration development",
+    "start:android": "ionic capacitor run android -l --external --configuration=development",
     "start:ios:prod": "ionic capacitor run ios -l --external --configuration production",
-    "start:android:prod": "ionic capacitor run android -l --external --configuration production",
+    "start:android:prod": "ionic capacitor run android -l --external --configuration=production",
     "build:ios:prod": "ionic capacitor build ios -l --external --configuration production",
     "build:android:prod": "ionic capacitor build android -l --external --configuration production",
     "build": "ng build --configuration development",
@@ -21,7 +21,7 @@
     "test": "ng test",
     "dev:ssr": "ng run jewelry-store:serve-ssr",
     "serve:ssr": "node dist/jewelry-store/server/main.js",
-    "build:ssr": "ng build --configuration=production && ng run jewelry-store:server",
+    "build:dev:ssr": "ng build --configuration=development && ng run jewelry-store:server",
     "build:prod:ssr": "ng build --configuration=production && ng run jewelry-store:server",
     "prerender": "ng run jewelry-store:prerender"
   },
