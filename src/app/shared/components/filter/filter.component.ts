@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, PLATFORM_ID} from '@angular/core';
 import {Filter} from "@interfaces/filter";
 import {TagsStore} from "@stores/tags.store";
 import {CategoriesStore} from "@stores/categories.store";
@@ -9,6 +9,7 @@ import {FilterStore} from "@stores/filter.store";
 import {filterPrices} from "@constants/filter-prices";
 import {Options} from "ngx-slider-v2";
 import {Category} from "@interfaces/category";
+import {isPlatformBrowser} from "@angular/common";
 @Component({
   selector: 'app-filter-component',
   templateUrl: './filter.component.html',
@@ -34,15 +35,18 @@ export class FilterComponent implements OnInit, OnDestroy {
     ceil: filterPrices.max,
     step: filterPrices.step,
   }
+  public isBrowser: boolean = false;
   private subscriptions: Subscription = new Subscription();
 
   constructor(
     private tagsStore: TagsStore,
     private categoriesStore: CategoriesStore,
-    private filterStore: FilterStore
+    private filterStore: FilterStore,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.subscriptions.add(
       zip([
         this.categoriesStore.categoriesLoaded$,

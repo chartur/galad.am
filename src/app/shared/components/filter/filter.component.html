@@ -20,6 +20,7 @@
   <div class="price-container mb-5">
     <h4 class="mb-3">{{ 'filter.price' | translate }}</h4>
     <ngx-slider
+      *ngIf="isBrowser"
       [(value)]="filter.minPrice"
       [(highValue)]="filter.maxPrice"
       [options]="priceSliderOptions"
