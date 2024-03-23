@@ -18,10 +18,5 @@ export class SmallItemCardComponent {
 
   constructor(
     public translateService: TranslateService
-  ) {
-  }
-
-  public get mainPhoto(): ProductAsset {
-    return this.product.assets.find((asset) => asset.type === ProductAssetType.Photo && asset.is_main)
-  }
+  ) {}
 }

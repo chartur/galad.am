@@ -27,7 +27,7 @@ export class ClassValidator {
         return null;
       }
 
-      return { staticLengthValidArray: true};
+      return { compareFieldValues: true};
     }
   }
 }

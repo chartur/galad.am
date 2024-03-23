@@ -7,6 +7,7 @@ export interface Product {
   id: number;
   category: Category;
   assets: ProductAsset[];
+  mainAsset: string;
   tags: Tag[];
   am_name: string;
   en_name: string;

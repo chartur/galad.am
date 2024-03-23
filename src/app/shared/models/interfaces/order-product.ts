@@ -4,8 +4,8 @@ export interface OrderProduct {
   id: number;
   product: Partial<Product>;
   quantity: number;
-  price: string;
-  totalPrice: string;
+  price: number;
+  totalPrice: number;
   created_at: string;
   updated_at: string;
 }

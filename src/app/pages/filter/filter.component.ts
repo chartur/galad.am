@@ -24,6 +24,7 @@ export class FilterComponent implements OnInit {
   public isEmpty$: Observable<boolean> = this.filterStore.isEmpty$;
   public loading$: Observable<boolean> = this.filterStore.loading$;
   public shownMobileFilter: boolean = false;
+  public isAdminUsage: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -33,6 +34,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this.deCodeFilter();
+    this.adminUsage();
     this.filterStore.filter(this.filter);
   }
 
@@ -45,6 +47,7 @@ export class FilterComponent implements OnInit {
   public enCodeFilter(): void {
     this.router.navigate([], {
       queryParams: {
+        ...this.activatedRoute.snapshot.queryParams,
         ...this.filter,
         tags: [...this.filter.tags].join(','),
         category: [...this.filter.category].join(','),
@@ -58,6 +61,11 @@ export class FilterComponent implements OnInit {
 
   public closeMobileFilter(): void {
     this.shownMobileFilter = false;
+  }
+
+  public closeOpener(): void {
+    opener.postMessage(location.href, "*");
+    window.close();
   }
 
   private deCodeFilter(): void {
@@ -86,5 +94,10 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  protected readonly length = length;
+  private adminUsage(): void {
+    this.activatedRoute.queryParams
+      .subscribe(({ adminUsage }) => {
+        this.isAdminUsage = !!adminUsage
+      })
+  }
 }

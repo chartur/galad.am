@@ -5,6 +5,7 @@ import { BannerTextPosition } from "@enums/banner-text-position";
 import { publicPath } from "@environment/environment";
 import { BannerStore } from "@stores/banner.store";
 import { isPlatformBrowser } from "@angular/common";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-banner',
@@ -20,7 +21,8 @@ export class BannerComponent implements OnInit, OnDestroy {
 
   constructor(
     private bannerStore: BannerStore,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    public translateService: TranslateService,
   ) {
   }
 

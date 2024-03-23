@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from "@angular/platform-browser";
+import {Component, OnInit} from '@angular/core';
+import {SeoHelper} from "../../shared/helpers/seo.helper";
+import {SeoService} from "@services/seo.service";
+import {SeoPages} from "@enums/seo-pages";
+import {TranslateService} from "@ngx-translate/core";
+import {SeoData} from "@interfaces/seo-data";
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,11 @@ import { Meta, Title } from "@angular/platform-browser";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private meta: Meta, private title: Title) {
+  constructor(
+    private seoHelper: SeoHelper,
+    private seoService: SeoService,
+    private translateService: TranslateService
+  ) {
   }
 
   ngOnInit(): void {
@@ -16,11 +24,18 @@ export class HomeComponent implements OnInit {
   }
 
   private setMetaData(): void {
-    this.title.setTitle('Testing site');
-
-    this.meta.updateTag({
-      property: "description",
-      content: "This is test site"
-    })
+    const currentLang = this.translateService.currentLang;
+    const props = ['title', 'keywords', 'description']
+      .reduce((accumulator: Record<string, keyof SeoData>, current) => {
+        accumulator[current] = `${currentLang}_${current}` as keyof SeoData;
+        return accumulator;
+      }, {});
+    this.seoService.getPage(SeoPages.HomePage)
+      .subscribe((seoData: SeoData) => {
+        const { title, keywords, description } = props;
+        this.seoHelper.setTitle(seoData[title]);
+        this.seoHelper.setKeywords(seoData[keywords]);
+        this.seoHelper.setDescription(seoData[description]);
+      });
   }
 }

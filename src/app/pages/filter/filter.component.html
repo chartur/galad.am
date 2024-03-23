@@ -1,3 +1,6 @@
+<div *ngIf="isAdminUsage" class="container mt-2 adminUsageAction">
+  <button (click)="closeOpener()" class="btn btn-success w-100">Use current filter</button>
+</div>
 <article class="container mt-5 mb-5">
   <button (click)="openMobileFilter()" class="btn btn-primary d-block d-lg-none w-100 mb-3">
     <i class="bi bi-funnel"></i>

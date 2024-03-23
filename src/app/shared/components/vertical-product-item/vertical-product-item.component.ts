@@ -18,7 +18,6 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
   public isFavorite: boolean = false;
   public isInCat: boolean = false;
   public unavailable: boolean;
-  public mainPhoto: ProductAsset;
 
   public subscription: Subscription = new Subscription();
 
@@ -30,8 +29,6 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.unavailable = !this.product.available_count;
-    this.mainPhoto = this.product.assets
-      .find((asset) => asset.type === ProductAssetType.Photo && asset.is_main)
     this.subscription.add(
       this.favoritesStore.favorites$.subscribe(favorites => {
         this.isFavorite = favorites.has(this.product.id);

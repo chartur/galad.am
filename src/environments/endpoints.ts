@@ -31,5 +31,8 @@ export const makeEndpoints = (baseUrl: string) => ({
   },
   orders: {
     create: `${baseUrl}/order`
+  },
+  seo: {
+    getPage: `${baseUrl}/seo/:page`
   }
 })

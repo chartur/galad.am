@@ -82,7 +82,7 @@ export class ProductComponent implements OnInit, OnDestroy {
             .setTitle(productClassTranslator.name)
             .setDescription(productClassTranslator.description)
             .setImage(
-              publicPath(product.assets.find(asset => asset.is_main).link)
+              publicPath(product.mainAsset)
             )
             .setUrl()
             .setKeywords(

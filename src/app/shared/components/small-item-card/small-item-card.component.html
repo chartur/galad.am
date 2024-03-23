@@ -1,6 +1,6 @@
 <div [routerLink]="allowPreview ? ['/', translateService.currentLang, 'product', product.id] : null"
      class="small-item-container d-flex justify-content-start align-items-start cursor-pointer position-relative">
-  <img class="product-image" [publicSrc]="mainPhoto.link">
+  <img class="product-image" [publicSrc]="product.mainAsset">
   <div>
     <div class="product-name">
       <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>

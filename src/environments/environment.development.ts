@@ -1,6 +1,6 @@
 import { makeEndpoints } from "@environment/endpoints";
 
-export const baseUrl = "http://192.168.10.15:3000";
+export const baseUrl = "http://localhost:3000";
 export const appUrl: string = "http://192.168.10.15:4200"
 
 export const publicPath = (path: string): string => {
