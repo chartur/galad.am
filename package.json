@@ -7,7 +7,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=local",
+    "start:dev": "ng serve --configuration=development",
     "start:prod": "ng serve --configuration=production",
     "start:ios": "ionic capacitor run ios -l --external --configuration development",
     "start:android": "ionic capacitor run android -l --external --configuration=development",

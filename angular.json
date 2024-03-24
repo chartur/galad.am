@@ -88,6 +88,14 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -100,6 +108,9 @@
             },
             "development": {
               "buildTarget": "jewelry-store:build:development"
+            },
+            "local": {
+              "buildTarget": "jewelry-store:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -182,6 +193,13 @@
                 }
               ],
               "buildOptimizer": false
+            },
+            "local": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false
             }
           },
           "defaultConfiguration": "production"
@@ -189,6 +207,10 @@
         "serve-ssr": {
           "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
+            "local": {
+              "browserTarget": "jewelry-store:build:development",
+              "serverTarget": "jewelry-store:server:development"
+            },
             "development": {
               "browserTarget": "jewelry-store:build:development",
               "serverTarget": "jewelry-store:server:development"
