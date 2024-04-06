@@ -1,7 +1,8 @@
-import {Injectable} from "@angular/core";
+import {Inject, Injectable, PLATFORM_ID} from "@angular/core";
 import {Meta, Title} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import {appUrl} from "@environment/environment";
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable({
   providedIn: "root"
@@ -18,7 +19,8 @@ export class SeoHelper {
   constructor(
     private meta: Meta,
     private title: Title,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {}
 
   public setTitle(title: string): SeoHelper {
@@ -69,6 +71,13 @@ export class SeoHelper {
         content: path
       })
     });
+    return this;
+  }
+
+  public setFavicon(path: string): SeoHelper {
+    if(isPlatformBrowser(this.platformId)) {
+      document.getElementById('favicon-link').setAttribute('href', path);
+    }
     return this;
   }
 }

@@ -31,12 +31,12 @@
               <div class="small">
                 <span class="me-3">{{ 'checkout.price' | translate }}:</span>
                 <span>
-                <small class="has-sale">{{ ((product.value.product.new_price || product.value.product.price) * product.value.count) }}</small>
+                <small class="has-sale">{{ ((product.value.product.new_price || product.value.product.price) * product.value.count) | customPrice }}</small>
                 <small
                   class="ms-1 has-sale text-muted text-decoration-line-through"
                   *ngIf="product.value.product.new_price"
                 >
-                  {{ (product.value.product.price * product.value.count) }}
+                  {{ (product.value.product.price * product.value.count) | customPrice }}
                 </small>
               </span>
               </div>
@@ -100,12 +100,12 @@
           <div class="cart-details-flex d-flex justify-content-start align-items-start">
             <b class="me-4">{{ 'checkout.total-price' | translate }}:</b>
             <span>
-                <small class="has-sale">{{ prices.totalPrice }}</small>
+                <small class="has-sale">{{ prices.totalPrice | customPrice }}</small>
                 <small
                   class="ms-1 has-sale text-muted text-decoration-line-through"
                   *ngIf="prices.originalPrice !== prices.totalPrice"
                 >
-                  {{ prices.originalPrice }}
+                  {{ prices.originalPrice | customPrice }}
                 </small>
               </span>
           </div>

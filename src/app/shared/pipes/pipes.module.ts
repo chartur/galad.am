@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PropertyTranslatorPipe } from './property-translator.pipe';
+import {CustomPricePipe} from "./custom-price.pipe";
 
 
 
 @NgModule({
   declarations: [
-    PropertyTranslatorPipe
+    PropertyTranslatorPipe,
+    CustomPricePipe
   ],
   exports: [
-    PropertyTranslatorPipe
+    PropertyTranslatorPipe,
+    CustomPricePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class PipesModule { }
