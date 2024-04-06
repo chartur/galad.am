@@ -16,9 +16,9 @@
       [class.text-muted]="product.new_price"
       [class.text-decoration-line-through]="product.new_price"
       class="product-price has-sale m-1">
-      ${{ product.price }}
+      {{ product.price | customPrice }}
     </div>
-    <div *ngIf="product.new_price" class="product-price has-sale m-1">${{ product.new_price }}</div>
+    <div *ngIf="product.new_price" class="product-price has-sale m-1">{{ product.new_price | customPrice }}</div>
   </div>
 </div>
 

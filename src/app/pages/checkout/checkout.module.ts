@@ -5,6 +5,7 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import {CheckoutComponent} from "./checkout.component";
 import {ComponentsModule} from "@components/components.module";
 import {TranslateModule} from "@ngx-translate/core";
+import {PipesModule} from "../../shared/pipes/pipes.module";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {TranslateModule} from "@ngx-translate/core";
     CommonModule,
     CheckoutRoutingModule,
     ComponentsModule,
-    TranslateModule
+    TranslateModule,
+    PipesModule
   ]
 })
 export class CheckoutModule { }
