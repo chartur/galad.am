@@ -4,6 +4,8 @@ import {SeoService} from "@services/seo.service";
 import {SeoPages} from "@enums/seo-pages";
 import {TranslateService} from "@ngx-translate/core";
 import {SeoData} from "@interfaces/seo-data";
+import {SeoStore} from "@stores/seo.store";
+import {filter, map, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private seoHelper: SeoHelper,
-    private seoService: SeoService,
+    private seoStore: SeoStore,
     private translateService: TranslateService
   ) {
   }
@@ -30,8 +32,12 @@ export class HomeComponent implements OnInit {
         accumulator[current] = `${currentLang}_${current}` as keyof SeoData;
         return accumulator;
       }, {});
-    this.seoService.getPage(SeoPages.HomePage)
-      .subscribe((seoData: SeoData) => {
+    this.seoStore.loaded$
+      .pipe(
+        filter(state => !!state),
+        switchMap(() => this.seoStore.data$),
+        map(data => data.home)
+      ).subscribe((seoData: SeoData) => {
         const { title, keywords, description } = props;
         this.seoHelper.setTitle(seoData[title]);
         this.seoHelper.setKeywords(seoData[keywords]);

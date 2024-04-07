@@ -1,15 +1,14 @@
 import {Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {SideBarProvider} from "./shared/providers/side-bar.provider";
-import {Observable} from "rxjs";
+import {filter, Observable, switchMap, tap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {appVersion} from "@constants/app-version";
 import {SplashScreen} from "@capacitor/splash-screen";
 import {DOCUMENT} from "@angular/common";
-import {SeoService} from "@services/seo.service";
 import {SeoPages} from "@enums/seo-pages";
-import {SeoData} from "@interfaces/seo-data";
 import {SeoHelper} from "./shared/helpers/seo.helper";
 import {publicPath} from "@environment/environment";
+import {SeoStore} from "@stores/seo.store";
 
 @Component({
   selector: 'app-root',
@@ -26,19 +25,13 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     @Inject(DOCUMENT)
     private document: Document,
-    private seoService: SeoService,
+    private seoStore: SeoStore,
     private seoHelper: SeoHelper
   ) {}
 
   async ngOnInit(): Promise<void> {
-    console.log(appVersion)
-    this.seoService.getPage(SeoPages.HomePage)
-      .subscribe((seoData: SeoData) => {
-        const { image } = seoData;
-        this.seoHelper.setFavicon(
-          publicPath(image)
-        )
-      });
+    console.log(appVersion);
+    this.watchSeoData();
     this.watchSideBarVisibilityState();
     this.showSplashScreen();
   }
@@ -62,5 +55,20 @@ export class AppComponent implements OnInit {
       showDuration: 3000,
       autoHide: true,
     });
+  }
+
+  private watchSeoData(): void {
+    this.seoStore.loaded$
+      .pipe(
+        filter(state => !!state),
+        switchMap(() => this.seoStore.data$)
+      )
+      .subscribe((seoDataMap) => {
+        const homePageDetails = seoDataMap.home;
+        this.seoHelper.setFavicon(
+          publicPath(homePageDetails.image)
+        )
+      });
+    this.seoStore.loadPageSeo(SeoPages.HomePage);
   }
 }

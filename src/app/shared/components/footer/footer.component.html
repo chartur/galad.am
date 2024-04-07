@@ -4,11 +4,8 @@
       <div class="col-12 col-md-6 col-lg-3 mb-3">
         <div class="footer-description-section">
           <img class="p-2 float-start" src="/assets/logo.png" width="127px">
-          <div class="footer-section-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries
+          <div *ngIf="loaded" class="footer-section-text">
+            {{ seoData | propertyTranslator: 'description' | async }}
           </div>
         </div>
       </div>
