@@ -37,16 +37,18 @@
     }
   }
   & .product-name {
-    font-size: 20px;
+    font-size: 16px;
     color: $primary-text-1;
     cursor: pointer;
     transition: all .3s ease;
+    font-weight: bold;
     &:hover {
       color: $primary;
     }
   }
   & .product-price {
     color: $primary-text-3;
+    font-size: 12px;
 
     &.has-sale {
       color: $primary;
@@ -143,9 +145,6 @@
     }
 
     & .product-name {
-      font-size: 14px;
-    }
-    & .product-price {
       font-size: 12px;
     }
   }
