@@ -99,7 +99,7 @@
             </div>
             <div *ngIf="relatedProductsLoading$ | async; else relatedLoaded"></div>
             <ng-template #relatedLoaded>
-              <div *ngFor="let product of relatedProducts$ | async" class="col-lg-3 col-md-4 col-6 mb-2">
+              <div *ngFor="let product of relatedProducts$ | async" class="col-lg-3 col-md-4 col-6 mb-3">
                 <app-vertical-product-item [product]="product"></app-vertical-product-item>
               </div>
             </ng-template>

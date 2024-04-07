@@ -8,17 +8,17 @@
 <!--      {{ type + (!last ? "," : "") }}-->
 <!--    </span>-->
   </div>
-  <div [routerLink]="['/', translateService.currentLang, 'product', product.id]" class="product-name text-center">
+  <div [routerLink]="['/', translateService.currentLang, 'product', product.id]" class="product-name">
     <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
   </div>
-  <div *ngIf="!unavailable" class="product-price d-flex justify-content-center align-items-center">
+  <div *ngIf="!unavailable" class="product-price d-flex justify-content-start align-items-center">
     <div
       [class.text-muted]="product.new_price"
       [class.text-decoration-line-through]="product.new_price"
-      class="product-price has-sale m-1">
+      class="product-price has-sale">
       {{ product.price | customPrice }}
     </div>
-    <div *ngIf="product.new_price" class="product-price has-sale m-1">{{ product.new_price | customPrice }}</div>
+    <div *ngIf="product.new_price" class="product-price has-sale">{{ product.new_price | customPrice }}</div>
   </div>
 </div>
 

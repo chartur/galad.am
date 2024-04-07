@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-lg-10 offset-lg-1 col-12 offset-0">
         <div [@listAnimation]="products.length" class="row">
-          <div *ngFor="let product of products" class="col-lg-3 col-md-4 col-6 mb-2">
+          <div *ngFor="let product of products" class="col-lg-3 col-md-4 col-6 mb-3">
             <app-vertical-product-item [product]="product"></app-vertical-product-item>
           </div>
         </div>
