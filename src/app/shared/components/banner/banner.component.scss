@@ -2,10 +2,9 @@
 @import "forms";
 @import "bootstrap/scss/mixins/breakpoints";
 .banner-container {
-  height: 70vh;
+  height: fit-content;
   width: 100%;
   position: relative;
-
 
   & .banner-item {
     position: absolute;
@@ -23,7 +22,7 @@
       width: 100%;
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: cover;
+      background-size: contain;
       opacity: 0;
 
       & .banner-title {
@@ -96,8 +95,6 @@
 }
 @include media-breakpoint-down(md) {
   .banner-container {
-    height: 30vh!important;
-
     & .banner-title {
       font-size: 16px!important;
     }
@@ -127,10 +124,4 @@
     }
   }
 }
-@include media-breakpoint-down(lg) {
-  .banner-container {
-    height: 40vh;
-  }
-}
-
 
