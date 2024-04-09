@@ -1,4 +1,4 @@
-<div class="banner-container">
+<div *ngIf="bannerImagePath" class="banner-container">
   <img [src]="bannerImagePath" style="width: 100%; visibility: hidden;" />
   <div
     *ngFor="let banner of banners; let index = index"

@@ -38,6 +38,13 @@ export class BannerComponent implements OnInit, OnDestroy {
   }
 
   public get bannerImagePath(): string {
+    if (!this.banners.length) {
+      return '';
+    }
+    const activeBanner = this.banners[this.activeBannerIndex];
+    if (!activeBanner) {
+      return '';
+    }
     return publicPath(this.banners[this.activeBannerIndex].link);
   }
 
