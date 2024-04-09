@@ -12,9 +12,10 @@
       <div class="container">
         <div class="row">
           <div [class.offset-7]="banner.text_position === bannerTextPosition.Right" class="col-5 mt-lg-5 mt-4">
-            <h1 class="banner-title">{{ banner | propertyTranslator: "title" | async }}</h1>
-            <h4 class="banner-subtitle">{{ banner | propertyTranslator:  "description" | async }}</h4>
+            <h1 *ngIf="banner | propertyTranslatorCheck: 'title'" class="banner-title">{{ banner | propertyTranslator: "title" | async }}</h1>
+            <h4 *ngIf="banner | propertyTranslatorCheck: 'description'" class="banner-subtitle">{{ banner | propertyTranslator:  "description" | async }}</h4>
             <a
+              *ngIf="banner.button_link && (banner | propertyTranslatorCheck:  'button_text')"
               [href]="'/' + translateService.currentLang + banner.button_link"
               [target]="banner.url_open_handle"
               class="banner-action-button btn btn-primary"
