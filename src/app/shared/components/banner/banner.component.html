@@ -1,4 +1,5 @@
 <div class="banner-container">
+  <img [src]="bannerImagePath" style="width: 100%; visibility: hidden;" />
   <div
     *ngFor="let banner of banners; let index = index"
     [class.active]="index === activeBannerIndex"
@@ -8,7 +9,10 @@
       [style.background-image]="'url(' + bannerImagePath + ')'"
       [class.banner-position-left]="banner.text_position === bannerTextPosition.Left"
       [class.banner-position-right]="banner.text_position === bannerTextPosition.Right"
-      class="banner-item-image">
+      [class.cursor-pointer]="banner.button_link"
+      (click)="openBannerUrl(banner)"
+      class="banner-item-image"
+    >
       <div class="container">
         <div class="row">
           <div [class.offset-7]="banner.text_position === bannerTextPosition.Right" class="col-5 mt-lg-5 mt-4">

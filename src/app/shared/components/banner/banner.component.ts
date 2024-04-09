@@ -63,6 +63,13 @@ export class BannerComponent implements OnInit, OnDestroy {
     this.initBanner();
   }
 
+  public openBannerUrl(banner: Banner) {
+    window.open(
+      '/' + this.translateService.currentLang + banner.button_link,
+      banner.url_open_handle
+    );
+  }
+
   private initBanner(): void {
     if(isPlatformBrowser(this.platformId)) {
       this.bannerMovementSubscription = interval(7000)
