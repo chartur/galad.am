@@ -5,6 +5,7 @@ import { Tag } from "@interfaces/tag";
 
 export interface Product {
   id: number;
+  serialNumber: string;
   category: Category;
   assets: ProductAsset[];
   mainAsset: string;

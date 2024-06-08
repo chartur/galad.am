@@ -12,8 +12,9 @@ export class CustomPricePipe implements PipeTransform {
   ) {}
 
   transform(value: number): string {
-    const amd = this.translateService.instant("AMD");
-    return `${Number(value)} ${amd}`;
+    // const amd = this.translateService.instant("AMD");
+    // return `${Number(value)} ${amd}`;
+    return `${Number(value)} ֏`;
   }
 
 }
