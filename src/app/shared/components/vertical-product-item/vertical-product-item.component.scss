@@ -4,11 +4,19 @@
 .vertical-product-card {
   position: relative;
   cursor: pointer;
+
   & .image {
     border-radius: 5px;
     overflow: hidden;
+    transition: all ease .3s;
+
     & img {
       width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 0 5px 0 black;
+      transform: scale(1.01);
     }
   }
 

@@ -3,7 +3,7 @@
   <img class="product-image" [publicSrc]="product.mainAsset">
   <div>
     <div class="product-name">
-      <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}</p>
+      <p class="p-0 m-0">{{ product | propertyTranslator: "name" | async }}  <span class="product-serial-number">{{ product.serialNumber }}</span></p>
     </div>
     <div *ngIf="showPrice" class="product-price d-flex justify-content-start align-items-center">
       <div

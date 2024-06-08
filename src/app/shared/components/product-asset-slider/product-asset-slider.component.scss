@@ -14,8 +14,13 @@
 .assets-list-slider {
   width: 576px;
   max-width: 100%;
-  overflow: scroll;
+  overflow-x: scroll;
   margin-top: 30px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .assets-list {
   display: flex;
