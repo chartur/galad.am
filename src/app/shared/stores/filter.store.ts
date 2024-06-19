@@ -4,6 +4,7 @@ import {ComponentStore, tapResponse} from "@ngrx/component-store";
 import {Observable, switchMap, tap} from "rxjs";
 import {Filter} from "@interfaces/filter";
 import {FilterService} from "@services/filter.service";
+import {Gender} from "@enums/gender";
 
 interface FilterState {
   filter: Filter,
@@ -19,9 +20,10 @@ interface FilterState {
 const initialState: FilterState = {
   filter: {
     category: new Set<number>(),
+    tags: new Set<number>(),
+    gender: new Set<Gender>(),
     minPrice: 0,
     maxPrice: 50000,
-    tags: new Set<number>(),
     sale: false,
     q: ''
   },
