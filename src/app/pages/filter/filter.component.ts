@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FilterStore} from "@stores/filter.store";
 import {Observable} from "rxjs";
 import {Product} from "@interfaces/product";
+import {Gender} from "@enums/gender";
 
 @Component({
   selector: 'app-filter',
@@ -17,6 +18,7 @@ export class FilterComponent implements OnInit {
     maxPrice: filterPrices.max,
     category: new Set<number>(),
     tags: new Set<number>(),
+    gender: new Set<Gender>(),
     sale: false,
     q: ''
   }
@@ -51,6 +53,7 @@ export class FilterComponent implements OnInit {
         ...this.filter,
         tags: [...this.filter.tags].join(','),
         category: [...this.filter.category].join(','),
+        gender: [...this.filter.gender].join(',')
       },
     })
   }
@@ -72,8 +75,10 @@ export class FilterComponent implements OnInit {
     const params = this.activatedRoute.snapshot.queryParams as any;
     const tagsString = params?.tags as string;
     const categoriesString = params?.category as string
+    const gendersString = params?.gender as string
     const tagsArray = tagsString?.split(',')?.map(Number)?.filter((id) => !!id);
     const categoriesArray = categoriesString?.split(',')?.map(Number)?.filter((id) => !!id);
+    const gendersArray = gendersString?.split(',').filter(gender => !!gender) as Gender[];
     const saleString = params.sale;
 
     this.filter = {
@@ -81,12 +86,14 @@ export class FilterComponent implements OnInit {
       maxPrice: params.maxPrice ? Number(params.maxPrice) : this.filter.maxPrice,
       tags: new Set(tagsArray),
       category: new Set(categoriesArray),
+      gender: new Set(gendersArray),
       sale: saleString === 'true',
       q: params.q || ''
     };
   }
 
   private validateFilter(filter: Filter): Filter {
+    console.log(filter);
     return {
       ...filter,
       tags: new Set([...this.filter.tags].filter(id => !!id)),

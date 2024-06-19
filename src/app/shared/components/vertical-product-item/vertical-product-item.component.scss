@@ -96,6 +96,11 @@
         top: 70px;
       }
     }
+
+    &.card-button.active {
+      background: $primary;
+      color: $main-bg;
+    }
   }
 
   & .action-button-container {

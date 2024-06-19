@@ -139,7 +139,8 @@
     "categories": "Categories",
     "tags": "Tags",
     "price": "Price",
-    "sale": "Sale"
+    "sale": "Sale",
+    "gender": "Gender"
   },
   "favorites": {
     "title": "Your favorite products",
@@ -178,5 +179,15 @@
     "products": "Products",
     "make-an-order": "Make an order",
     "delete": "Delete"
+  },
+  "product-card": {
+    "add-to-card": "Add to Cart",
+    "remove-from-card": "Remove to Cart"
+  },
+  "genders": {
+    "male": "Male",
+    "female": "Female",
+    "unisex": "Unisex",
+    "kids": "Kids"
   }
 }

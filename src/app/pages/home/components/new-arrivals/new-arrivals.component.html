@@ -1,14 +1,16 @@
 <div class="container">
   <h2 class="text-center">{{ "home_page.New Arrivals.title" | translate }}</h2>
   <p class="text-muted text-center p-0 m-0">{{ "home_page.New Arrivals.subtitle" | translate }}</p>
-  <div class="new-arrival-category-tabs d-flex justify-content-center align-items-center">
-    <div *ngFor="let tab of categories" class="p-3">
+  <div class="categories-container hidden-scroll-bar">
+    <div class="new-arrival-category-tabs d-flex justify-content-center align-items-center">
+      <div *ngFor="let tab of categories" class="p-3">
       <span
         (click)="selectTab(tab)"
         [class.active]="tab === selectedTab"
         class="category-tab text-muted text-capitalize cursor-pointer">
         {{ tab | propertyTranslator: "name" | async }}
       </span>
+      </div>
     </div>
   </div>
 

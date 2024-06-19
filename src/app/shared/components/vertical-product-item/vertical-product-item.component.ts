@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Subscription, switchMap, take} from "rxjs";
 import {FavoritesStore} from "@stores/favorites.store";
 import {Product} from "@interfaces/product";
 import {ProductAsset} from "@interfaces/product-asset";
@@ -33,6 +33,11 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
       this.favoritesStore.favorites$.subscribe(favorites => {
         this.isFavorite = favorites.has(this.product.id);
       })
+    );
+    this.subscription.add(
+      this.cartStore.products$.subscribe(card => {
+        this.isInCat = !!card[this.product.id];
+      })
     )
   }
 
@@ -40,12 +45,21 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public addToCart(): void {
+  public toggleToCart(): void {
+    if (this.isInCat) {
+      this.cartStore.products$.pipe(
+        take(1),
+      ).subscribe(products => {
+        const product = products[this.product.id];
+        return this.cartStore.removeFromCart(product)
+      });
+      return;
+    }
     this.cartStore.addToCart({
       count: 1,
       product: this.product,
       availableCount: this.product.available_count
-    })
+    });
   }
 
   public toggleFavorite(): void {

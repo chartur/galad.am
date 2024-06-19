@@ -139,7 +139,8 @@
     "categories": "Категории",
     "tags": "Теги",
     "price": "Цена",
-    "sale": "Скидка"
+    "sale": "Скидка",
+    "gender": "Пол"
   },
   "favorites": {
     "title": "Ваши любимые продукты",
@@ -178,5 +179,15 @@
     "products": "Продукты",
     "make-an-order": "Сделать заказ",
     "delete": "Удалить"
+  },
+  "product-card": {
+    "add-to-card": "В корзину",
+    "remove-from-card": "Удалить"
+  },
+  "genders": {
+    "male": "Мужской",
+    "female": "Женский",
+    "unisex": "Унисекс",
+    "kids": "Дети"
   }
 }

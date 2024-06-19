@@ -17,6 +17,26 @@
       </li>
     </ul>
   </div>
+  <div class="gender-container mb-5">
+    <h4 class="mb-3">{{ 'filter.gender' | translate }}</h4>
+    <div class="gender-list">
+      <label
+        *ngFor="let gender of genders | keyvalue"
+        [for]="gender.value + '-checkbox'"
+      >
+        <span class="gender-name">{{ 'genders.'+gender.value | translate }}</span>
+        <input
+          [value]="gender.value"
+          [id]="gender.value + '-checkbox'"
+          (change)="toggleGender(gender.value)"
+          [checked]="filter.gender.has(gender.value)"
+          class="d-none"
+          name="gender"
+          type="checkbox"
+        >
+      </label>
+    </div>
+  </div>
   <div class="price-container mb-5">
     <h4 class="mb-3">{{ 'filter.price' | translate }}</h4>
     <ngx-slider

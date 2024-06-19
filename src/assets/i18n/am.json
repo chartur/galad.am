@@ -139,7 +139,8 @@
     "categories": "Տեսակներ",
     "tags": "Թեգեր",
     "price": "Գնի",
-    "sale": "Զեղչ"
+    "sale": "Զեղչ",
+    "gender": "Սեռ"
   },
   "favorites": {
     "title": "Ձեր սիրելի ապրանքները",
@@ -178,5 +179,15 @@
     "products": "Ապրանքներ",
     "make-an-order": "Պատվիրել",
     "delete": "Ջնջել"
+  },
+  "product-card": {
+    "add-to-card": "Ավելացնել",
+    "remove-from-card": "Հեռացնել"
+  },
+  "genders": {
+    "male": "Տղամարդ",
+    "female": "Կին",
+    "unisex": "Unisex",
+    "kids": "Երեխա"
   }
 }

@@ -16,7 +16,8 @@ export class FilterService {
     return this.httpClient.post<Product[]>(endpoints.filter.index, {
       ...body,
       tags: [...body.tags],
-      category: [...body.category]
+      category: [...body.category],
+      gender: [...body.gender]
     })
   }
 }

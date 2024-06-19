@@ -1,8 +1,18 @@
 @import "variables";
 @import "text";
 
-.category-tab {
-  &.active {
-    color: $primary!important;
+.categories-container {
+  overflow-y: scroll;
+
+  & .new-arrival-category-tabs {
+    width: fit-content;
+  }
+
+  & .category-tab {
+    text-wrap: nowrap;
+
+    &.active {
+      color: $primary!important;
+    }
   }
 }

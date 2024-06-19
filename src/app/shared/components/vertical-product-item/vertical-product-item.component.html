@@ -1,6 +1,6 @@
 <div [class.unavailable]="unavailable" class="vertical-product-card">
   <div class="image position-relative">
-    <img [publicSrc]="product.mainAsset">
+    <img [routerLink]="['/', translateService.currentLang, 'product', product.id]" [publicSrc]="product.mainAsset">
     <div *ngTemplateOutlet="productActions"></div>
   </div>
   <div class="product-types d-flex justify-content-center align-items-center">
@@ -30,7 +30,12 @@
     <i class="bi bi-eye"></i>
   </div>
   <div class="action-button-container">
-    <button (click)="addToCart()" class="btn action-button float-button">Add to Cart</button>
+    <button
+      (click)="toggleToCart()"
+      [class.active]="isInCat"
+      class="btn card-button action-button float-button">
+        {{ (isInCat ? "product-card.remove-from-card" : "product-card.add-to-card") | translate }}
+    </button>
   </div>
   <div *ngIf="product.new_price && !unavailable" class="sale-label">
     Sale!

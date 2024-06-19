@@ -10,6 +10,7 @@ import {filterPrices} from "@constants/filter-prices";
 import {Options} from "ngx-slider-v2";
 import {Category} from "@interfaces/category";
 import {isPlatformBrowser} from "@angular/common";
+import {Gender} from "@enums/gender";
 @Component({
   selector: 'app-filter-component',
   templateUrl: './filter.component.html',
@@ -21,6 +22,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     maxPrice: filterPrices.max,
     category: new Set<number>(),
     tags: new Set<number>(),
+    gender: new Set<Gender>(),
     sale: false,
     q: '',
   }
@@ -36,6 +38,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     step: filterPrices.step,
   }
   public isBrowser: boolean = false;
+  public genders = Gender;
   private subscriptions: Subscription = new Subscription();
 
   constructor(
@@ -73,6 +76,15 @@ export class FilterComponent implements OnInit, OnDestroy {
       this.filter.tags.delete(tag.id);
     } else {
       this.filter.tags.add(tag.id)
+    }
+    this.onFilter.emit(this.filter);
+  }
+
+  public toggleGender(gender: Gender) {
+    if (this.filter.gender.has(gender)) {
+      this.filter.gender.delete(gender);
+    } else {
+      this.filter.gender.add(gender);
     }
     this.onFilter.emit(this.filter);
   }

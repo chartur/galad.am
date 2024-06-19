@@ -60,3 +60,11 @@ body {
   font-weight: normal;
   color: grey;
 }
+
+.hidden-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

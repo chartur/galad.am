@@ -77,4 +77,33 @@ h4 {
   }
 }
 
+.gender-container {
+  & .gender-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & label {
+      font-size: 14px;
+      cursor: pointer;
+      color: $primary-text-3;
+      &:after {
+        content: '\F28A';
+        font-family: 'bootstrap-icons';
+        float: right;
+        margin-left: 5px;
+      }
+      &:hover {
+        color: $primary;
+      }
+
+      &:has(> input[type=checkbox]:checked) {
+        color: $primary;
+        &:after {
+          content: '\F287';
+        }
+      }
+    }
+  }
+}
 
