@@ -1,0 +1,35 @@
+<section class="reviews-section">
+  <div class="container">
+    <div class="row reviews-container">
+      <div class="col-12">
+        <div class="reviews-header-container">
+          <h2>{{ 'reviews.title' | translate }}</h2>
+        </div>
+        <div class="reviews-content p-4">
+          <div *ngIf="productReviewLoading$ | async; else loaded" class="text-center">
+            <div class="spinner-border text-light" role="status"></div>
+          </div>
+
+          <ng-template #loaded>
+
+            <div *ngIf="noReviews$ | async; else hasReviews">
+              <div class="empty-placeholder">
+                <p>{{ 'reviews.empty' | translate }}</p>
+                <p>{{ 'reviews.be-first-reviewer' | translate }} “{{ product | propertyTranslator: 'name' | async }}”</p>
+                <p *ngIf="!(isLoggedIn$ | async)">{{ 'reviews.need-auth' | translate }}</p>
+              </div>
+            </div>
+
+            <ng-template #hasReviews>
+              <div *ngFor="let review of reviews$ | async" class="mb-4">
+                <app-review-item [review]="review"></app-review-item>
+              </div>
+            </ng-template>
+
+
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

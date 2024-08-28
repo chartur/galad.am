@@ -1,0 +1,27 @@
+<div class="review-item">
+  <div class="user-avatar">
+    <div
+      *ngIf="hasUserImage; else avatarPlaceholder"
+      [style.background-image]="userImageUrl"
+      class="user-avatar-image"
+    ></div>
+    <ng-template #avatarPlaceholder>
+      <span>{{ usernamePlaceholder }}</span>
+    </ng-template>
+  </div>
+  <div class="details">
+    <h6>{{ data.userFullName }}</h6>
+    <star-rating
+      [starType]="'svg'"
+      [showHalfStars]="true"
+      [rating]="data.rating"
+      staticColor="ok"
+    ></star-rating>
+    <div class="mt-2 text-muted">
+      {{ data.content }}
+    </div>
+    <div *ngIf="data.image" class="content-image">
+      <img [publicSrc]="data.image">
+    </div>
+  </div>
+</div>

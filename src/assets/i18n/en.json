@@ -182,7 +182,8 @@
   },
   "product-card": {
     "add-to-card": "Add to Cart",
-    "remove-from-card": "Remove to Cart"
+    "remove-from-card": "Remove to Cart",
+    "reviews": "Feedbacks"
   },
   "genders": {
     "male": "Male",

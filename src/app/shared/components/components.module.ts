@@ -28,6 +28,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CounterInputComponent} from "@components/counter-input/counter-input.component";
 import {CheckoutUserInfoComponent} from "@components/checkout-user-info/checkout-user-info.component";
 import {ModalModule} from "ngx-bootstrap/modal";
+import {ProductReviewsComponent} from "@components/product-reviews/product-reviews.component";
+import {IonicModule} from "@ionic/angular";
+import {ReviewItemComponent} from "@components/review-item/review-item.component";
+import {StarRatingModule} from "angular-star-rating";
 
 
 @NgModule({
@@ -51,7 +55,9 @@ import {ModalModule} from "ngx-bootstrap/modal";
     ImagePickerComponent,
     FilterComponent,
     CounterInputComponent,
-    CheckoutUserInfoComponent
+    CheckoutUserInfoComponent,
+    ProductReviewsComponent,
+    ReviewItemComponent
   ],
   exports: [
     HeaderComponent,
@@ -67,7 +73,9 @@ import {ModalModule} from "ngx-bootstrap/modal";
     FilterComponent,
     SmallItemCardComponent,
     CounterInputComponent,
-    CheckoutUserInfoComponent
+    CheckoutUserInfoComponent,
+    ProductReviewsComponent,
+    ReviewItemComponent,
   ],
   imports: [
     CommonModule,
@@ -79,7 +87,9 @@ import {ModalModule} from "ngx-bootstrap/modal";
     NgxSliderModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forChild()
+    ModalModule.forChild(),
+    IonicModule,
+    StarRatingModule
   ]
 })
 export class ComponentsModule { }
