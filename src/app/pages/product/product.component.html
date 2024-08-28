@@ -35,7 +35,7 @@
                   staticColor="ok"
                 ></star-rating>
                 <span (click)="goToReviewSections()" class="rating-label">
-                  {{ (rating$ | async).toFixed(1) }} ({{ reviewCount$ | async }} {{ 'product-card.reviews' | translate }})
+                  {{ (rating$ | async)?.toFixed(1) }} ({{ reviewCount$ | async }} {{ 'product-card.reviews' | translate }})
                 </span>
               </div>
               <div class="product-price">
