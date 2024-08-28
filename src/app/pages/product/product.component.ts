@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ProductsStore } from "@stores/products.store";
 import {filter, Observable, Subscription} from "rxjs";
 import { Product } from "@interfaces/product";
@@ -9,6 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {SeoHelper} from "../../shared/helpers/seo.helper";
 import {publicPath} from "@environment/environment";
 import {FavoritesStore} from "@stores/favorites.store";
+import {ProductReviewsStore} from "@stores/product-reviews.store";
 
 @Component({
   selector: 'app-product',
@@ -16,12 +17,16 @@ import {FavoritesStore} from "@stores/favorites.store";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit, OnDestroy {
+  @ViewChild("reviews") reviewsSection: ElementRef
   public readonly product$: Observable<Product> = this.productsStore.product$;
   public readonly relatedProducts$: Observable<Product[]> = this.productsStore.relatedProducts$;
   public readonly relatedProductsLoading$: Observable<boolean> = this.productsStore.relatedProductsLoading$;
   public readonly loading$: Observable<boolean> = this.productsStore.productLoading$;
   public includedInFavoriteList: boolean = false;
   public productId: number;
+  public readonly reviewCount$: Observable<number> = this.productReviewsStore.count$;
+  public readonly rating$: Observable<number> = this.productReviewsStore.rating$;
+
   private subscriptions: Subscription = new Subscription();
   constructor(
     private productsStore: ProductsStore,
@@ -31,7 +36,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private meta: Meta,
     private title: Title,
     private seoHelper: SeoHelper,
-    private favoritesStore: FavoritesStore
+    private favoritesStore: FavoritesStore,
+    private productReviewsStore: ProductReviewsStore
   ) {}
 
   ngOnInit() {
@@ -51,6 +57,7 @@ export class ProductComponent implements OnInit, OnDestroy {
       );
       this.productsStore.loadProduct(this.productId);
       this.productsStore.loadRelatedProducts(this.productId);
+      this.productReviewsStore.getByProductId(this.productId);
     });
   }
 
@@ -60,6 +67,11 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   public toggleFavoriteState(): void {
     this.favoritesStore.toggleFavorite(this.productId);
+  }
+
+  public goToReviewSections(): void {
+    console.log(this.reviewsSection);
+    this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   private listenProductData(): void {

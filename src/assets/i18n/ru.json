@@ -182,7 +182,8 @@
   },
   "product-card": {
     "add-to-card": "В корзину",
-    "remove-from-card": "Удалить"
+    "remove-from-card": "Удалить",
+    "reviews": "Отзывы"
   },
   "genders": {
     "male": "Мужской",

@@ -31,10 +31,12 @@
                 <star-rating
                   [starType]="'svg'"
                   [showHalfStars]="true"
-                  [rating]="2.5"
+                  [rating]="rating$ | async"
                   staticColor="ok"
                 ></star-rating>
-                <span class="rating-label">2.5 (4 customer reviews)</span>
+                <span (click)="goToReviewSections()" class="rating-label">
+                  {{ (rating$ | async).toFixed(1) }} ({{ reviewCount$ | async }} {{ 'product-card.reviews' | translate }})
+                </span>
               </div>
               <div class="product-price">
                 {{ product.price | customPrice }}
@@ -75,22 +77,10 @@
         </div>
       </article>
 
-      <section class="reviews-section">
-        <div class="container">
-          <div class="row reviews-container">
-            <div class="col-12">
-              <div class="reviews-header-container">
-                <h2>{{ 'reviews.title' | translate }}</h2>
-              </div>
-              <div class="reviews-content p-4">
-                <p>{{ 'reviews.empty' | translate }}</p>
-                <p>{{ 'reviews.be-first-reviewer' | translate }} “{{ product | propertyTranslator: 'name' | async }}”</p>
-                <p>{{ 'reviews.need-auth' | translate }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div #reviews>
+        <app-product-reviews [product]="product"></app-product-reviews>
+      </div>
+
       <section class="related-products-section mt-5 mb-5">
         <div class="container">
           <div class="row">

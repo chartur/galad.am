@@ -11,6 +11,9 @@ export const makeEndpoints = (baseUrl: string) => ({
     relatedProducts: `${baseUrl}/product/related/:id`,
     getByIds: `${baseUrl}/product/by-ids`
   },
+  productReviews: {
+    getProductReviews: `${baseUrl}/product-reviews/:productId`,
+  },
   specialSections: {
     getAll: `${baseUrl}/special-section/actives`,
   },

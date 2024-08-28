@@ -20,6 +20,7 @@ export interface Product {
   new_price: number;
   status: ProductStatus;
   available_count: number;
+  rating: number;
   created_at: Date;
   updated_at: Date;
 }
