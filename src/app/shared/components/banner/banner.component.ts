@@ -71,6 +71,9 @@ export class BannerComponent implements OnInit, OnDestroy {
   }
 
   public openBannerUrl(banner: Banner) {
+    if (!banner.button_link) {
+      return
+    }
     window.open(
       '/' + this.translateService.currentLang + banner.button_link,
       banner.url_open_handle

@@ -1,9 +1,11 @@
 import {Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {SideBarProvider} from "./shared/providers/side-bar.provider";
-import {filter, Observable, switchMap, tap} from "rxjs";
+import {filter, Observable, switchMap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {appVersion} from "@constants/app-version";
+import { Capacitor } from '@capacitor/core';
 import {SplashScreen} from "@capacitor/splash-screen";
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 import {DOCUMENT} from "@angular/common";
 import {SeoPages} from "@enums/seo-pages";
 import {SeoHelper} from "./shared/helpers/seo.helper";
@@ -33,7 +35,10 @@ export class AppComponent implements OnInit {
     console.log(appVersion);
     this.watchSeoData();
     this.watchSideBarVisibilityState();
-    this.showSplashScreen();
+    if (Capacitor.getPlatform() !== 'web') {
+      await ScreenOrientation.lock({ orientation: 'natural' });
+      this.showSplashScreen();
+    }
   }
 
   public hideSideBar(): void {
@@ -52,7 +57,7 @@ export class AppComponent implements OnInit {
 
   private async showSplashScreen(): Promise<void> {
     await SplashScreen.show({
-      showDuration: 3000,
+      showDuration: 5000,
       autoHide: true,
     });
   }
