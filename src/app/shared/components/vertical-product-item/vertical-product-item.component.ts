@@ -47,12 +47,7 @@ export class VerticalProductItemComponent implements OnInit, OnDestroy {
 
   public toggleToCart(): void {
     if (this.isInCat) {
-      this.cartStore.products$.pipe(
-        take(1),
-      ).subscribe(products => {
-        const product = products[this.product.id];
-        return this.cartStore.removeFromCart(product)
-      });
+      this.cartStore.removeFromCart(this.product.id)
       return;
     }
     this.cartStore.addToCart({

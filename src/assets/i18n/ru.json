@@ -183,7 +183,9 @@
   "product-card": {
     "add-to-card": "В корзину",
     "remove-from-card": "Удалить",
-    "reviews": "Отзывы"
+    "reviews": "Отзывы",
+    "add-to-card-success-message": "Товар успешно добавлен в вашу корзину",
+    "remove-to-card-success-message": "Товар удален из вашей корзины"
   },
   "genders": {
     "male": "Мужской",

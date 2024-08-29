@@ -88,11 +88,11 @@ export class CartStore extends ComponentStore<CartState> implements OnStoreInit 
       error: null
     }
   });
-  private readonly removeFromCartProductSuccess = this.updater((state, payload: CartProduct) => {
+  private readonly removeFromCartProductSuccess = this.updater((state, payload: number) => {
     const products: CartProductBasket = {
       ...state.products,
     };
-    delete products[payload.product.id];
+    delete products[payload];
     const { totalPrice, originalPrice, hasUnavailableProduct } = Object.values(products).reduce((acc, cur) => {
       acc.totalPrice += (cur.product.new_price || cur.product.price) * cur.count;
       acc.originalPrice += cur.product.price * cur.count;
@@ -227,7 +227,7 @@ export class CartStore extends ComponentStore<CartState> implements OnStoreInit 
     )
   });
 
-  public removeFromCart = this.effect((body$: Observable<CartProduct>) => {
+  public removeFromCart = this.effect((body$: Observable<number>) => {
     return body$.pipe(
       tapResponse(
         (cartProduct) => {

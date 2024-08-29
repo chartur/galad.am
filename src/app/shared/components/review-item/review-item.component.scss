@@ -5,10 +5,13 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $hr-color;
 
   & .user-avatar {
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
     border-radius: 100%;
     overflow: hidden;
     font-size: 30px;
