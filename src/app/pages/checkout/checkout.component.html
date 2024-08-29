@@ -17,7 +17,7 @@
     <div class="col-12">
       <div *ngFor="let product of products$ | async | keyvalue" class="mb-3">
         <div class="d-inline-block">
-          <app-small-item-card [product]="product.value.product" [showPrice]="false" [allowPreview]="false">
+          <app-small-item-card [product]="product.value.product" [showPrice]="false" [allowPreview]="false" [preventAnimation]="true">
             <div *ngIf="product.value.availableCount > 0; else productUnavailable" class="text-muted">
               <div class="small d-flex justify-content-start align-items-center">
                 <b class="me-3">{{ 'checkout.qty' | translate }}: </b>

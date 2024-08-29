@@ -183,7 +183,9 @@
   "product-card": {
     "add-to-card": "Add to Cart",
     "remove-from-card": "Remove to Cart",
-    "reviews": "Feedbacks"
+    "reviews": "Feedbacks",
+    "add-to-card-success-message": "The item successfully added to your cart",
+    "remove-to-card-success-message": "The item removed from your cart"
   },
   "genders": {
     "male": "Male",

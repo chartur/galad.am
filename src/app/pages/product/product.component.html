@@ -4,7 +4,7 @@
 <ng-template #loaded>
   <div *ngIf="product$ | async as product">
     <div class="header-section">
-      <ul class="link-nav-bar d-flex justify-content-center align-items-center m-0">
+      <ul class="link-nav-bar d-flex justify-content-center align-items-center m-0 p-0">
         <li>
           <a routerLink="/">{{ 'menu.home' | translate }}</a>
         </li>
@@ -25,7 +25,10 @@
             </div>
             <div class="col-12 col-md-7 mt-3 mt-md-0">
               <div>
-                <h1 class="product-title">{{ product | propertyTranslator: 'name' | async }}</h1>
+                <h1 class="product-title">
+                  {{ product.serialNumber }}
+                  {{ product | propertyTranslator: 'name' | async }}
+                </h1>
               </div>
               <div class="rating">
                 <star-rating
@@ -47,8 +50,13 @@
               </div>
               <hr>
               <div class="add-to-cart">
-                <input value="1" class="form-control add-to-cart-count" type="number">
-                <button class="btn btn-primary auction-button">Add to Cart</button>
+                <app-counter-input
+                  [(value)]="cartCount"
+                  [min]="0"
+                  [max]="product.available_count"
+                ></app-counter-input>
+                <button (click)="addToCart()" class="btn btn-primary auction-button">
+                  {{ 'product-card.add-to-card' | translate }}</button>
               </div>
               <div (click)="toggleFavoriteState()" class="add-to-list d-inline-block mt-5">
                 <i
@@ -69,7 +77,9 @@
                 </div>
               </div>
               <div class="social-media-share mt-4">
-                <i class="bi bi-facebook me-3"></i>
+                <a [href]="socialShareLinks.fb" target="_blank">
+                  <i class="bi bi-facebook me-3"></i>
+                </a>
                 <i class="bi bi-instagram"></i>
               </div>
             </div>

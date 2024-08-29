@@ -37,6 +37,7 @@ export class SeoHelper {
   public setDescription(description: string): SeoHelper {
     this.tags.descriptions.forEach(tag => {
       this.meta.updateTag({
+        name: tag,
         property: tag,
         content: description
       });
@@ -79,5 +80,9 @@ export class SeoHelper {
       document.getElementById('favicon-link').setAttribute('href', path);
     }
     return this;
+  }
+
+  public getFacebookShareUrl(): string {
+    return `https://www.facebook.com/sharer/sharer.php?u=${appUrl}${this.router.url}`;
   }
 }

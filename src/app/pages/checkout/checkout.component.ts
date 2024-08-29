@@ -55,8 +55,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   public removeItem(product: CartProduct): void {
-    console.log(product);
-    this.cartStore.removeFromCart(product);
+    this.cartStore.removeFromCart(product.product.id);
   }
   public changeProductCount(count: number, basketProduct: CartProduct) {
     basketProduct.count = count;

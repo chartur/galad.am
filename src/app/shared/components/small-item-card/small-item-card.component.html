@@ -1,4 +1,5 @@
 <div [routerLink]="allowPreview ? ['/', translateService.currentLang, 'product', product.id] : null"
+     [class.not-animate]="preventAnimation"
      class="small-item-container d-flex justify-content-start align-items-start cursor-pointer position-relative">
   <img class="product-image" [publicSrc]="product.mainAsset">
   <div>

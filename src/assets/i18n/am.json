@@ -183,7 +183,9 @@
   "product-card": {
     "add-to-card": "Ավելացնել",
     "remove-from-card": "Հեռացնել",
-    "reviews": "Կարծիքներ"
+    "reviews": "Կարծիքներ",
+    "add-to-card-success-message": "Ապրանքը հաջողությամբ ավելացվեց ձեր զամբյուղում",
+    "remove-to-card-success-message": "Ապրանքը հեռացվել է ձեր զամբյուղից"
   },
   "genders": {
     "male": "Տղամարդ",

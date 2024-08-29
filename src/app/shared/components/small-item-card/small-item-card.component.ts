@@ -15,6 +15,7 @@ export class SmallItemCardComponent {
   @Input() allowPreview: boolean = true;
   @Input() product: Product;
   @Input() showPrice: boolean = true;
+  @Input() preventAnimation: boolean = false;
 
   constructor(
     public translateService: TranslateService

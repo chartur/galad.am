@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ProductsStore } from "@stores/products.store";
-import {filter, Observable, Subscription} from "rxjs";
+import {filter, map, Observable, Subscription, take, tap} from "rxjs";
 import { Product } from "@interfaces/product";
 import { ActivatedRoute, Router } from "@angular/router";
 import {Meta, Title} from "@angular/platform-browser";
@@ -10,6 +10,8 @@ import {SeoHelper} from "../../shared/helpers/seo.helper";
 import {publicPath} from "@environment/environment";
 import {FavoritesStore} from "@stores/favorites.store";
 import {ProductReviewsStore} from "@stores/product-reviews.store";
+import {CartStore} from "@stores/cart.store";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-product',
@@ -18,6 +20,7 @@ import {ProductReviewsStore} from "@stores/product-reviews.store";
 })
 export class ProductComponent implements OnInit, OnDestroy {
   @ViewChild("reviews") reviewsSection: ElementRef
+  public cartCount: number = 0;
   public readonly product$: Observable<Product> = this.productsStore.product$;
   public readonly relatedProducts$: Observable<Product[]> = this.productsStore.relatedProducts$;
   public readonly relatedProductsLoading$: Observable<boolean> = this.productsStore.relatedProductsLoading$;
@@ -26,10 +29,15 @@ export class ProductComponent implements OnInit, OnDestroy {
   public productId: number;
   public readonly reviewCount$: Observable<number> = this.productReviewsStore.count$;
   public readonly rating$: Observable<number> = this.productReviewsStore.rating$;
-
+  public socialShareLinks = {
+    fb: '',
+    instagram: ''
+  };
   private subscriptions: Subscription = new Subscription();
   constructor(
     private productsStore: ProductsStore,
+    private cartStore: CartStore,
+    private toastrService: ToastrService,
     private route: ActivatedRoute,
     private translateService: TranslateService,
     private router: Router,
@@ -74,6 +82,30 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  public addToCart(): void {
+    this.product$
+      .pipe(
+        take(1)
+      )
+      .subscribe((product) => {
+        if (!this.cartCount) {
+          this.cartStore.removeFromCart(this.productId);
+          this.toastrService.error(
+            this.translateService.instant("product-card.remove-to-card-success-message")
+          );
+          return;
+        }
+        this.cartStore.addToCart({
+          product,
+          count:this.cartCount,
+          availableCount: product.available_count
+        });
+        this.toastrService.success(
+          this.translateService.instant("product-card.add-to-card-success-message")
+        );
+      })
+  }
+
   private listenProductData(): void {
     this.subscriptions.add(
       this.product$
@@ -90,8 +122,13 @@ export class ProductComponent implements OnInit, OnDestroy {
             this.translateService
           ).init());
 
+          this.cartStore.products$.pipe(
+            take(1),
+            map(basket => basket?.[this.productId]?.count || 1)
+          ).subscribe((count) => this.cartCount = count);
+
           this.seoHelper
-            .setTitle(productClassTranslator.name)
+            .setTitle(`${product.serialNumber} ${productClassTranslator.name}`)
             .setDescription(productClassTranslator.description)
             .setImage(
               publicPath(product.mainAsset)
@@ -100,6 +137,8 @@ export class ProductComponent implements OnInit, OnDestroy {
             .setKeywords(
               tagsClassTranslator.map(tag => tag.name).join(',')
             );
+
+          this.socialShareLinks.fb = this.seoHelper.getFacebookShareUrl();
         })
     );
   }

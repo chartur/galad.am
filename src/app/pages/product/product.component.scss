@@ -1,6 +1,7 @@
 @import "variables";
 @import "forms";
 @import "text";
+@import "bootstrap/scss/mixins";
 
 .link-nav-bar {
   column-gap: 15px;
@@ -99,5 +100,13 @@ h2 {
     width: 100%;
     top: calc(100% + 7px);
     left: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .link-nav-bar {
+    & li {
+      font-size: 12px;
+    }
   }
 }

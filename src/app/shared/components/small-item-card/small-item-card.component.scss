@@ -37,7 +37,7 @@
     }
   }
 
-  &:hover {
+  &:not(.not-animate):hover {
     box-shadow: 0 0 10px -5px black;
     transform: scale(1.01);
   }
