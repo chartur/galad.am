@@ -1,3 +1,7 @@
+.app {
+  height: 100vh;
+  overflow: scroll;
+}
 .app-container {
   &::after {
     position: fixed;
