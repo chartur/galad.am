@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ProductReview} from "@interfaces/product-review";
-import {ComponentStore, tapResponse} from "@ngrx/component-store";
+import {ComponentStore} from "@ngrx/component-store";
 import {Observable, switchMap, tap} from "rxjs";
 import {ProductReviewsService} from "@services/product-reviews.service";
 import {ProductReviewsDto} from "@dto/response/product-reviews.dto";
@@ -54,15 +54,15 @@ export class ProductReviewsStore extends ComponentStore<ProductReviewsState> {
     return body$.pipe(
       tap(() => this.setLoadingState(true)),
       switchMap((productId) => this.productReviewsService.getProductReviews(productId).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.setDateSuccess(response)
           },
-          (error) => {
+          error: (error) => {
             this.toastrService.error("Unable to load product reviews");
             this.setDateFailure(error)
           }
-        )
+        })
       ))
     )
   })

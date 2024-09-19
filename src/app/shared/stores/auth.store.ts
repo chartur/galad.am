@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from "@interfaces/user";
-import { ComponentStore, OnStoreInit, tapResponse } from "@ngrx/component-store";
+import { ComponentStore, OnStoreInit } from "@ngrx/component-store";
 import { AuthService } from "@services/auth.service";
 import { Observable, skip, switchMap, takeUntil, tap } from "rxjs";
 import { SignInRequestDto } from "@dto/request/sign-in-request.dto";
@@ -89,15 +89,15 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
       tap(() => this.setLoadingStateReducer(true)),
       switchMap((body) => this.authService.signIn(body)
         .pipe(
-          tapResponse(
-            (response) => {
+          tap({
+            next: (response) => {
               this.signInReducer(response);
               this.authSuccessAction();
             },
-            (e) => {
+            error: (e) => {
               this.authFailureAction(e);
             }
-          ),
+          }),
         )
       )
     )
@@ -108,15 +108,15 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
       tap(() => this.setLoadingStateReducer(true)),
       switchMap((body) => this.authService.signUp(body)
         .pipe(
-          tapResponse(
-            (response) => {
+          tap({
+            next: (response) => {
               this.signInReducer(response);
               this.authSuccessAction();
             },
-            (e) => {
+            error: (e) => {
               this.authFailureAction(e);
             }
-          ),
+          }),
         )
       )
     )
@@ -124,15 +124,15 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
 
   public logout = this.effect((body$: Observable<void>) => {
     return body$.pipe(
-      tapResponse(
-        () => {
+      tap({
+        next: () => {
           this.logoutReducer()
           this.logoutSuccessAction()
         },
-        (e) => {
+        error: (e) => {
           this.logoutFailureAction(e);
         }
-      ),
+      }),
     )
   })
 
@@ -140,15 +140,15 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
     return body$.pipe(
       tap(() => this.setLoadingStateReducer(true)),
       switchMap((body) => this.authService.updatePersonalSettings(body).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.signInReducer(response);
             this.toastrService.success(SystemMessages.genericSuccessMessages.SAVED);
           },
-          (e: unknown) => {
+          error: (e: unknown) => {
             this.authFailureAction(e);
           },
-        )
+        })
       ))
     )
   });
@@ -157,16 +157,16 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
     return body$.pipe(
       tap(() => this.setLoadingStateReducer(true)),
       switchMap((body) => this.authService.updatePasswordSettings(body).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.signInReducer(response);
             console.log("TEST");
             this.toastrService.success(SystemMessages.genericSuccessMessages.SAVED);
           },
-          (e: unknown) => {
+          error: (e: unknown) => {
             this.authFailureAction(e);
           },
-        )
+        })
       ))
     )
   });

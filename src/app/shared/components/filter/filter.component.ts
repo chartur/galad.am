@@ -7,7 +7,7 @@ import {Tag} from "@interfaces/tag";
 import {CategoryWithProductCount} from "@interfaces/category-with-product-count";
 import {FilterStore} from "@stores/filter.store";
 import {filterPrices} from "@constants/filter-prices";
-import {Options} from "ngx-slider-v2";
+import {Options} from "@angular-slider/ngx-slider";
 import {Category} from "@interfaces/category";
 import {isPlatformBrowser} from "@angular/common";
 import {Gender} from "@enums/gender";

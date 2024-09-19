@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, switchMap, tap } from "rxjs";
-import { ComponentStore, tapResponse } from "@ngrx/component-store";
+import { ComponentStore } from "@ngrx/component-store";
 import { CategoriesService } from "@services/categories.service";
 import { CategoryWithProductCount } from "@interfaces/category-with-product-count";
 
@@ -29,14 +29,14 @@ export class CategoriesStore extends ComponentStore<CategoriesState>{
     return body$.pipe(
       tap(() => this.setLoadingStateReducer(true)),
       switchMap(() => this.categoriesService.loadCategories().pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.loadCategoriesSuccessReducer(response)
           },
-          (error) => {
+          error: (error) => {
             this.loadCategoriesFailureReducer(error)
           }
-        )
+        })
       ))
     )
   })

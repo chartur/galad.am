@@ -23,7 +23,6 @@ import {GiftBoxComponent} from "@components/gift-box/gift-box.component";
 import {ProfileActionsListComponent} from "@components/profile-actions-list/profile-actions-list.component";
 import {ImagePickerComponent} from "@components/image-picker/image-picker.component";
 import {FilterComponent} from "@components/filter/filter.component";
-import {NgxSliderModule} from "ngx-slider-v2";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CounterInputComponent} from "@components/counter-input/counter-input.component";
 import {CheckoutUserInfoComponent} from "@components/checkout-user-info/checkout-user-info.component";
@@ -32,6 +31,7 @@ import {ProductReviewsComponent} from "@components/product-reviews/product-revie
 import {IonicModule} from "@ionic/angular";
 import {ReviewItemComponent} from "@components/review-item/review-item.component";
 import {StarRatingModule} from "angular-star-rating";
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
 
 @NgModule({

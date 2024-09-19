@@ -1,5 +1,5 @@
 import {Inject, inject, Injectable} from '@angular/core';
-import {ComponentStore, OnStoreInit, tapResponse} from "@ngrx/component-store";
+import {ComponentStore, OnStoreInit} from "@ngrx/component-store";
 import {catchError, EMPTY, filter, map, Observable, switchMap, take, takeUntil, tap} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {LocalStorageService} from "@services/local-storage.service";
@@ -112,15 +112,14 @@ export class FavoritesStore extends ComponentStore<FavoritesStoreState> implemen
         take(1)
       )),
       switchMap((ids) => this.favoritesService.getFavoriteProducts([...ids])),
-      tapResponse(
-        (response) => {
-          console.log(response);
+      tap({
+        next: (response) => {
           this.setFavoriteProductsSuccess(response);
         },
-        (error) => {
+        error: (error) => {
           this.setFavoriteProductsFailure(error);
         }
-      )
+      })
     )
   })
 

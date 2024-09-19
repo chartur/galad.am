@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product} from "@interfaces/product";
-import {ComponentStore, tapResponse} from "@ngrx/component-store";
+import {ComponentStore} from "@ngrx/component-store";
 import {Observable, switchMap, tap} from "rxjs";
 import {Filter} from "@interfaces/filter";
 import {FilterService} from "@services/filter.service";
@@ -76,14 +76,14 @@ export class FilterStore extends ComponentStore<FilterState> {
       tap(() => this.setLoadingState(true)),
       tap((filter) => this.setFilter(filter)),
       switchMap((body) => this.filterService.filter(body).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.filterSuccessReducer(response);
           },
-          (err) => {
+          error: (err) => {
             this.filterFailureReducer(err);
           }
-        )
+        })
       ))
     )
   });

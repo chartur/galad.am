@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ComponentStore, tapResponse} from "@ngrx/component-store";
+import {ComponentStore} from "@ngrx/component-store";
 import {Tag} from "@interfaces/tag";
 import {Observable, switchMap, tap} from "rxjs";
 import {TagsService} from "@services/tags.service";
@@ -48,16 +48,16 @@ export class TagsStore extends ComponentStore<TagsState>{
     return body$.pipe(
       tap(() => this.setLoadingReducer(true)),
       switchMap(() => this.tagsService.getTags({ limit: -1, page: 0 }).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.tagsSuccessReducer(response.results);
           },
-          (err) => {
-            this.tagsFailureReducer(err);
+          error: (err) => {
+              this.tagsFailureReducer(err);
           }
-        )
-      ))
-    )
+        })
+      )
+    ))
   })
 
   constructor(
