@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: (localStorage.getItem("lang") || defaultLanguage)
+    redirectTo: defaultLanguage
   },
   {
     path: ":language",

@@ -1,16 +1,15 @@
-import { APP_INITIALIZER, NgModule, TransferState } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ComponentsModule } from "@components/components.module";
-import { TranslateLoader, TranslateModule, TranslateService } from "@ngx-translate/core";
-import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import {HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi} from "@angular/common/http";
 
 
 import { AppComponent } from './app.component';
 import { defaultLanguage } from "@constants/languages";
 import { languageInitializerFactory } from "./factories/language-initializer.factory";
-import { translateBrowserLoaderFactory } from "./factories/http-translate-loader.factory";
 import {ToastrModule} from "ngx-toastr";
 import {userLoadInitializerFactory} from "@factories/user-load-initializer.factory";
 import {AuthService} from "@services/auth.service";
@@ -24,41 +23,41 @@ import {CartStore} from "@stores/cart.store";
 @NgModule({ declarations: [
         AppComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }),
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ComponentsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateBrowserLoaderFactory,
-                deps: [HttpClient, TransferState]
-            },
-            useDefaultLang: true,
-            defaultLanguage: localStorage.getItem("lang") || defaultLanguage
-        }),
-        ToastrModule.forRoot()], providers: [
-        provideComponentStore(AuthStore),
-        provideComponentStore(FavoritesStore),
-        provideComponentStore(CartStore),
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: JwtTokenInterceptor,
-            deps: [LocalStorageService],
-            multi: true,
-        },
-        {
-            provide: APP_INITIALIZER,
-            useFactory: languageInitializerFactory,
-            deps: [TranslateService],
-            multi: true
-        },
-        {
-            provide: APP_INITIALIZER,
-            useFactory: userLoadInitializerFactory,
-            deps: [AuthService, AuthStore],
-            multi: true
-        },
-        provideHttpClient(withInterceptorsFromDi())
+    bootstrap: [AppComponent],
+    imports: [
+      BrowserModule.withServerTransition({ appId: 'serverApp' }),
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      ComponentsModule,
+      TranslateModule.forRoot({
+          useDefaultLang: true,
+          defaultLanguage: defaultLanguage,
+      }),
+      ToastrModule.forRoot()
+    ], providers: [
+      provideComponentStore(AuthStore),
+      provideComponentStore(FavoritesStore),
+      provideComponentStore(CartStore),
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: JwtTokenInterceptor,
+          deps: [LocalStorageService],
+          multi: true,
+      },
+      {
+          provide: APP_INITIALIZER,
+          useFactory: languageInitializerFactory,
+          deps: [TranslateService],
+          multi: true
+      },
+      {
+          provide: APP_INITIALIZER,
+          useFactory: userLoadInitializerFactory,
+          deps: [AuthService, AuthStore],
+          multi: true
+      },
+        provideHttpClient(
+          withInterceptorsFromDi()
+        ),
     ] })
 export class AppModule { }
