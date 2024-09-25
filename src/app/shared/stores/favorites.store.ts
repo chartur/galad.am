@@ -3,8 +3,6 @@ import {ComponentStore, OnStoreInit} from "@ngrx/component-store";
 import {catchError, EMPTY, filter, map, Observable, switchMap, take, takeUntil, tap} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {LocalStorageService} from "@services/local-storage.service";
-import {localStorageFactory} from "@factories/local-storage.factory";
-import {LOCAL_STORAGE_TOKEN} from "../injection-tokens/local-storage.token";
 import {Product} from "@interfaces/product";
 import {FavoritesService} from "@services/favorites.service";
 

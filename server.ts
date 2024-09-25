@@ -6,6 +6,20 @@ import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import {AppServerModule} from "./src/app/app.server.module";
+import {setSelectedLanguage} from "@constants/languages";
+import {inject} from "@angular/core";
+import {LocalStorageService} from "@services/local-storage.service";
+import * as cookieParser from "cookie-parser";
+import {Request} from "express";
+
+function getLocalStorage(req: Request) {
+  try {
+    return JSON.parse(req.cookies[LocalStorageService.storage_path]);
+  } catch (e) {
+    return {};
+  }
+}
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
@@ -18,6 +32,7 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+  server.use(cookieParser())
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -29,6 +44,9 @@ export function app(): express.Express {
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
+
+    const storage = getLocalStorage(req);
+    setSelectedLanguage(req.url.substring(1, 3) ?? storage.lang);
 
     commonEngine
       .render({

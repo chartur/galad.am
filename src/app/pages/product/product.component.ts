@@ -78,7 +78,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   public goToReviewSections(): void {
-    console.log(this.reviewsSection);
     this.reviewsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 

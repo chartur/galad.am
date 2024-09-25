@@ -160,7 +160,6 @@ export class AuthStore extends ComponentStore<AuthState> implements OnStoreInit 
         tap({
           next: (response) => {
             this.signInReducer(response);
-            console.log("TEST");
             this.toastrService.success(SystemMessages.genericSuccessMessages.SAVED);
           },
           error: (e: unknown) => {
