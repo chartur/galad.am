@@ -1,12 +1,24 @@
-import 'localstorage-polyfill'
-global['localStorage'] = localStorage;
 import 'zone.js/node';
+
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { AppServerModule } from './src/main.server';
+import {AppServerModule} from "./src/app/app.server.module";
+import {setSelectedLanguage} from "@constants/languages";
+import {inject} from "@angular/core";
+import {LocalStorageService} from "@services/local-storage.service";
+import * as cookieParser from "cookie-parser";
+import {Request} from "express";
+
+function getLocalStorage(req: Request) {
+  try {
+    return JSON.parse(req.cookies[LocalStorageService.storage_path]);
+  } catch (e) {
+    return {};
+  }
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -20,6 +32,7 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+  server.use(cookieParser())
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -32,14 +45,16 @@ export function app(): express.Express {
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
+    const storage = getLocalStorage(req);
+    setSelectedLanguage(req.url.substring(1, 3) ?? storage.lang);
+
     commonEngine
       .render({
         bootstrap: AppServerModule,
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: distFolder,
-        providers: [
-          { provide: APP_BASE_HREF, useValue: baseUrl },],
+        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));

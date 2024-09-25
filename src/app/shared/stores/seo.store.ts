@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ComponentStore, tapResponse} from "@ngrx/component-store";
+import {ComponentStore} from "@ngrx/component-store";
 import {SeoData} from "@interfaces/seo-data";
 import {SeoService} from "@services/seo.service";
-import {Observable, switchMap} from "rxjs";
+import {Observable, switchMap, tap} from "rxjs";
 import {SeoPages} from "@enums/seo-pages";
 
 export type SeoDataMap = {
@@ -30,10 +30,10 @@ export class SeoStore extends ComponentStore<SeoState>{
   public readonly loadPageSeo = this.effect((body$: Observable<SeoPages>) => {
     return body$.pipe(
       switchMap((page) => this.seoService.getPage(page).pipe(
-        tapResponse(
-          (response) => this.setPageSeoSuccess(response),
-          (error) => this.setPageSeoFailure(error)
-        )
+        tap({
+          next: (response) => this.setPageSeoSuccess(response),
+          error: (error) => this.setPageSeoFailure(error)
+        })
       ))
     )
   });

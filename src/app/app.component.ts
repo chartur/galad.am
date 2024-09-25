@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   private async showSplashScreen(): Promise<void> {
     await SplashScreen.show({
-      showDuration: 5000,
+      showDuration: 4000,
       autoHide: true,
     });
   }

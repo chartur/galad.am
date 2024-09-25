@@ -93,7 +93,6 @@ export class FilterComponent implements OnInit {
   }
 
   private validateFilter(filter: Filter): Filter {
-    console.log(filter);
     return {
       ...filter,
       tags: new Set([...this.filter.tags].filter(id => !!id)),

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentStore, tapResponse } from "@ngrx/component-store";
+import { ComponentStore } from "@ngrx/component-store";
 import { Category } from "@interfaces/category";
 import { Observable, switchMap, tap } from "rxjs";
 import { ProductsService } from "@services/products.service";
@@ -72,14 +72,14 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     return body$.pipe(
       tap(() => this.setNewArrivalsLoadingReducer(true)),
       switchMap(() => this.productsService.getNewArrivals().pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.setNewArrivalsSuccessReducer(response);
           },
-          (error) => {
+          error: (error) => {
             this.setNewArrivalsFailureReducer(error);
           }
-        )
+        })
       ))
     )
   });
@@ -87,14 +87,14 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     return body$.pipe(
       tap(() => this.setProductLoadingReducer(true)),
       switchMap((id) => this.productsService.getProductById(id).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.setProductSuccessReducer(response)
           },
-          (error) => {
+          error: (error) => {
             this.setProductFailureReducer(error);
           }
-        )
+        })
       ))
     )
   });
@@ -102,14 +102,14 @@ export class ProductsStore extends ComponentStore<ProductsState>{
     return body$.pipe(
       tap(() => this.setRelatedProductsLoadingReducer(true)),
       switchMap((id) => this.productsService.getRelatedProducts(id).pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.setRelatedProductsSuccessReducer(response)
           },
-          (error) => {
+          error: (error) => {
             this.setRelatedProductsFailureReducer(error);
           }
-        )
+        })
       ))
     )
   });

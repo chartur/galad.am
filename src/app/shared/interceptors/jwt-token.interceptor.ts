@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpHeaders
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpHeaders } from '@angular/common/http';
 import { Observable, of, switchMap, take } from 'rxjs';
 import { LocalStorageService } from "@services/local-storage.service";
 

@@ -93,7 +93,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     this.personalSettingsFormValueChangesSubscription = this.personalSettingsForm.valueChanges.subscribe(
       () => {
-        console.log(this.personalSettingsForm.value);
         this.checkIfPersonalSettingsChanged()
       }
     );

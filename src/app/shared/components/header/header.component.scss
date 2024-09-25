@@ -1,6 +1,6 @@
 @import "variables";
 .header-wrapper {
-  height: 90px;
+  height: calc(90px + env(safe-area-inset-top));
 }
 .safe-area {
   position: fixed;

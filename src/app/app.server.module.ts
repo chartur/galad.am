@@ -3,29 +3,21 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { defaultLanguage } from "./constants/languages";
-import { TransferState } from "@angular/platform-browser";
-import { httpTranslateLoaderServer } from "./factories/http-translate-loader-server.factory";
-import {provideHttpClient, withFetch} from "@angular/common/http";
-import {DirectivesModule} from "@directives/directives.module";
+import {provideClientHydration, withEventReplay} from "@angular/platform-browser";
+import {HttpClient, provideHttpClient, withFetch} from "@angular/common/http";
 
 @NgModule({
   imports: [
     AppModule,
-    ServerModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoaderServer,
-        deps: [TransferState]
-      },
-      useDefaultLang: true,
-      defaultLanguage: localStorage.getItem("lang") || defaultLanguage
-    })
+    ServerModule
   ],
   providers: [
-    provideHttpClient(withFetch())
+    provideClientHydration(
+      withEventReplay(),
+    ),
+    provideHttpClient(
+      withFetch()
+    )
   ],
   bootstrap: [AppComponent],
 })

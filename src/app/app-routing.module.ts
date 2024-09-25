@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LanguageGuard } from "@guards/language.guard";
-import { defaultLanguage } from "@constants/languages";
+import {selectedLanguage} from "@constants/languages";
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: (localStorage.getItem("lang") || defaultLanguage)
+    redirectTo: selectedLanguage
   },
   {
     path: ":language",

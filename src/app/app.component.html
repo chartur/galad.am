@@ -1,15 +1,17 @@
-<app-header></app-header>
-<app-side-nav-bar></app-side-nav-bar>
-<div
-  [class.modal-open]="visibility$ | async"
-  class="app-container position-relative"
-  (click)="hideSideBar()"
->
+<div class="app">
+  <app-header></app-header>
+  <app-side-nav-bar></app-side-nav-bar>
   <div
-    [class.side-bar-visible]="visibility$ | async"
-    class="app-content position-relative"
+    [class.modal-open]="visibility$ | async"
+    class="app-container position-relative"
+    (click)="hideSideBar()"
   >
-    <router-outlet></router-outlet>
+    <div
+      [class.side-bar-visible]="visibility$ | async"
+      class="app-content position-relative"
+    >
+      <router-outlet></router-outlet>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

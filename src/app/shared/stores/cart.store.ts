@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from "@interfaces/product";
 import {CartProduct} from "@interfaces/cart-product";
-import {ComponentStore, OnStoreInit, tapResponse} from "@ngrx/component-store";
+import {ComponentStore, OnStoreInit} from "@ngrx/component-store";
 import {map, Observable, switchMap, take, takeUntil, tap} from "rxjs";
 import {PromoCodeDetails} from "@interfaces/promo-code-details";
 import {LocalStorageService} from "@services/local-storage.service";
@@ -183,12 +183,12 @@ export class CartStore extends ComponentStore<CartState> implements OnStoreInit 
 
   public addToCart = this.effect((body$: Observable<CartProduct>) => {
     return body$.pipe(
-      tapResponse(
-        (cartProduct) => {
+      tap({
+        next: (cartProduct) => {
           this.addCartProductsSuccess(cartProduct);
         },
-        () => {}
-      )
+        error: () => {}
+      })
     )
   });
 
@@ -196,14 +196,14 @@ export class CartStore extends ComponentStore<CartState> implements OnStoreInit 
     return body$.pipe(
       tap(() => this.setLoadingState(true)),
       switchMap((body) => this.orderService.createOrder(body)),
-      tapResponse(
-        (cartProduct) => {
+      tap({
+        next: (cartProduct) => {
           this.setCartProductsSuccess({});
         },
-        (e: any) => {
+        error: (e: any) => {
           this.toastr.error(e.response.message);
         }
-      )
+      })
     )
   });
 
@@ -215,26 +215,25 @@ export class CartStore extends ComponentStore<CartState> implements OnStoreInit 
         map(products => Object.keys(products).map(Number))
       )),
       switchMap((productIds) => this.productsService.getProductsByIds(productIds)),
-      tapResponse(
-        (products) => {
+      tap({
+        next: (products) => {
           this.loadProductsSuccess(products);
         },
-        (e: any) => {
+        error: (e: any) => {
           this.toastr.error(e.response.message);
-
         }
-      )
+      })
     )
   });
 
   public removeFromCart = this.effect((body$: Observable<number>) => {
     return body$.pipe(
-      tapResponse(
-        (cartProduct) => {
+      tap({
+        next: (cartProduct) => {
           this.removeFromCartProductSuccess(cartProduct);
         },
-        () => {}
-      )
+        error: () => {}
+      })
     )
   });
 

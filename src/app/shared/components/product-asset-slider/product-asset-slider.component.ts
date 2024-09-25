@@ -52,7 +52,6 @@ export class ProductAssetSliderComponent implements AfterViewInit {
   }
 
   public scrollToLeft(): void {
-    console.log(this.slider.nativeElement.scrollLeft - this._assetElementSize);
     this.slider.nativeElement.scrollBy({
       left: this._assetElementSize * -1,
       behavior: 'smooth'

@@ -1,16 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-import { LOCAL_STORAGE_TOKEN } from "../injection-tokens/local-storage.token";
 import * as _ from "lodash";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  private storage_path = "galad_storage_path";
+  static storage_path = "galad_storage_path";
 
   constructor(
-    @Inject(LOCAL_STORAGE_TOKEN) private storage: Storage
+    private storage: CookieService
   ) {}
 
   public get<T>(path: string): T {
@@ -24,15 +24,15 @@ export class LocalStorageService {
   }
 
   public destroy(): void {
-    this.storage.clear();
+    this.storage.delete("galad_storage_path");
   }
 
   private get store(): Record<string, any> {
-    const storage = this.storage.getItem(this.storage_path);
+    const storage = this.storage.get(LocalStorageService.storage_path);
     return storage ? JSON.parse(storage) : {};
   }
 
   private set store(data) {
-    this.storage.setItem(this.storage_path, JSON.stringify(data));
+    this.storage.set(LocalStorageService.storage_path, JSON.stringify(data), null, '/');
   }
 }

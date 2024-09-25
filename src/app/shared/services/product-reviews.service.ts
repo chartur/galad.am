@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {ProductReviewsDto} from "@dto/response/product-reviews.dto";
 import {Category} from "@interfaces/category";

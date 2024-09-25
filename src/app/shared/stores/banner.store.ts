@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Banner } from "@interfaces/banner";
-import { ComponentStore, tapResponse } from "@ngrx/component-store";
-import { Observable, switchMap } from "rxjs";
+import { ComponentStore } from "@ngrx/component-store";
+import {Observable, switchMap, tap} from "rxjs";
 import { BannerService } from "@services/banner.service";
 import { ToastrService } from "ngx-toastr";
 import { SystemMessages } from "@constants/system-messages";
@@ -33,15 +33,15 @@ export class BannerStore extends ComponentStore<BannersState>{
   public readonly loadBanners = this.effect(trigger$ => {
     return trigger$.pipe(
       switchMap(() => this.bannerService.loadBanners().pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.loadBannersSuccessReducer(response);
           },
-          (error: any) => {
+          error: (error: any) => {
             this.loadBannersFailureReducer(error);
             this.toastrService.error(error?.error?.message || SystemMessages.genericErrorMessages.WRONG)
           }
-        )
+        })
       ))
     )
   })

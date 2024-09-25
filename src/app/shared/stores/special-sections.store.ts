@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SpecialSection } from "@interfaces/special-section";
-import { ComponentStore, tapResponse } from "@ngrx/component-store";
+import { ComponentStore } from "@ngrx/component-store";
 import { Observable, switchMap, tap } from "rxjs";
 import { SpecialSectionsService } from "@services/special-sections.service";
 
@@ -31,14 +31,14 @@ export class SpecialSectionsStore extends ComponentStore<SpecialSectionsState>{
     return body$.pipe(
       tap(() => this.setLoadingStateReducer(true)),
       switchMap(() => this.specialSectionsService.loadSections().pipe(
-        tapResponse(
-          (response) => {
+        tap({
+          next: (response) => {
             this.loadSectionsSuccessReducer(response)
           },
-          (error) => {
+          error: (error) => {
             this.loadSectionsFailureReducer(error)
           }
-        )
+        })
       ))
     )
   })
