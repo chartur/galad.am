@@ -4,7 +4,7 @@ import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import {provideClientHydration, withEventReplay} from "@angular/platform-browser";
-import {HttpClient, provideHttpClient, withFetch} from "@angular/common/http";
+import {provideHttpClient, withFetch} from "@angular/common/http";
 
 @NgModule({
   imports: [
