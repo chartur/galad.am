@@ -18,7 +18,7 @@ import {TelegramService} from "@services/telegram.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   public visibility$: Observable<boolean> = this.sideBarProvider.visibility$;
 
   constructor(
@@ -41,9 +41,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       await ScreenOrientation.lock({ orientation: 'natural' });
       this.showSplashScreen();
     }
-  }
-
-  ngAfterViewInit() {
     this.telegramService.init();
   }
 
