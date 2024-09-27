@@ -1,6 +1,6 @@
-import { Inject, Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import * as _ from "lodash";
-import {CookieService} from "ngx-cookie-service";
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class LocalStorageService {
   static storage_path = "galad_storage_path";
 
   constructor(
-    private storage: CookieService
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public get<T>(path: string): T {
@@ -24,15 +24,22 @@ export class LocalStorageService {
   }
 
   public destroy(): void {
-    this.storage.delete("galad_storage_path");
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(LocalStorageService.storage_path);
+    }
   }
 
   private get store(): Record<string, any> {
-    const storage = this.storage.get(LocalStorageService.storage_path);
+    if (!isPlatformBrowser(this.platformId)) {
+      return {};
+    }
+    const storage = localStorage.getItem(LocalStorageService.storage_path);
     return storage ? JSON.parse(storage) : {};
   }
 
   private set store(data) {
-    this.storage.set(LocalStorageService.storage_path, JSON.stringify(data), null, '/');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(LocalStorageService.storage_path, JSON.stringify(data));
+    }
   }
 }

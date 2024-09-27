@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {SideBarProvider} from "./shared/providers/side-bar.provider";
 import {filter, Observable, switchMap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,13 +11,14 @@ import {SeoPages} from "@enums/seo-pages";
 import {SeoHelper} from "./shared/helpers/seo.helper";
 import {publicPath} from "@environment/environment";
 import {SeoStore} from "@stores/seo.store";
+import {TelegramService} from "@services/telegram.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   public visibility$: Observable<boolean> = this.sideBarProvider.visibility$;
 
   constructor(
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT)
     private document: Document,
     private seoStore: SeoStore,
-    private seoHelper: SeoHelper
+    private seoHelper: SeoHelper,
+    private telegramService: TelegramService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -39,6 +41,10 @@ export class AppComponent implements OnInit {
       await ScreenOrientation.lock({ orientation: 'natural' });
       this.showSplashScreen();
     }
+  }
+
+  ngAfterViewInit() {
+    this.telegramService.init();
   }
 
   public hideSideBar(): void {
