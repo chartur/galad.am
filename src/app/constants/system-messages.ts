@@ -13,5 +13,8 @@ export const SystemMessages = {
     SIGN_IN_SUCCESS: "You have successfully logged in!",
     LOGOUT_SUCCESS: "You have successfully logged out!",
     SIGN_IN_INVALID_FORM: "Login form is invalid",
+  },
+  order: {
+    minimumPrice: "Your order total should be at least :price"
   }
 }

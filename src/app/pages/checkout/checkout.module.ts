@@ -6,6 +6,7 @@ import {CheckoutComponent} from "./checkout.component";
 import {ComponentsModule} from "@components/components.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {PipesModule} from "../../shared/pipes/pipes.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {PipesModule} from "../../shared/pipes/pipes.module";
     CheckoutRoutingModule,
     ComponentsModule,
     TranslateModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ]
 })
 export class CheckoutModule { }

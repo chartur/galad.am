@@ -5,6 +5,7 @@ import { selectedLanguage } from "../../constants/languages";
 import { TranslateService } from "@ngx-translate/core";
 import {isPlatformBrowser} from "@angular/common";
 import {LocalStorageService} from "@services/local-storage.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class LanguageGuard  {
     private translateService: TranslateService,
     @Inject(PLATFORM_ID)
     private platformId: Object,
-    private localStorageService: LocalStorageService
+    private cookieService: CookieService
   ) {
   }
 
@@ -36,7 +37,7 @@ export class LanguageGuard  {
           take(1)
         ).subscribe();
       if (isPlatformBrowser(this.platformId)) {
-        this.localStorageService.set("lang", selectedLanguage);
+        this.cookieService.set("lang", selectedLanguage);
       }
       return false;
     }
@@ -47,7 +48,7 @@ export class LanguageGuard  {
           take(1)
         )
         .subscribe();
-      this.localStorageService.set("lang", route.params["language"]);
+      this.cookieService.set("lang", route.params["language"]);
     }
     return true;
   }

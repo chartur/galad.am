@@ -50,7 +50,7 @@ export class CheckoutUserInfoComponent implements OnInit, OnDestroy {
   private initForm(): void {
     this.form = this.formBuilder.group({
       email: [this.user?.email, [Validators.required, Validators.email]],
-      phone: [this.user?.phone, Validators.required]
+      phone: [this.user?.phone, [Validators.required, Validators.pattern('^[0-9]{7,12}$')]]
     });
   }
 }

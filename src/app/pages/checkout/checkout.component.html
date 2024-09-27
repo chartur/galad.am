@@ -77,9 +77,12 @@
         <div class="cart-details-flex d-flex justify-content-start align-items-start mb-2">
           <b>{{ 'checkout.promo-code' | translate }}:</b>
           <div class="promo-input-group input-group">
-            <input class="promo-input form-control form-control-sm">
-            <span class="input-group-text">
+            <input [(ngModel)]="promoCodeValue" class="promo-input form-control form-control-sm">
+            <span (click)="loadPromoCode()" class="input-group-text">
               <i class="bi bi-plus"></i>
+            </span>
+            <span (click)="removePromo()" class="input-group-text">
+              <i class="bi bi-trash"></i>
             </span>
           </div>
         </div>
@@ -88,11 +91,16 @@
           <div>
             <div class="cart-details-sub-flex d-flex justify-content-start align-items-center">
               <small>{{ 'checkout.products' | translate }}:</small>
-              <small>{{ discount$ | async }}</small>
+              <small>{{ (discounts$ | async).product }}</small>
             </div>
-            <div class="cart-details-sub-flex d-flex justify-content-start align-items-center">
+            <div *ngIf="(promo$ | async) as promo" class="cart-details-sub-flex d-flex justify-content-start align-items-center">
               <small>{{ 'checkout.promo-code' | translate }}:</small>
-              <small>{{ (promo$ | async).discount }}</small>
+              <small>
+                <span *ngIf="promo.type === promoTypes.FixedPrice; else percentValue"> {{ promo.value | customPrice }} </span>
+                <ng-template #percentValue>
+                  <span>{{ promo.value }}% ({{ (discounts$ | async).promo | customPrice }})</span>
+                </ng-template>
+              </small>
             </div>
           </div>
         </div>
