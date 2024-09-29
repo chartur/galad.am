@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SeoStore} from "@stores/seo.store";
 import {SeoData} from "@interfaces/seo-data";
 import {filter, map, switchMap} from "rxjs";
+import {PaymentService} from "@services/payment.service";
 
 @Component({
   selector: 'app-footer',
@@ -13,8 +14,13 @@ export class FooterComponent implements OnInit {
   public seoData: SeoData;
 
   constructor(
-    private seoStore: SeoStore
+    private seoStore: SeoStore,
+    private paymentService: PaymentService
   ) {}
+
+  openWallet(): void {
+    this.paymentService.pay();
+  }
 
   ngOnInit() {
     this.seoStore.loaded$
