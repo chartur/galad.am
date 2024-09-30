@@ -20,18 +20,13 @@ export class PaymentService {
 
   public async pay() {
     const transaction = {
-      validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+      validUntil: Math.floor(Date.now() / 1000) + 300, // 60 sec
       messages: [
         {
-          address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
-          amount: "20000000",
+          address: "0:0059bfe065d99a21249a171d98645a71a5757dbf1a61362fe18cef5c038b478b",
+          amount: "10000000",
           // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
         },
-        {
-          address: "EQDmnxDMhId6v1Ofg_h5KR5coWlFG6e86Ro3pc7Tq4CA0-Jn",
-          amount: "60000000",
-          // payload: "base64bocblahblahblah==" // just for instance. Replace with your transaction payload or remove
-        }
       ]
     }
 
