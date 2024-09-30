@@ -18,10 +18,6 @@ export class FooterComponent implements OnInit {
     private paymentService: PaymentService
   ) {}
 
-  openWallet(): void {
-    this.paymentService.pay();
-  }
-
   ngOnInit() {
     this.seoStore.loaded$
       .pipe(
